@@ -73,10 +73,20 @@ Out[18]: 'Quotes to Scrape'
 ```
 这里`text()`的作用是定位到标签的内容。
 
-下面的命令可以抓取网页中的第一个内容为about的`a`标签节点。
+下面的命令可以抓取网页所有内容为about的`a`标签节点中的`href`属性值。值得注意的是`@href`代表定位到属性值`。
 ```python
-In [49]: response.xpath('/html/body/div/div[2]/div[1]/div[1]/span[2]/a').extract_first()
-Out[49]: '<a href="/author/Albert-Einstein">(about)</a>'
+In [6]: response.xpath("/html/body/div/div[2]/div[1]//span//a/@href").extract()
+Out[6]:
+['/author/Albert-Einstein',
+ '/author/J-K-Rowling',
+ '/author/Albert-Einstein',
+ '/author/Jane-Austen',
+ '/author/Marilyn-Monroe',
+ '/author/Albert-Einstein',
+ '/author/Andre-Gide',
+ '/author/Thomas-A-Edison',
+ '/author/Eleanor-Roosevelt',
+ '/author/Steve-Martin']
 ```
 下面指令的效果是抓取所有网页中的所有quote:
 ```python
@@ -93,6 +103,10 @@ Out[74]:
  "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”",
  '“A day without sunshine is like, you know, night.”']
 ```
+这里要注意的是`//span[@class='text']`的含义是寻找所有`class`属性值为‘text'的标签，`//span`意味着非根节点。
+
+---
+
 ## 5. 更多关于XPath的资料：
 - Use XPath with Scrapy Selectors: <https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors>
 - Learn XPath through examples: <http://zvon.org/comp/r/tut-XPath_1.html>
