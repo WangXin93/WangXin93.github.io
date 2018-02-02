@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  "Pipenv Crash Course"
+title:  "Pipenv 速成指南"
 date:   2018-02-01 17:25:46 +0800
 categories: Python
 ---
 
 ## 前言
 `pipenv`是`python`项目的依赖管理器，近来社区不断推广使用之，比如董伟明的[这篇](http://www.dongwm.com/archives/%E4%BD%BF%E7%94%A8pipenv%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/), 不光介绍了`pipenv`的特性，还介绍了一个利用`pipenv`的特性来卸载已安装的包及其所有依赖项的方法，点赞。本文为`pipenv`的速成介绍，适合熟悉`virtualenv`的用户，可以帮助`python`用户从`virtualenv`平滑过渡到`pipenv`。
+
+---
 
 ## 安装pipenv
 `pipenv`可以用`pip`安装，过程非常简单直接。这里以Mac为例：
@@ -15,6 +17,8 @@ $ brew install python3
 $ pip3 install pipenv --user #  安装在个人目录下
 $ export PATH="/Users/username/Library/`python`/3.6/bin:$PATH" # 将pipenv路径加入环境变量
 ```
+
+---
 
 ## 基本使用
 
