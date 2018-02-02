@@ -103,7 +103,7 @@ Out[74]:
  "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”",
  '“A day without sunshine is like, you know, night.”']
 ```
-这里要注意的是`//span[@class='text']`的含义是寻找所有`class`属性值为‘text'的`span`标签，`//span`意味着非根节点。
+这里要注意的是`//span[@class='text']`的含义是寻找所有`class`属性值为'text'的`span`标签，`//span`意味着非根节点。
 
 ---
 
