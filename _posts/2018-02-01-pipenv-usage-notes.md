@@ -37,7 +37,7 @@ Creating a Pipfile for this project…
 同时目录中会多出一个`Pipfile`文件，该命令的作用类似于`$ virutalenv .env`。
 
 # 2. 安装依赖项
-在有`Pipfile的`目录执行下面命令会安装存储于`Pipfile文`件中的依赖项，作用类似于`$ pip install -r requirements.txt`。
+在有`Pipfile`的目录执行下面命令会安装存储于`Pipfile`文件中的依赖项，作用类似于`$ pip install -r requirements.txt`。
 ```bash
 $ pipenv install
 ```
