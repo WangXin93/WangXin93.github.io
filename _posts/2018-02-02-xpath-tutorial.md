@@ -73,7 +73,7 @@ Out[18]: 'Quotes to Scrape'
 ```
 这里`text()`的作用是定位到标签的内容。
 
-下面的命令可以抓取网页所有内容为about的`a`标签节点中的`href`属性值。值得注意的是`@href`代表定位到属性值`。
+下面的命令可以抓取网页所有内容为about的`a`标签节点中的`href`属性值。值得注意的是`@href`代表定位到属性值`href`。
 ```python
 In [6]: response.xpath("/html/body/div/div[2]/div[1]//span//a/@href").extract()
 Out[6]:
@@ -112,6 +112,6 @@ Out[74]:
 - Learn XPath through examples: <http://zvon.org/comp/r/tut-XPath_1.html>
 - How to think in XPath: <http://plasmasturm.org/log/xpath101/>
 - w3c教程: <http://www.w3school.com.cn/xpath/>
-- 微软`xpath`语法界面: <https://msdn.microsoft.com/en-us/enus/library/ms256471>
+- 微软XPath语法界面: <https://msdn.microsoft.com/en-us/enus/library/ms256471>
 
 
