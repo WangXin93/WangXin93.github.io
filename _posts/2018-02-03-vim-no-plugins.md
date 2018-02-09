@@ -2,7 +2,7 @@
 layout: post
 title:  "Vim 无插件实现90%的插件功能"
 date:   2018-02-09 19:43:26 +0800
-categories: Python
+categories: Vim
 ---
 
 ## 前言
