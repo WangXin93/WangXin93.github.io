@@ -50,7 +50,10 @@ $ pipenv install
 ```bash
 $ pipenv install flask
 ```
-
+如果希望从`virtualenv`生成的`requirements.txt`导入依赖项，可以使用下面的命令：
+```bash
+$ pipenv install -r path/to/requirements.txt
+```
 # 3. 进入虚拟环境
 使用下面命令可以进入新建的虚拟环境。作用类似于`$ source .env/bin/active`。
 ```bash
