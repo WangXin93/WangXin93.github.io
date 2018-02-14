@@ -144,9 +144,11 @@ In [47]: print(messages_tfidf[0])
 
 TF-IDF的意思是*term frequency-inverse document frequency*，tf-idf权重是信息搜索和文本挖掘中常用的权重。这个权重是在一个corpus中一个单词对一个文档的重要性的统计描述。这个重要性会随着文档中这个词出现次数的变多而增大，而会因为这个词在整个corpus中出现的次数变多而减少。tf-idf的权重的变体是搜索引擎中按文档评分和相关性进行排序检索的重要工具。最简单的搜索打分函数方法是：根据将文档中搜索词的tf-idf权重相加，很多复杂的打分函数都是这个简单模型的变体。
 
+tf-idf的数学定义可以如下表示：
+
 ![equation](http://www.sciweavers.org/tex2img.php?eq=W_%7Bx%2Cy%7D%20%3D%20tf_%7Bx%2Cy%7D%20%5Ctimes%20log(%5Cfrac%7BN%7D%7Bdf_x%7D)&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
 
-这里![equation](http://www.sciweavers.org/tex2img.php?eq=tf_%7Bx%2Cy%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)是单词x在文档y中出现的频率，反映一个单词在文档中的重要性。![equation](http://www.sciweavers.org/tex2img.php?eq=idf_%7Bx%2Cy%7D%20%3D%20log(%5Cfrac%7BN%7D%7Bdf_x%7D)&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)是Inverse Document Frequency，反映一个单词在corpus中的重要性。其中![equation](http://www.sciweavers.org/tex2img.php?eq=df_x&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)是包含单词x的文档的数目，N是所有文档的总数目。
+这里tf_{x,y}是单词x在文档y中出现的频率，反映一个单词在文档中的重要。对数部分是Inverse Document Frequency，反映一个单词在corpus中的重要性。其中df_x是包含单词x的文档的数目，N是所有文档的总数目。
 
 举个例子：假定一个文档包含100个单词而cat这个词出现了3次。所以cat这个词的term frequency(tf)值为(3/100)=0.03。现在，如果有10,000,000份文档，而出现cat这个词的文档有1000份，所以cat这个词的inverse document frequency(idf)值为log(10,000,000/1,000)=4，所以最终的tf-idf权重为0.03×4=0.12。
 
