@@ -15,7 +15,7 @@ categories: Python
 ```bash
 $ brew install python3
 $ pip3 install pipenv --user #  安装在个人目录下
-$ export PATH="/Users/username/Library/`python`/3.6/bin:$PATH" # 将pipenv路径加入环境变量
+$ export PATH="/Users/username/Library/python/3.6/bin:$PATH" # 将pipenv路径加入环境变量
 ```
 
 ---

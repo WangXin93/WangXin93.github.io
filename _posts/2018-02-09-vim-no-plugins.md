@@ -118,7 +118,7 @@ set makeprg=python
 - `help c_^n`搜寻`COMMAND-LINE`模式下`CTRL_n`的作用
 - `helpgrep windows`寻找整个手册中所有提到`windows`这个词的地方，使用`cn`，`cp`指令前后跳转，`cl`用于列出所有找到的结果。
 
-**最后一点，如果遇到使用插件更加方便的情况，那就尽情使用插件吧!××
+**最后一点，如果遇到使用插件更加方便的情况，那就尽情使用插件吧!**
 
 ## 参考链接
 - Slides: <https://github.com/changemewtf/no_plugins>
