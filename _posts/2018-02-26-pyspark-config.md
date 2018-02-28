@@ -98,9 +98,9 @@ ServerAliveInterval 60
 ```
 
 ## 参考链接
-- [https://www.alibabacloud.com/help/zh/doc-detail/53650.htm]
-- [http://blog.csdn.net/ys676623/article/details/77848427]
-- [https://yq.aliyun.com/articles/98527]
+- <https://www.alibabacloud.com/help/zh/doc-detail/53650.htm>
+- <http://blog.csdn.net/ys676623/article/details/77848427>
+- <https://yq.aliyun.com/articles/98527>
 
 
 ## 配置pyspark
@@ -137,7 +137,7 @@ $ export SPARK_HOME='/home/username/spark-2.2.1-bin-hadoop2.7'
 $ export PATH=$SPARK_HOME:$PATH
 $ export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 ```
-执行`$ python -c 'from pyspark import SparkContext\nsc=SparkContext()'`如果顺利通过，说明pyspark安装成功。
+执行`$ python -c 'from pyspark import SparkContext;sc=SparkContext()'`如果顺利通过，说明pyspark安装成功。
 
 6. 如果报出[`Py4JJavaError`](https://stackoverflow.com/questions/23353477/trouble-installing-pyspark)，可能由于阿里云ECS主机名不能被resolve，需要执行`$ export SPARK_LOCAL_IP=172.18.181.193`或者
 ```bash
