@@ -45,9 +45,10 @@ $        Matches the end of the line
 
 https://www.py4e.com/lectures3/Pythonlearn-11-Regex-Handout.txt
 ```
-
+---
 
 ## 贪婪模式
+
 **注意**：当正则表达式中包含能接受重复的限定符时，默认的行为是匹配尽可能多的字符，称为贪婪模式。
 如果在表示重复的限定符后面加上?，表示非贪婪匹配，意味着在匹配成功条件下使用最少的重复。
 
