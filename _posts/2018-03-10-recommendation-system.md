@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "各种各样的距离"
+title:  "推荐系统"
 date:   2018-03-10 22:04:11 +0800
 categories: Python
 ---
