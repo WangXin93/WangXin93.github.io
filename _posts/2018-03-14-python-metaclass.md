@@ -10,7 +10,7 @@ categories: Python
 
 ---
 
-## `type(object)`的结果是什么？
+## type(object)的结果是什么？
 值得注意的是，在Python中，[所有东西都是`object`](https://stackoverflow.com/questions/576169/understanding-python-super-with-init-methods)， 使用`type(something)`可以查看该对象的类。比如：
 ```python
 >>> print(type(1))
@@ -174,8 +174,11 @@ print(DBInterface.registry)
 ---
 
 ## 什么时候需要metaclass？
-	Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don’t (the people who actually need them know with certainty that they need them, and don’t need an explanation about why).
-	– Tim Peters
+```
+Metaclasses are deeper magic than 99% of users should ever worry about. If you wonder whether you need them, you don’t (the people who actually need them know with certainty that they need them, and don’t need an explanation about why).
+
+– Tim Peters
+```
 这段大意是：在确实需要metaclass的时候，需要它的用户自然就会想到它。暂时我还不需要。
 
 ---
