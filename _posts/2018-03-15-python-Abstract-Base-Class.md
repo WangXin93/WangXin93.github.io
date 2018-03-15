@@ -70,18 +70,21 @@ some_method.__isabstractmethod__ = True
 如何检查`class`是否完全实现不包含abstractmethod，这个其实是python内部的功能。我们可以简单地模拟`metaclass`的表现行为，但是要注意的是`abc.ABCMeta`实际上包含的功能更多。
 ```python
 >>> class AbstractMeta(type):
-... def __new__(metaclass, name, bases, namespace):
-... cls = super().__new__(metaclass, name, bases, namespace)
-... cls.__abstractmethods__ = frozenset(('something',))
-... return cls
+...     def __new__(metaclass, name, bases, namespace):
+...         cls = super().__new__(metaclass, name, bases, namespace)
+...         cls.__abstractmethods__ = frozenset(('something',))
+...         return cls
 
 >>> class Spam(metaclass=AbstractMeta):
-... pass
+... 	pass
 
 >>> eggs = Spam()
-Traceback (most recent call last):
-...
-TypeError: Can't instantiate abstract class Spam with ...
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-24-c7d64fafb2e2> in <module>()
+----> 1 eggs = Spam()
+
+TypeError: Can't instantiate abstract class Spam with abstract methods something
 ```
 ---
 
