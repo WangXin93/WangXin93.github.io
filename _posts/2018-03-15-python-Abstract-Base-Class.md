@@ -84,7 +84,7 @@ TypeError                                 Traceback (most recent call last)
 <ipython-input-24-c7d64fafb2e2> in <module>()
 ----> 1 eggs = Spam()
 
-TypeError: Can't instantiate abstract class Spam with abstract methods something
+TypeError: Can't instantiate abstract class Spam with abstract methods somethingclas
 ```
 ---
 
