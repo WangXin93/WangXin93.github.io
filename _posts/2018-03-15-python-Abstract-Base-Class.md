@@ -36,6 +36,8 @@ TypeError: Can't instantiate abstract class Eggs with abstract methods some_meth
 >>> bacon = Bacon()
 ```
 观察上面代码，如果class不能满足所有的抽象方法都被继承或者说重写，抽象基类就会阻止class的实例化。除了一般的方法，python中的`property`，`staticmethod`，`classmethod`都支持作为抽象方法，即被装饰器`@abc.abstractmethod`所修饰。
+
+要注意的是从python3.3过后，`abstractproperty`，`abstractclassmethod`，`abstractstaticmethod`都被遗弃了，因为`propery`，`classmethod`，`staticmethod`都可以被`abstractmethod`认识，所以只要先用`property`装饰器，再使用`abstractmethod`就能被认为是一个`abstractproperty`装饰器了。要小心`abstractmethod`放在最里面装饰。
 ```python
 >>> class Spam(object, metaclass=abc.ABCMeta):
 ...     @property
@@ -65,6 +67,23 @@ some_method.__isabstractmethod__ = True
 ```
 然后，元类abc.ABCMeta浏览所有`__isabstractmethod__`为True的条目。此外，它还检查每个基类的`__isabstractmethod__`集合以防这个类是从abstract类继承而来的。所有条目中`__isabstractmethod__`仍然为True的将会被添加到储存在class的frozenset中形成一个`__abstractmethods__`集合。
 
+如何检查`class`是否完全实现不包含abstractmethod，这个其实是python内部的功能。我们可以简单地模拟`metaclass`的表现行为，但是要注意的是`abc.ABCMeta`实际上包含的功能更多。
+```python
+>>> class AbstractMeta(type):
+... def __new__(metaclass, name, bases, namespace):
+... cls = super().__new__(metaclass, name, bases, namespace)
+... cls.__abstractmethods__ = frozenset(('something',))
+... return cls
+
+>>> class Spam(metaclass=AbstractMeta):
+... pass
+
+>>> eggs = Spam()
+Traceback (most recent call last):
+...
+TypeError: Can't instantiate abstract class Spam with ...
+```
+---
 
 ## 参考链接
 - Mastering Python - Rick can Hattem
