@@ -83,7 +83,26 @@ print(type(foo))
 ---
 
 ## 创建自己的metaclass，从改造type开始
-通过从`type`继承并扩展，就可以自定义`metaclass`的行为。来看一个例子，该例子可以创建一个API，用户可以在它之中创建一个文件对象的接口，并且创建一个string ID。首先需要创建`metaclass`接口，从`type`中继承：
+通过从`type`继承并扩展，就可以自定义`metaclass`的行为。 先看一个简单的例子：
+```python
+class MyInt(type):
+    def __call__(cls, *args, **kwargs):
+        print("***** Here's My int *****", args)
+        print("Now do whatever you want with these objects...")
+        return type.__call__(cls, *args, **kwargs)
+		
+class int(metaclass=MyInt):
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+		
+i = int(4, 5)
+# ***** Here's My int ***** (4, 5)
+# Now do whatever you want with these objects...
+```
+对于已经存在的类来说，当需要创建对象时，将调用python的特殊方法`__call__`，这段代码中，当我们使用`int(4, 5)`来实例化`int`类的时候，`MyInt`元类的`__call__`方法将被调用，这意味着现在元类控制着对象的实例化。
+
+再来看一个例子，该例子可以创建一个API，用户可以在它之中创建一个文件对象的接口，并且创建一个string ID。首先需要创建`metaclass`接口，从`type`中继承：
 ```python
 class InterfaceMeta(type):
     def __new__(cls, name, parents, dct):
