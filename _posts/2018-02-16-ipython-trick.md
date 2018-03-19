@@ -37,3 +37,20 @@ second line
 third line
 fourth line
 ```
+
+## 每次运行代码前自动reload模块(https://ipython.org/ipython-doc/3/config/extensions/autoreload.html)
+```python
+In [1]: %load_ext autoreload
+
+In [2]: %autoreload 2
+
+In [3]: from foo import some_function
+
+In [4]: some_function()
+Out[4]: 42
+
+In [5]: # open foo.py in an editor and change some_function to return 43
+
+In [6]: some_function()
+Out[6]: 43
+```
