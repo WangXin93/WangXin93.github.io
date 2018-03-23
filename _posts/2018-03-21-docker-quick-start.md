@@ -2,7 +2,7 @@
 layout: post
 title:  "Docker 实用指南"
 date:  2018-03-21 14:12:36 +0800
-categories: Python
+categories: Linux
 ---
 
 ## 前言
