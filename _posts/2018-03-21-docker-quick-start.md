@@ -123,9 +123,22 @@ $ docker stop container-id
 其中`container-id`可以通过`docker ps`命令来找到。
 
 # 7. 本地镜像推到Docker仓库
+创建完的镜像当然想要分享给朋友，一个方法是通过上传或者说push到Docker Hub。要想push image首先需要在[Docker hub](https://hub.docker.com/)注册账号。然后通过指令登陆Docker hub：
+```bash
+$ docker login -u docker-registry-username
+```
+在根据提示输入完密码后，可以使用下面指令来push镜像：
+```bash
+$ docker push docker-registry-username/docker-image-name
+# 具体来说例如
+$ docker push wangxin93/ubuntu-nodejs
+$ docker push wangxin93/ubuntu-python3
+```
+然后等待push完成就可以在Docker hub上看见自己的image。
 
 ## 参考链接
 * [菜鸟教程Docker安装](http://www.runoob.com/docker/ubuntu-docker-install.html)
 * [How To Install and Use Docker on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)
 * [Docker部署 - Django+MySQL+uWSGI+Nginx](https://zhuanlan.zhihu.com/p/29609591)
-* [other Docker tutorials in the DO Community](https://www.digitalocean.com/community/tags/docker?type=tutorials)
+* [Other Docker tutorials in the DO Community](https://www.digitalocean.com/community/tags/docker?type=tutorials)
+* [Docker blog gives latest information](https://blog.docker.com/)
