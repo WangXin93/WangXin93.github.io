@@ -149,3 +149,6 @@ $ sudo vim /etc/hosts
 ```
 hostname可以通过命令`hostname`查询。
 
+
+# 参考内容
+* [PySpark Setup](https://www.udemy.com/python-for-data-science-and-machine-learning-bootcamp/learn/v4/t/lecture/5784658?start=0)
