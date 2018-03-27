@@ -9,6 +9,9 @@ categories: Linux
 实用Docker可以有效保证软件运行环境和开发环境的一致，有效避免了开发者努力开发出的功能在上线时却状况百出，下面来一起学习如何使用它！
 
 ## 安装Docker
+```bash
+$ sudo apt-get install docker.io
+```
 [菜鸟教程](http://www.runoob.com/docker/ubuntu-docker-install.html)为ubuntu，windows，mac均记录了详细的安装教程。
 
 **注意**：
