@@ -38,7 +38,7 @@ third line
 fourth line
 ```
 
-## 每次运行代码前自动reload模块(https://ipython.org/ipython-doc/3/config/extensions/autoreload.html)
+## [每次运行代码前自动reload模块](https://ipython.org/ipython-doc/3/config/extensions/autoreload.html)
 ```python
 In [1]: %load_ext autoreload
 
@@ -53,4 +53,10 @@ In [5]: # open foo.py in an editor and change some_function to return 43
 
 In [6]: some_function()
 Out[6]: 43
+```
+
+## 查看函数docstring和source
+```
+object? 显示对象的细节，如docstring
+object?? 显示更多细节，比如source
 ```
