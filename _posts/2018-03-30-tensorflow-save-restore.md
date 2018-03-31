@@ -73,9 +73,18 @@ print sess.run(op_to_restore,feed_dict)
 ```
 
 ## 技巧
-1. 命名存储目录为时间名
+1. 命名存储目录为当前时间
+```python
+from datetime import datetime
+import tensorflow as tf
+import os
+model_dir = datetime.strftime(datetime.now(), '%Y%m%d-%H%M%s')
+saver = tf.train.Saver()
+saver.save(sess, os.path.join(model_dir, 'my_saved_model'), global_step=1000)
+```
 2. 每个model目录存放三个model文件
 ```python
+import tensorflow as tf
 saver = tf.train.Saver(tf.trainable_variables(), max_to_keep=3)
 ```
 3. 寻找目录中的meta文件
@@ -83,6 +92,39 @@ saver = tf.train.Saver(tf.trainable_variables(), max_to_keep=3)
 import glob
 glob.glob('*.meta')
 # ['my_saved_model-1000.meta']
+```
+4. 将当前项目的git版本存储报告
+```python
+import os
+import tensorflow as tf
+from subprocess import Popen, PIPE
+def store_revision_info(src_path, output_dir):
+    try:
+        # Get git hash
+        cmd = ['git', 'rev-parse', 'HEAD']
+        gitproc = Popen(cmd, stdout=PIPE, cwd=src_path)
+        stdout, _ = gitproc.communicate()
+        git_hash = stdout.strip()
+        print(git_hash)
+    except OSError as e:
+        git_hash = ' '.join(cmd) + ': ' + e.strerror
+
+    try:
+        # Get local changes
+        cmd = ['git', 'diff', 'HEAD']
+        gitproc = Popen(cmd, stdout=PIPE, cwd=src_path)
+        stdout, _ = gitproc.communicate()
+        git_diff = stdout.strip()
+        print(git_diff)
+    except OSError as e:
+        git_diff = ' '.join(cmd) + ': ' + e.strerror
+   
+    # Store a text file in output_dir
+    rev_info_filename = os.path.join(output_dir, 'revision_info.txt')
+    with open(rev_info_filename, 'w') as f:
+        f.write('tensorflow version: %s\n--------------------\n' % tf.__version__)
+        f.write('git hash: %s\n--------------------\n' % git_hash)
+        f.write('git diff: %s\n--------------------\n' % git_diff)
 ```
 
 ## 参考链接
