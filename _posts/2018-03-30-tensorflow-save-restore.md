@@ -131,7 +131,8 @@ def store_revision_info(src_path, output_dir):
 from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
 print_tensors_in_checkpoint_file('./my_saved_model-1000', tensor_name=None, all_tensors=True, all_tensor_names=True)
 print_tensors_in_checkpoint_file('./my_saved_model-1000', tensor_name='bias', all_tensors=False, all_tensor_names=False)
-
+# tensor_name:  bias
+# 2.0
 ```
 
 ## 参考链接
