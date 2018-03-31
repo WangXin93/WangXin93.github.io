@@ -126,7 +126,15 @@ def store_revision_info(src_path, output_dir):
         f.write('git hash: %s\n--------------------\n' % git_hash)
         f.write('git diff: %s\n--------------------\n' % git_diff)
 ```
+5. 打印checkpoint文件中的变量值 
+```python
+from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
+print_tensors_in_checkpoint_file('./my_saved_model-1000', tensor_name=None, all_tensors=True, all_tensor_names=True)
+print_tensors_in_checkpoint_file('./my_saved_model-1000', tensor_name='bias', all_tensors=False, all_tensor_names=False)
+
+```
 
 ## 参考链接
 * [save-restore-tensorflow-models-quick-complete-tutorial](http://cv-tricks.com/tensorflow-tutorial/save-restore-tensorflow-models-quick-complete-tutorial/)
 * [tensorflow-how-to-save-restore-a-model](https://stackoverflow.com/questions/33759623/tensorflow-how-to-save-restore-a-model)
+* [inspect-variables-in-a-checkpoint-file](https://stackoverflow.com/questions/41867191/how-does-one-inspect-variables-in-a-checkpoint-file-in-tensorflow-when-tensorflo)
