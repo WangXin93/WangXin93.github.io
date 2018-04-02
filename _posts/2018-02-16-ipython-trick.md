@@ -60,3 +60,11 @@ Out[6]: 43
 object? 显示对象的细节，如docstring
 object?? 显示更多细节，比如source
 ```
+
+## Debug
+当一个bug发生后，可以在新的cell里输入`%debgu`来进入到pdb中并检查问题。或者，提前输入`%pdb`来打开debug模式，当错误发生时候自动进入到pdb中。
+
+如果要从一个程序开始的时候就进行debug调试，可以执行`%run -d theprogram.py`。
+
+## 参考资料
+* [Introducting IPython](http://ipython.readthedocs.io/en/stable/interactive/tutorial.html)I
