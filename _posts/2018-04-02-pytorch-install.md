@@ -12,7 +12,7 @@ Pytorch 安装踩坑笔记。
 1. 修改conda源
 直接使用官网链接下载安装时常网速太慢甚至下载失败，所以使用国内conda源加速安装包下载。这里使用清华和中科大的源,修改源的方法是修改`~/.condarc`文件为：（如果文件不存在，创建一个即可）
 
-```
+```bash
 channels:
 - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 - http://mirrors.ustc.edu.cn/anaconda/pkgs/free/
