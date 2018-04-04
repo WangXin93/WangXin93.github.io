@@ -94,6 +94,11 @@ print(b, a)
 ```
 现在不需要3个变量也能交换了，很神奇不是么？
 
+还有更多使用位运算的巧妙例子，比如判断一个数是否为2的n次方，可以使用：
+```python
+if i & (i-1) == 0:
+```
+
 ## 参考链接
 * [Python运算符号](https://www.tutorialspoint.com/python/python_basic_operators.htm)
 * [2's complement binary for negative](http://grokbase.com/t/python/tutor/1451z5jy6t/2s-complement-binary-for-negative)
