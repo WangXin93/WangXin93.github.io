@@ -145,7 +145,9 @@ TF-IDF的意思是*term frequency-inverse document frequency*，tf-idf权重是�
 
 tf-idf的数学定义可以如下表示：
 
-![equation](http://www.sciweavers.org/tex2img.php?eq=W_%7Bx%2Cy%7D%20%3D%20tf_%7Bx%2Cy%7D%20%5Ctimes%20log(%5Cfrac%7BN%7D%7Bdf_x%7D)&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
+$$
+W_{x,y} = tf_{x,y} \times log(\frac{N}{df_x})
+$$
 
 这里tf_{x,y}是单词x在文档y中出现的频率，反映一个单词在文档中的重要。对数部分是Inverse Document Frequency，反映一个单词在corpus中的重要性。其中df_x是包含单词x的文档的数目，N是所有文档的总数目。
 
