@@ -65,7 +65,7 @@ c.NotebookApp.certfile = u'/home/wangx/certs/mysert.pem' # Path to .pem file jus
 c.NotebookApp.ip = '*' # Means all ip addresses on your system
 c.NotebookApp.open_browser = False # Not open browser
 c.NotebookApp.port = 8888
-c.NotebookApp.token = '' # not need token in url
+c.NotebookApp.token = '' # Not need token in url at first time login
 ```
 6. [给云服务器开放端口](https://jingyan.baidu.com/article/03b2f78c31bdea5ea237ae88.html)
 阿里云服务器默认开放的端口只有三个，包括22，-1, 3389端口。为了从外部访问jupyter notebook，需要给云服务器开放访问端口，根据前文设置，开放8888端口，端口号可以根据`jupyter_notebook_config.py`变更。
@@ -83,7 +83,7 @@ $ jupyter notebook
 [I 10:14:47.682 NotebookApp] https://[all ip addresses on your system]:8888/
 [I 10:14:47.682 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
 ```
-然后在浏览器输入url如：`http://your_ip:8888?`就可以看见jupyter notebook的界面啦。这时浏览器可以用来输入计算指令，而计算任务则是由云服务器来完成并将结果通过网络返回到浏览器上。
+然后在浏览器输入url如：`http://your_ip:8888`就可以看见jupyter notebook的界面啦。这时浏览器可以用来输入计算指令，而计算任务则是由云服务器来完成并将结果通过网络返回到浏览器上。
 
 
 8. 关于ssh连接阿里云时间过长会自动断开的解决方法
@@ -97,11 +97,34 @@ $ sudo vi /etc/ssh/ssh_config
 ServerAliveInterval 60
 ```
 
-## 参考链接
+# 参考链接
 - <https://www.alibabacloud.com/help/zh/doc-detail/53650.htm>
 - <http://blog.csdn.net/ys676623/article/details/77848427>
 - <https://yq.aliyun.com/articles/98527>
 
+## 给Jupyter配置登录密码
+从`jupyter notebook 5.0`版本开始，提供了一个命令来设置密码：`jupyter notebook password`，生成的密码存储在`jupyter_notebook_config.json`
+```bash
+$ jupyter notebook password
+Enter password:  ****
+Verify password: ****
+[NotebookPasswordApp] Wrote hashed password to /Users/you/.jupyter/jupyter_notebook_config.json
+```
+之后在`jupyter_notebook_config.py`中找到下面的行，取消注释并修改。
+```
+c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'
+```
+使用`jupyter notebook`再次启动notebook，可以发现已经添加了登录索要密码的界面。
+
+对于5.0版本之前的用户可以使用下面方法生成密码：
+```bash
+PASSWD=$(python -c 'from notebook.auth import passwd; print(passwd("jupyter"))')
+echo "c.NotebookApp.password = u'${PASSWD}'"
+```
+
+# 参考链接
+* [jupyter Notebook 安装使用](https://cloud.tencent.com/developer/article/1019832)
+* [十分钟配置云端数据科学开发环境](https://cloud.tencent.com/developer/article/1004749)
 
 ## 配置pyspark
 
