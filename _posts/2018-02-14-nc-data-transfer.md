@@ -62,3 +62,15 @@ $ nc 192.168.2.102 1234 < filename.in
 
 **完整帮助参考命令`man nc`,然后键入`/DATA TRANSFER`，寻找到相关章节**
 
+
+## 使用scp向Linux云服务器上传和下载文件
+随着时间推移，我发现了更多向云端传输数据的方法。使用nc传输数据时，有时候因为`<`符号弄反了导致待复制文件被重写真的太恐怖了。
+下面介绍scp指令的使用。scp指令的基本格式如下：
+```
+scp <name@ip-address>:</path/of/file> <name@ip-address>:</path/of/file>
+```
+举例来说：
+```
+scp ./warm_up_train_20180201.tar wangx@111.233.77.222:/home/wangx/test
+```
+这行指令就能够将本地的这个tar文件上传到云端的test目录。按下回车确认后，还能够显示传输进度，比nc真的美丽多了。
