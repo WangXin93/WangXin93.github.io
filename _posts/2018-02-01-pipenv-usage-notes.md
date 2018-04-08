@@ -87,4 +87,8 @@ pipenv --man
 ```bash
 pipenv check --style project.py
 ```
+将`pipenv`中的依赖项以`requirements.txt`形式打印出来：
+```
+$ pipenv run pip freeze
+```
 
