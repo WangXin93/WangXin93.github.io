@@ -29,6 +29,16 @@ def sleeper(t):
 %timeit sleeper(0.002)
 ```
 
+## 载入一个文件到cell
+```
+%load file_path
+```
+这里的`file_path`可以是本地路径也可以是URL，例如这里载入一个网络上的matplotlib的例子：
+```
+%load http://matplotlib.org/mpl.examples/pylab_examples/contour_demo.py
+```
+
+
 ## 创建一个新文件并写入内容
 ```
 %%writefile example.txt
