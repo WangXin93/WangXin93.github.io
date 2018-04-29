@@ -73,7 +73,8 @@ $ grep -v name tools.csv | cut -d, -f1 | sort | uniq -c
 ```
 可以发现`uniq`还帮助我们统计了每个条目的数量，我们可以按照数量将它们从小到大排序：
 ```bash
-grep -v name tools.csv | cut -d, -f1 | sort | uniq -c | sort 
+$ grep -v name tools.csv | cut -d, -f1 | sort | uniq -c | sort 
+
 1 drill
 1 hammer
 1 lamp
@@ -83,7 +84,7 @@ grep -v name tools.csv | cut -d, -f1 | sort | uniq -c | sort
 ```
 当文件过长的时候，可以将这些内容输入到`less`中浏览，就像这样：
 ```bash
-grep -v name tools.csv | cut -d, -f1 | sort | uniq -c | sort | less
+$ grep -v name tools.csv | cut -d, -f1 | sort | uniq -c | sort | less
 ```
 现在，相信你已经掌握了管线的概念与应用，并且迫不及待地希望使用它来解决实际遇到的问题了吧！
 
