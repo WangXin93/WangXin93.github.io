@@ -41,7 +41,7 @@ The key fingerprint is:
 在需要被登錄的服務器上鍵入下面命令：
 ```bash
 $ cd ~/.ssh
-$ cat id_rsa.pub » authorized_keys
+$ cat id_rsa.pub >> authorized_keys
 ```
 如此便完成了公钥的安装。为了确保连接成功，请保证以下文件权限正确：
 ```bash
