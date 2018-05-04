@@ -26,3 +26,5 @@ if __name__ == "__main__":
 
 ## 参考链接
 * [python-201-a-tutorial-on-threads](https://www.blog.pythonlibrary.org/2016/07/28/python-201-a-tutorial-on-threads/)
+* [Threading in Python](https://www.linuxjournal.com/content/threading-python)
+* [python_multithreading_Daemon_join_method_threads](http://www.bogotobogo.com/python/Multithread/python_multithreading_Daemon_join_method_threads.php)
