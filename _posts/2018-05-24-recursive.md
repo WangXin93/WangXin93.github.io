@@ -121,7 +121,7 @@ def fib(n):
 
 对于这个问题，先做如下观察：
 
-![img](assets/recursive/count_partitions.png)
+![img](/assets/recursive/count_partitions.png)
 
 发现规律如下：对于n=6的情况，分解方法可以分为**包含4**和**不包含4**两个部分，可以使用这个规律将该问题分解为更小的问题。具体来说，对于整数6，最大整数为4的分解方法可以分为：
 * 不包含4的部分：等于整数6-4=2，最大为4的partitions
