@@ -20,7 +20,7 @@ result = sqrt(256)
 变量a所指的是sqrt这个函数的local环境中的a值。由于变量命名空间相对封闭的属性，函数中定义的函数常被成为closure（闭包）。
 
 ## Late binding
-Python中的closure的问题是，Python希望尽可能迟地绑定值到函数签名，这是为了性能考虑的。这在大多数情况下工作良好，但是有时候也会导致一些意想不到的问题。比如：
+Python中的closure的问题是，Python希望尽可能迟地绑定变量的值，这是为了性能考虑的。这在大多数情况下工作良好，但是有时候也会导致一些意想不到的问题。比如：
 ```python
 eggs = [lambda a: i * a for i in range(3)]
 
