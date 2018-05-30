@@ -11,13 +11,13 @@ categories: Math
 ## 对比先验概率与后验概率
 | 先验概率|后验概率|
 |:-------:|:-------:|
-| 是根据以往经验和分析得到的概率。| 事情已经发生，要求这件事情发生的原因是由某个因素引起的可能性的大小。      |
+| 是根据以往经验和分析得到的概率。| 事情已经发生，要求这件事情发生的原因是由某个因素引起的可能性的大小。|
 | 先验概率常用于预测。|后验概率常用于追责。 |
 | 先验概率是在缺乏某个事实的情况下描述一个变量，通常是经验丰富的专家的纯主观估计。 | 后验概率可以通过贝叶斯公式，用先验概率和似然函数计算出来。后验概率是在考虑了一个事实之后的条件概率。|
 
 先验概率的例子：比如在法国大选中女候选罗雅尔的支持率 p,在进行民意调查之前, 可以先验概率来表达这个不确定性。
 后验概率的例子：桌子上如果有一块肉和一瓶醋,你如果吃了一块肉,然后你觉得是酸的,那你觉得肉里加了醋的概率有多大?你说:80%可能性加了醋.这时,你已经进行了一次后验概率的猜测。
-![img](https://images2017.cnblogs.com/blog/1234526/201710/1234526-20171017121446662-526159147.png)
+![img](/assets/posterior_probability/vinegar.png)
 
     "概率论只不过是把常识用数学公式表达了出来"---拉普拉斯
 
@@ -29,7 +29,9 @@ $$
 
 ## 小测验
 
-    问题：有三个门，里面有一个里有汽车，如果选对了就可以得到这辆车，当应试者选定一个门之后，主持人打开了另外一个门，空的。问应试者要不要换一个选择。假设主持人知道车所在的那个门。
+> 问题：有三个门，里面有一个里有汽车，如果选对了就可以得到这辆车，当应试者选定一个门之
+> 后，主持人打开了另外一个门，空的。问应试者要不要换一个选择。假设主持人知道车所在的那
+> 门。
 
 **解法：**
 * 应试者第一次选中有车的门的概率是$\frac{1}{3}$，这时主持人打开一个空门，另外一个门100%没有车；
@@ -69,7 +71,10 @@ $$
 
 最后，用Wikipedia的解释来总结先验概率，后验概率，贝叶斯公式，似然函数之间的关系：
 
-    A prior probability is a marginal probability, interpreted as a description of what is known about a variable in the absence of some evidence. The posterior probability is then the conditional probability of the variable taking the evidence into account. The posterior probability is computed from the prior and the likelihood function via Bayes' theorem.
+> A prior probability is a marginal probability, interpreted as a description of
+> what is known about a variable in the absence of some evidence. The posterior > probability is then the conditional probability of the variable taking the
+> evidence into account. The posterior probability is computed from the prior 
+> and the likelihood function via Bayes' theorem.
 
 ## 似然函数
 似然函数（likelihood function），也称作似然，是一个关于统计模型参数的函数。也就是这个函数中自变量是统计模型的参数。对于结果 x ，在参数集合 θ 上的似然，就是在给定这些参数值的基础上，观察到的结果的概率 L(θ|x)=P(x|θ) 。也就是说，似然是关于参数的函数，在参数给定的条件下，对于观察到的 x 的值的条件分布。
