@@ -97,3 +97,90 @@ lpwd # 显示当前主机（本地）的当前工作目录
 ```
 
 ## Next: rsync
+
+rsync的意思是'remote sync'，它可以把远端或者本地的文件进行同步。rsync使用[差分编码](https://zh.wikipedia.org/zh-hans/%E5%B7%AE%E5%88%86%E7%B7%A8%E7%A2%BC)来最小化数据传输的量。
+
+rsync通常既可以指使用该工具的网络协议，也可能指这个工具本身。由于它的普遍性，大多数Unix系统已经默认安装了它。
+
+先学习如何在本地使用它！首先我们需要创建一些文件作为例子：
+
+```bash
+$ mkdir dir1 dir2
+$ touch dir1/file{1..100}
+```
+
+使用``ls dir1``可以发现创建好了file1到file100这100个文件。
+
+然后可以使用：
+
+```bash
+$ rsync -r dir1/ dir2
+```
+对两个目录下文件进行同步，``-r``选项意味这recursive。另一个替代方案是使用``-a``选项：
+
+```bash
+$ rsync -a dir1/ dir
+```
+
+``-a``意味着archive，它不光会recusive地同步文件，还会保留symbolic links，special and device files，文件修改时间，group，owner，permissions。所以比``-r``更加常用。
+
+注意到``dir1/``后面的斜杠，它告诉rsync去同步dir1下的所有内容，如果忘记了这个斜杠，被同步的目录会变为``dir2/dir1/[files]``。
+
+### 同步远程系统
+
+同步远程系统需要有[SSH权限](https://www.digitalocean.com/community/articles/how-to-set-up-ssh-keys--2)，之后，就可以使用类似``scp``的格式进行远端系统同步：
+
+```bash
+$ rsync -a ~/dir1 username@remote_host:destination_directory
+```
+
+它的作用就像``git push``，反过来如果想从远端pull，这样就可以：
+
+```bash
+$ rsync -a username@remote_host:/home/username/dir1 place_to_sync_on_local_machine
+```
+
+### Tricks or options
+
+你可能希望在执行同步之前检查一下rsync指令，rsync提供了这样的方法：通过``-n``或者``--dry-run``选项，它意味着模拟一下同步的过程而不真的修改文件内容，加上``-v``选项输出程序过程。最终，一个常用的combo就是：
+
+```bash
+$ rsync -anv dir1/ dir2
+```
+
+如果希望提高传输效率，将文件压缩以后再传输，你可以使用``-z``参数：
+
+```bash
+$ rsync -az source destination
+```
+
+``-P``参数也是非常有用的，它结合了``--progress``和``--partial``参数，前者可以输出一个进度条，后者运行你进行断点续传：
+
+```bash
+$ rsync -azP source destination
+```
+
+rsync默认不会删除destination那边一边的文件，所以如果在source一端删除了文件，destination一端默认不会删除。你可以通过``--delete``选项强制删除destination一端的文件：
+
+```bash
+$ rsync -a --delete source destination
+```
+
+还有两个有用的选项：``--exclude``和``--include``，exclude可以指定不去匹配某个文件或者目录，你可以用``:``来连接这些目录，include在exclude给出一个模板的情况下重载这个文件是否要同步：
+
+```bash
+$ rsync -anv --include=file2* --exclude=* dir1/ wangx@my-ip-address:/home/wangx/dir1
+```
+
+上面的指令可以选择只同步开头为file2的文件。
+
+最后是``--backup``选择可以对重要的文件在同步后进行备份，备份在destination那一端的目录下。它通常``--backup-dir``选项一起使用，它制定了备份的目录：
+
+```bash
+$ rsync -a --delete --backup --backup-dir=/path/to/backups /path/to/source destination
+```
+
+## 参考：
+
+- [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
+
