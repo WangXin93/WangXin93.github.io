@@ -74,3 +74,26 @@ scp <name@ip-address>:</path/of/file> <name@ip-address>:</path/of/file>
 scp ./warm_up_train_20180201.tar wangx@111.233.77.222:/home/wangx/test
 ```
 这行指令就能够将本地的这个tar文件上传到云端的test目录。按下回车确认后，还能够显示传输进度，比nc真的美丽多了。
+
+## 使用sftp向Linux云服务器上传和下载文件
+sftp提供了交互式的文件传输方案，使文件传输任务更加可爱方便了！如何使用sftp？
+```
+scp user@ip-address
+```
+举例来说：
+```
+scp ubuntu@192.168.0.1
+```
+然后命令行的提示符号会变为`sftp> `，现在你就可以使用sftp的指令了，常用指令包括：
+```
+put filename # 上传文件
+put -r dirname # 上传文件夹
+get filename # 下载文件
+get -r dirname # 下载文件夹
+cd # 改变远程服务器目录
+lcd # 改变当前主机目录
+pwd # 显示远程服务器当前工作目录
+lpwd # 显示当前主机（本地）的当前工作目录
+```
+
+## Next: rsync
