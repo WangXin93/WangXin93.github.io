@@ -45,6 +45,8 @@ $ source .bashrc # 程序包自动添加内容到到.bashrc，该句添加环境
 ```
 
 5. 配置jupyter
+
+- 使用openssl加密
 ```bash
 # Generate configuration file
 $ jupyter notebook --generate-config
@@ -67,6 +69,25 @@ c.NotebookApp.open_browser = False # Not open browser
 c.NotebookApp.port = 8888
 c.NotebookApp.token = '' # Not need token in url at first time login
 ```
+
+- 使用jupyter password加密
+使用jupyter notebook自带的password功能部署起来更加方便。首先设定登陆密码：
+
+```
+$ jupyter notebook password
+```
+
+然后在配置文件`jupyter_notebook_config.py`中添加内容：
+
+```python
+c = get_config()
+c.NotebookApp.ip = '*'  
+c.NotebookApp.open_browser = False  
+c.NotebookApp.port = 8888  
+```
+
+这比前者的配置内容少多了！
+
 6. [给云服务器开放端口](https://jingyan.baidu.com/article/03b2f78c31bdea5ea237ae88.html)
 阿里云服务器默认开放的端口只有三个，包括22，-1, 3389端口。为了从外部访问jupyter notebook，需要给云服务器开放访问端口，根据前文设置，开放8888端口，端口号可以根据`jupyter_notebook_config.py`变更。
 
