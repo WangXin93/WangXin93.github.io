@@ -181,5 +181,5 @@ IPython.display.HTML('<iframe src=http://wangxin93.top width=700 height=350></if
 除此之外，IPython notebook还可以display Javascript，SVG，PDF等等。用它写一个技术说明书一定很酷！
 
 ## 参考资料
-* [Introducting IPython](http://ipython.readthedocs.io/en/stable/interactive/tutorial.html)I
-* [IPython's Rich Display System]](http://jeffskinnerbox.me/notebooks/ipython's-rich-display-system.html)
+* [Introducting IPython](http://ipython.readthedocs.io/en/stable/interactive/tutorial.html)
+* [IPython's Rich Display System](http://jeffskinnerbox.me/notebooks/ipython's-rich-display-system.html)
