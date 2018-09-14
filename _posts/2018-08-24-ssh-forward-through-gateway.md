@@ -45,6 +45,14 @@ sftp -P 122 wangx@localhost
 
 注意到ssh和sftp定义端口的参数一个是`-p`，一个是`-P`。
 
+更加棒的做法是：你可以使用下面指令让端口前传的服务**在后台运行**：
+
+```
+ssh -NfL 122:172.28.230.11:22 lyx@192.168.182.36
+```
+
+其中``-N``的作用是连线后不执行指令，``-f``的作用是在输入完密码后让指令在后台执行。
+
 ## 通过隧道的tensorboard服务。
 
 类似的道理，首先将本地的16006端口通过“隧道”（192.168.182.36）连接到内部的机器的6006端口：
@@ -63,9 +71,20 @@ tensorboard --logdir=results
 
 同样的，开启一个Jupyter服务也是可以轻松实现的，动手试试吧！
 
+## 常见问题
+
+* 使用Mac做端口前传的时候可能会遇到**Privileged ports can only be forwarded by root.**。
+
+解决方法：将端口设置到1024以上，或者使用root账户设置ssh隧道。
+
+* 我想查询本地那些端口是开启了服务。
+
+解决方法：Linux下使用``$ netstat -a | grep LISTEN``，Mac下使用``$ lsof -i -P | grep LISTEN``
+
 
 ## 参考
 
 * [SSH 跳板机（堡垒机）登录大法](https://blog.csdn.net/Albert0420/article/details/51729583)
 * [Must I sftp to an intermediate server?](https://superuser.com/questions/262926/must-i-sftp-to-an-intermediate-server)
 * [從家裡存取 Server端的 Tensorboard 服務](https://github.com/JeremyCCHsu/SLAM-Tensorflow-Tutorial/blob/master/Note90-Remote-Access.md)
+* [SSH Port Forwarding on Mac OS X](https://manas.tungare.name/blog/ssh-port-forwarding-on-mac-os-x)
