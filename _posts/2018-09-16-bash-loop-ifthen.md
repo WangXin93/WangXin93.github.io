@@ -1,15 +1,17 @@
 ---
 layout: post
-title:  "Bash中的循环用法"
+title:  "Bash中的循环与选择结构"
 date: 2018-09-16 21:16:00 +0800
 categories: Bash
 ---
 
 ## 前言
 
-在Bash中用好循环可以更高效的执行批量命令，一起来学习它。
+在Bash中用好**循环**和**选择**结构可以更高效的执行批量命令，一起来学习它。
 
-## While loop
+## 循环结构
+
+# While loop
 
 基本语法：
 
@@ -63,7 +65,7 @@ do
 done
 ```
 
-## For loop
+# For loop
 
 For使用的时候比while更加直观，下面是for loop的基本语法：
 
@@ -123,9 +125,56 @@ for i in $arr
 # ...
 ```
 
+这就循环部分的内容，下面来看看基本的选择结构！
+
+## 选择结构
+
+# If-then 选择结构
+
+```bash
+#!/bin/bash
+if
+    test -x /bin/ls
+then
+    echo we have ls
+fi
+```
+
+这段代码的功能是说：如果存在``/bin/ls``这个可执行文件，那么就打印we have ls。其中``test -x``的功能就是检查是否存在可执行文件，在bash中也可以写成``[[ -x /bin/ls ]]``。
+
+# Case 选择结构
+
+和JavaScript，C/C++一样，bash语言中也有case结构，一种**多选择**结构。下面的例子的功能模仿了很多命令行工具中询问用户是否要执行程序：
+
+```bash
+#!/bin/bash
+echo -n "Print message? "
+valid=0
+while
+[ $valid == 0 ]
+do
+    read ans
+    case $ans in
+        yes|YES|y|Y )
+            echo Will print the message
+            echo The Message
+            valid=1
+            ;;
+        [nN][oN]    )
+            echo Will NOT print the message
+            valid=1
+            ;;
+        *           )
+            echo Yes or No of some form please
+            ;;
+    esac
+done
+```
+
 That's all! Congratulations!
 
 ## Reference
 
-* [Linux Bash Shell Scripts: P13](https://www.bilibili.com/video/av23774844/?p=13)
+* [Linux Bash Shell Scripts: P13, Loop](https://www.bilibili.com/video/av23774844/?p=13)
+* [Linux Bash Shell Scripts: P16, Control Flow](https://www.bilibili.com/video/av23774844/?p=16)
 
