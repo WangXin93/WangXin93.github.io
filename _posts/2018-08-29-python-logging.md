@@ -123,6 +123,20 @@ logger.debug('World')
 这里给添加了`logger`添加了`StreamHandler`，它的日志等级是logger在上面给出的debug。所以可以完成在控制台输出所有等级消息，而在日志文件记录info等级以上的消息啦!
 
 
+还可以通过basicConfig对logging进行全局配置，这样语句更为简洁。
+
+```python
+log_format = "%(asctime)s [%(levelname)-5.5s] %(message)s"
+filename = "log.log"
+logging.basicConfig( 
+    level=logging.INFO,
+    format=log_format,
+    handlers=[logging.FileHandler(filename), logging.StreamHandler()],
+)  
+logging.info("This is info.")
+logging.debug("This is debug.")
+```
+
 
 # 参考链接
 
