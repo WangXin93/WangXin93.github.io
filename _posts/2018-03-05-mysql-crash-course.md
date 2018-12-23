@@ -61,3 +61,7 @@ mysql> DROP TABLE tablename;
 ```sql
 mysql> SElECT * FROM tb1; 
 ```
+
+## 参考
+
+* [CS61A disc10: Introduct SQL](https://inst.eecs.berkeley.edu/~cs61a/sp18/disc/disc10.pdf)
