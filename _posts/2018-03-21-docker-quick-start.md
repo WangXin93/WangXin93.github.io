@@ -106,20 +106,20 @@ $ docker commit -m "added node.js" -a "Sunday Ogwu-Chinuwa" d9b100f2f636 finid/u
 
 当这个操作完成以后，使用`docker images`可以看到新的镜像已经被添加了进去。下一次需要运行装有nodejs的ubuntu容器的时候，就可以使用这个新的镜像了。除了这种方法，镜像还可以通过DockerFile来创建。
 
-# 6. 列出Docker镜像
-当使用docker一段时间后，你就会有很多active和inactive的镜像，使用下面的指令来列出所有active的镜像：
+# 6. 列出Docker容器
+当使用docker一段时间后，你就会有很多active和inactive的容器，使用下面的指令来列出所有active的容器：
 ```bash
 $ docker ps
 ```
-如果要观察所有active和inactive的镜像，则使用
+如果要观察所有active和inactive的容器，则使用
 ```bash
 $ docker ps -a
 ```
-如果要观察最近创建的镜像，使用：
+如果要观察最近创建的容器，使用：
 ```bash
 $ docker ps -l
 ```
-停止一个正在运行的active状态的镜像使用命令：
+停止一个正在运行的active状态的容器使用命令：
 ```bash
 $ docker stop container-id
 ```
@@ -138,6 +138,23 @@ $ docker push wangxin93/ubuntu-nodejs
 $ docker push wangxin93/ubuntu-python3
 ```
 然后等待push完成就可以在Docker hub上看见自己的image。
+
+# 8. 使用Dockerfile
+
+```
+docker build -t tensorflow:1.6.0 .
+```
+
+# 9. 容器与本地系统的关联
+
+```
+docker run -it \
+    --runtime=nvidia \
+    -p 8888:8888 \
+    -p 6006:6006 \
+    -v $CURRENT:/root/workdir \
+	tensorflow:0.11
+```
 
 ## 参考链接
 * [菜鸟教程Docker安装](http://www.runoob.com/docker/ubuntu-docker-install.html)
