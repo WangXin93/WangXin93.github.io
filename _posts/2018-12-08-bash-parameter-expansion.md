@@ -177,3 +177,4 @@ echo "${!VECH*}"
 
 * [How To Use Bash Parameter Substitution Like A Pro](https://www.cyberciti.biz/tips/bash-shell-parameter-substitution-2.html)
 * [Parameter Substitution](https://www.tldp.org/LDP/abs/html/parameter-substitution.html)
+* [Shell 截取文件名和后缀](http://zuyunfei.com/2016/03/23/Shell-Truncate-File-Extension/)
