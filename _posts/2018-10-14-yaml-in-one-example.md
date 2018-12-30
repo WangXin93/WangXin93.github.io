@@ -3,6 +3,7 @@ layout: post
 title:  "Learn YAML in one example"
 date: 2018-10-14 09:02:48 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言

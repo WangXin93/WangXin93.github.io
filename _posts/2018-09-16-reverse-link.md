@@ -3,6 +3,7 @@ layout: post
 title:  "Reverse Linked List in Python"
 date: 2018-09-16 10:56:00 +0800
 categories: Python, Algorithm
+toc: true
 ---
 
 ## 前言

@@ -3,6 +3,7 @@ layout: post
 title:  "Graphviz使用教程"
 date: 2018-09-21 23:53:21 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言

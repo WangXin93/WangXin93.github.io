@@ -3,6 +3,7 @@ layout: post
 title:  "先验概率，后验概率，贝叶斯公式，似然函数"
 date: 2018-05-27 14:29:00 +0800
 categories: Math
+toc: true
 ---
 
 ## 前言

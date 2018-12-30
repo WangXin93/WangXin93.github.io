@@ -3,6 +3,7 @@ layout: post
 title:  "从Data Cleaning到Model Stacking"
 date: 2018-04-19 20:02:13 +0800
 categories: Machine_Learning
+toc: true
 ---
 
 ## 前言

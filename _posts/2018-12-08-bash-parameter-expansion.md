@@ -3,6 +3,7 @@ layout: post
 title:  "Use Bash Parameter Expansion"
 date: 2018-12-08 00:29:05 +0800
 categories: bash
+toc: true
 ---
 
 ## 前言
@@ -30,7 +31,7 @@ echo "$your_id"
 
 那么现在来看看parameter expansion可以有哪些更多的变化功能！
 
-# 1. Setting Up Default Shell Variables Value
+## 1. Setting Up Default Shell Variables Value
 
 基本语法为：
 
@@ -52,14 +53,14 @@ username2=1
 echo "username2=${username2:-`whoami`}"
 ```
 
-# 1.1 Setting Default Values
+### 1.1 Setting Default Values
 
 ```bash
 ${var:=value}
 var=${USER:=value}
 ```
 
-# 2. Display an Error Message If $VAR Not Passed
+## 2. Display an Error Message If $VAR Not Passed
 
 ```bash
 ${varName?Error varName is not defined}
@@ -69,7 +70,7 @@ MESSAGE="Usage: mkjail.sh domainname IPv4"             ### define error message
 _domain=${2?"Error: ${MESSAGE}"}  ### you can use $MESSAGE too
 ```
 
-# 2.1. Display an Error Message and Run Command
+### 2.1. Display an Error Message and Run Command
 ```bash
 #!/bin/bash
 _file="$HOME/.input"
@@ -81,14 +82,14 @@ _cmd="${2:? $_message $(cp $_file $HOME/.output)}"
 $_cmd "$_file"
 ```
 
-# 3. Find Variable Length
+## 3. Find Variable Length
 ```bash
 ${#variableName}
 echo ${#variableName}
 len=${#var}
 ```
 
-# 4. Remove Pattern (Front of $VAR)
+## 4. Remove Pattern (Front of $VAR)
 
 ```bash
 ${var#Pattern}
@@ -110,7 +111,7 @@ _url="http://dns.measurement-factory.com/tools/dnstop/src/dnstop-${_version}.tar
 echo "${_url##*/}"
 ```
 
-# 4.1: Remove Pattern (Back of $VAR)
+### 4.1: Remove Pattern (Back of $VAR)
 ```bash
 ${var%pattern}
 ${var%%pattern}
@@ -120,7 +121,7 @@ FILE="xcache-1.3.0.tar.gz"
 echo ${FILE%.tar.gz}
 ```
 
-# 5. Find And Replace
+## 5. Find And Replace
 ```bash
 ${varName/Pattern/Replacement}
 ${varName/word1/word2}
@@ -143,7 +144,7 @@ ${var/#Pattern/Replacement} # If prefix of var matches Pattern, then substitute 
 ${var/%Pattern/Replacement} # If suffix of var matches Pattern, then substitute Replacement for Pattern.
 ```
 
-# 6. Substring Starting Character
+## 6. Substring Starting Character
 
 语法为：
 ```bash
@@ -164,7 +165,7 @@ echo "${phone:4}"
 ```
 这样只提取电话号码。
 
-# 7. Get list of matching variable names
+## 7. Get list of matching variable names
 得到以指定prefix开头的变量名，可以使用：
 ```bash
 VECH="Bus"

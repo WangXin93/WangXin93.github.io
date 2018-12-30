@@ -3,12 +3,13 @@ layout: post
 title:  "Python Logging，更漂亮地记录程序运行结果"
 date: 2018-08-29 15:13:00 +0800
 categories: Python
+toc: true
 ---
 
-# 前言
+## 前言
 对于一般小型程序来说，使用print在控制台打印出结果已经能够满足需求。但是对于长期运行地大型程序，如果有更高地需求，比如同时输出结果到控制台和文件，带有时间戳地输出，那么logging模块可以帮助你。
 
-# Quick Start
+## Quick Start
 从print到logging地转变非常简单：
 
 ```python
@@ -33,7 +34,7 @@ CRITICAL:root:critical message
 
 ![msg](https://upload-images.jianshu.io/upload_images/477558-da69f58ffd67989c.png)
 
-# Basic configuration
+## Basic configuration
 
 如果每条日志包含时间戳那会是很有帮助的，可以这样设置时间戳到日志：
 
@@ -61,7 +62,7 @@ logging.debug('World')
 
 OK！这就是logging模块的基本使用！
 
-# Advanced logging
+## Advanced logging
 
 但是这样使用logging会有一些问题，比如：
 
@@ -138,7 +139,7 @@ logging.debug("This is debug.")
 ```
 
 
-# 参考链接
+## 参考链接
 
 * [Python logging basic](https://www.youtube.com/watch?v=-ARI4Cz-awo)
 * [Python logging advanced](https://www.youtube.com/watch?v=jxmzY9soFXg)

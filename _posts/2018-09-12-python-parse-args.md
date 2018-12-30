@@ -3,6 +3,7 @@ layout: post
 title:  "Python Parse Args"
 date: 2018-09-12 18:00:00 +0800
 categories: Python
+toc: true
 ---
 
 ## 前言

@@ -3,6 +3,7 @@ layout: post
 title:  "Docker 实用指南"
 date:  2018-03-21 14:12:36 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言
@@ -19,7 +20,7 @@ $ sudo apt-get install docker.io
 * 国内推荐修改镜像地址来加速拉取镜像，具体参考菜鸟教程
 
 ## 使用Docker 
-# 1. 修改当前用户组
+### 1. 修改当前用户组
 Docker命令默认需要root权限，也就是说每个指令需要sudo前缀，非常的麻烦。解决这个麻烦的方法是将当前用户加到`docker`用户组，具体方法是：
 ```bash
 $ sudo usermod -aG docker ${USER}
@@ -35,7 +36,7 @@ wangx sudo docker
 ```
 确认当前用户已经加入到`docker`组.
 
-# 2. Docker命令
+### 2. Docker命令
 Docker命令的基本语法组成为：
 ```bash
 $ docker [option] [command] [arguments]
@@ -46,7 +47,7 @@ $ docker docker-subcommand --help
 ```
 可以获取子命令的帮助，使用`docker info`可以获取系统信息。
 
-# 3. 使用Docker镜像工作
+### 3. 使用Docker镜像工作
 Docker容器从Docker镜像中工作，它默认从Docker hub拉取这些需要的镜像。运行Docker容器的大多数应用和linux的发行版所需要的镜像image都能在Docker hub找到。
 为了检查你是否能从Docker hub下载镜像，使用下面指令：
 ```bash
@@ -70,7 +71,7 @@ $ docker images
 ```
 运行容器所使用的镜像可以被修改从而生成新的镜像，新的镜像可以上传或者说push到Docker hub上用来分享。
 
-# 4. 运行Docker容器
+### 4. 运行Docker容器
 之前的`hello-world`程序运行后就退出了，实际上，Docker容器还有更强大的功能，它们可以变得可交互，就像一台虚拟机一样，不过比虚拟机更加节省资源。
 
 使用下面的指令可以使用ubuntu镜像来运行容器，`-i`和`-t`选项可以赋予你以交互式shell形式进入容器的权限：
@@ -87,7 +88,7 @@ $ apt-get update
 $ apt-get install -y nodejs
 ```
 
-# 5. 提交容器中的变化到Docker镜像
+### 5. 提交容器中的变化到Docker镜像
 当你启用一个Docker镜像的时候，你可以像在虚拟机中一样创建，修改，删除文件，这些改动只会被保存在容器中。你可以启动或者停止它，但是一旦你使用`docker rm`命令摧毁它的时候，这些变化就会消失。那么如何将容器中的状态保存为镜像呢？
 
 在上面的例子中，当nodejs安装到ubuntu容器中后，你现在拥有一个不同于开始的时候的运行在镜像上的容器。为了保存现在容器中的状态为新的镜像，首先要从它里面退出：
@@ -106,7 +107,7 @@ $ docker commit -m "added node.js" -a "Sunday Ogwu-Chinuwa" d9b100f2f636 finid/u
 
 当这个操作完成以后，使用`docker images`可以看到新的镜像已经被添加了进去。下一次需要运行装有nodejs的ubuntu容器的时候，就可以使用这个新的镜像了。除了这种方法，镜像还可以通过DockerFile来创建。
 
-# 6. 列出Docker容器
+### 6. 列出Docker容器
 当使用docker一段时间后，你就会有很多active和inactive的容器，使用下面的指令来列出所有active的容器：
 ```bash
 $ docker ps
@@ -125,7 +126,7 @@ $ docker stop container-id
 ```
 其中`container-id`可以通过`docker ps`命令来找到。
 
-# 7. 本地镜像推到Docker仓库
+### 7. 本地镜像推到Docker仓库
 创建完的镜像当然想要分享给朋友，一个方法是通过上传或者说push到Docker Hub。要想push image首先需要在[Docker hub](https://hub.docker.com/)注册账号。然后通过指令登陆Docker hub：
 ```bash
 $ docker login -u docker-registry-username
@@ -139,13 +140,13 @@ $ docker push wangxin93/ubuntu-python3
 ```
 然后等待push完成就可以在Docker hub上看见自己的image。
 
-# 8. 使用Dockerfile
+### 8. 使用Dockerfile
 
 ```
 docker build -t tensorflow:1.6.0 .
 ```
 
-# 9. 容器与本地系统的关联
+### 9. 容器与本地系统的关联
 
 ```
 docker run -it \

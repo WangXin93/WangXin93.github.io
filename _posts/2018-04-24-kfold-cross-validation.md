@@ -3,6 +3,7 @@ layout: post
 title:  "K-Fold Cross Validation in Python"
 date: 2018-04-24 23:09:23 +0800
 categories: Machine_Learning
+toc: true
 ---
 
 ## 前言

@@ -3,6 +3,7 @@ layout: post
 title:  "使用BFS搜索最短路径"
 date: 2018-05-07 19:22:00 +0800
 categories: Algorithm
+toc: true
 ---
 
 ## 前言

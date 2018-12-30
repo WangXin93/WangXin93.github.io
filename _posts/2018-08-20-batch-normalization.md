@@ -3,6 +3,7 @@ layout: post
 title:  "Batch Normalization"
 date: 2018-08-20 23:14:28 +0800
 categories: Algorithm 
+toc: true
 ---
 
 ## 前言

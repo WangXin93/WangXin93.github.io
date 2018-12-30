@@ -3,6 +3,7 @@ layout: post
 title:  "阿里云服务器上jupyter与pyspark的配置"
 date:   2018-02-26 8:48:33 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言
@@ -118,7 +119,7 @@ $ sudo vi /etc/ssh/ssh_config
 ServerAliveInterval 60
 ```
 
-# 参考链接
+### 参考链接
 - <https://www.alibabacloud.com/help/zh/doc-detail/53650.htm>
 - <http://blog.csdn.net/ys676623/article/details/77848427>
 - <https://yq.aliyun.com/articles/98527>
@@ -143,7 +144,7 @@ PASSWD=$(python -c 'from notebook.auth import passwd; print(passwd("jupyter"))')
 echo "c.NotebookApp.password = u'${PASSWD}'"
 ```
 
-# 参考链接
+### 参考链接
 * [jupyter Notebook 安装使用](https://cloud.tencent.com/developer/article/1019832)
 * [十分钟配置云端数据科学开发环境](https://cloud.tencent.com/developer/article/1004749)
 
@@ -194,5 +195,5 @@ $ sudo vim /etc/hosts
 hostname可以通过命令`hostname`查询。
 
 
-# 参考内容
+### 参考内容
 * [PySpark Setup](https://www.udemy.com/python-for-data-science-and-machine-learning-bootcamp/learn/v4/t/lecture/5784658?start=0)

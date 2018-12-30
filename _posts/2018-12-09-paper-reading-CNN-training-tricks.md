@@ -3,6 +3,7 @@ layout: post
 title:  "论文阅读12.09: CNN Training Tricks"
 date: 2018-12-09 14:26:00 +0800
 categories: bash
+toc: true
 ---
 
 ## Recent Tricks for training CNN classification model
@@ -18,7 +19,7 @@ Tricks或者说调参技巧对于模型性能的表现是有很大影响的。�
 
 这充分体现了模型训练技巧或者说tricks的作用。除了已经众所周知的Data Augmentation，L2 regularization，Batch Normalization， Dropout等，这里介绍最近的论文中的一些通用的trick。
 
-# [1. mixup: BEYOND EMPIRICAL RISK MINIMIZATION](https://arxiv.org/abs/1710.09412)
+### [1. mixup: BEYOND EMPIRICAL RISK MINIMIZATION](https://arxiv.org/abs/1710.09412)
 
 这是一个简单有效的方法，它可以用两行公式就能说明白：
 
@@ -33,7 +34,7 @@ $$
 
 作者公开的代码实现在：https://github.com/facebookresearch/mixup-cifar10
 
-# [2. Cutout](https://arxiv.org/pdf/1708.04552.pdf)
+### [2. Cutout](https://arxiv.org/pdf/1708.04552.pdf)
 
 Cutout的工作展示了在训练时候随机mask掉图片中的一个方块可以起到正则化的作用，从而提高CNN的鲁棒性和性能。
 
@@ -48,7 +49,7 @@ Cutout的工作展示了在训练时候随机mask掉图片中的一个方块可�
 | Shake-shake reg + cutout   | 2.56           |
 
 
-# [3. shake-shake regularization](https://arxiv.org/pdf/1705.07485.pdf)
+### [3. shake-shake regularization](https://arxiv.org/pdf/1705.07485.pdf)
 
 ![Selection_015](https://i.imgur.com/fTiduGT.png)
 
@@ -62,7 +63,7 @@ $$
 
 在CIFAR-10，它可以取得2.86%的Error rate，不过实验中训练了1800个epochs，过于耗时。
 
-# 4. Label smoothing
+### 4. Label smoothing
 
 Label smoothing 的想法最先被在训练[Inception-v2](https://arxiv.org/pdf/1812.01187v2.pdf#page=9&zoom=100,0,640)的时候提出，它能够改变true probability的构成：
 
@@ -74,11 +75,11 @@ q_i =
 \end{cases}
 $$
 
-# 5. 循环学习率和Stochastic Weight Averaging
+### 5. 循环学习率和Stochastic Weight Averaging
 
 https://towardsdatascience.com/stochastic-weight-averaging-a-new-way-to-get-state-of-the-art-results-in-deep-learning-c639ccf36a
 
-# [6. Born-Again Neural Networks](https://arxiv.org/pdf/1805.04770.pdf)
+### [6. Born-Again Neural Networks](https://arxiv.org/pdf/1805.04770.pdf)
 
 [知识蒸馏（Knowledge Distillation）](https://medium.com/neural-machines/knowledge-distillation-dc241d7c2322)的方法通常是用emsembled model作为teacher model然后让student model去学习teacher的软化后的output。
 

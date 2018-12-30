@@ -3,6 +3,7 @@ layout: post
 title:  "NLP Convert Corpus to Vector Format"
 date:   2018-02-13 19:43:02 +0800
 categories: Python, NLP
+toc: true
 ---
 
 ## 前言

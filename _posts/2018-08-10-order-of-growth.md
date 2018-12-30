@@ -3,9 +3,10 @@ layout: post
 title:  "Order of Growth "
 date: 2018-08-10 20:36:11 +0800
 categories: Algorithm 
+toc: true
 ---
 
-# 前言
+## 前言
 
 Order of Growth 是一个根据根据函数问题大小来估算消耗计算资源上下界的方法。比如对一个list用一个循环求和会与list大小呈正比例线性关系，即使有一定的波动，它也一定会在一定的范围内。这个Order of Growth和算法本身相关。其定义为：
 

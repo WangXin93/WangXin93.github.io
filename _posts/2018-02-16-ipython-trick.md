@@ -3,6 +3,7 @@ layout: post
 title:  "IPython 使用技巧"
 date:   2018-02-16 11:04:56 +0800
 categories: Python
+toc: true
 ---
 
 ## 前言

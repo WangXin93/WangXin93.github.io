@@ -3,13 +3,14 @@ layout: post
 title:  "Vim 下书写 Markdown 配置"
 date: 2018-04-28 21:32:00 +0800
 categories: Vim
+toc: true
 ---
 
 ## 前言
 用了Vim编辑器之后总是希望能够用它做更多!这得益于Vim良好的扩展性。本文介绍了如何配置Vim，使得它更加美观，高效地编辑Markdown语言。
 
 ## Vundle
-# 使用Vundle安装Vim插件
+### 使用Vundle安装Vim插件
 [Vundle](https://github.com/VundleVim/Vundle.vim)是一个Vim的插件管理器，使用它可以安装，更新，搜索Vim的各种插件，使得Vim的工具体验更佳良好。使用它的方法很简单。
 首先创建文件`~/.vim/Plugins.vim`，在文件中添加如下内容：
 ```vim

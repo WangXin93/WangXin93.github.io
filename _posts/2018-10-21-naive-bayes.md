@@ -3,6 +3,7 @@ layout: post
 title:  "朴素贝叶斯分类"
 date: 2018-10-21 16:00:27 +0800
 categories: Algorithm
+toc: true
 ---
 
 ## 前言
@@ -39,14 +40,14 @@ gnb.score(df, iris.target)
 
 ## Reference
 
-# Document
+### Document
 * [CMU MLE, MAP, Bayes classification](http://www.cs.cmu.edu/~aarti/Class/10701_Spring14/slides/MLE_MAP_Part1.pdf)
 * [MLE, MAP, AND NAIVE BAYES](https://www.cs.cmu.edu/~tom/10601_sp08/slides/recitation-mle-nb.pdf)
 * [CMU assignment](http://www.cs.cmu.edu/~aarti/Class/10701_Spring14/assignments/assignment_1.pdf)
 * [How To Implement Naive Bayes From Scratch in Python](https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/)
 * [zekelabs, Naive Bayes](https://github.com/zekelabs/data-science-complete-tutorial/blob/master/7.%20Naive%20Bayes.ipynb)
 
-# Video
+### Video
 * [Naive Bayes - Georgia Tech - Machine Learning](https://www.youtube.com/watch?v=M59h7CFUwPU)
 * [Naive Bayes Theorem: Introduction to Naive Bayes Theorem - Machine Learning Classification](https://www.youtube.com/watch?v=sjUDlJfdnKM)
 * 如果在分类时候遇到训练时候没碰到过的word，这可以是一个单独的class或者over all，参考[Laplace Smoothing](https://www.youtube.com/watch?v=gCI-ZC7irbY)。

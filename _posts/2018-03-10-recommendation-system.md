@@ -3,6 +3,7 @@ layout: post
 title:  "推荐系统"
 date:   2018-03-10 22:04:11 +0800
 categories: Python
+toc: true
 ---
 
 ## 前言

@@ -3,6 +3,7 @@ layout: post
 title:  "常见概率分布总结"
 date: 2018-10-21 15:02:28 +0800
 categories: Mathematics
+toc: true
 ---
 
 ## 前言

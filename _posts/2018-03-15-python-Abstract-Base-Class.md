@@ -3,6 +3,7 @@ layout: post
 title:  "Python Abstract Base Class"
 date:   2018-03-15 10:42:00 +0800
 categories: Python
+toc: true
 ---
 
 ## 前言

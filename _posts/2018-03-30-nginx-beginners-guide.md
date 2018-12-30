@@ -3,6 +3,7 @@ layout: post
 title:  "开始使用nginx吧"
 date: 2018-03-30 13:26:27 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言

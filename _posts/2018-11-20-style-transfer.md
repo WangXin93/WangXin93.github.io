@@ -3,15 +3,16 @@ layout: post
 title:  "Style Transfer"
 date: 2018-11-20 19:50:16 +0800
 categories: algorithm
+toc: true
 ---
 
 ## 前言
 
-# Neural Style
+### Neural Style
 
-# Pix2Pix
+### Pix2Pix
 
-# Cycle GAN
+### Cycle GAN
 
 不像Pix2Pix，CycleGAN可以训练这个风格转变，而且不需要两个domain的一对一匹配的数据来训练。取而代之的是使用一个两步的方法将source domain的映射到target domain，然后再将它映射会source domain。Generator用来将source domain的图像映射到target domain，而discriminitor与generator对抗训练来提高生成的图片的质量。
 

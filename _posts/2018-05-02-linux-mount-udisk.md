@@ -3,6 +3,7 @@ layout: post
 title:  "Linux mount device"
 date: 2018-05-02 10:00:00 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言

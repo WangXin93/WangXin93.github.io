@@ -3,6 +3,7 @@ layout: post
 title:  "牛顿法（Newton's Method）"
 date:  2018-06-24 19:22:36 +0800
 categories: Algorithm Math
+toc: true
 ---
 
 ## 前言
@@ -64,5 +65,5 @@ print(square_root_newton(4))
 # 2.0000000929222947
 ```
 
-# 参考
+## 参考
 * <http://composingprograms.com/pages/16-higher-order-functions.html>

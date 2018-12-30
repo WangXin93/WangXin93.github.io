@@ -3,6 +3,7 @@ layout: post
 title:  "理解Python metaclass"
 date:   2018-03-14 12:40:00 +0800
 categories: Python
+toc: true
 ---
 
 ## 前言

@@ -15,7 +15,9 @@ layout: default
       {%- endif -%}</p>
   </header>
 
-  {%- include toc.html html=content -%}
+  {%- if page.toc -%}
+    {%- include toc.html html=content -%}
+  {%- endif -%}
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}

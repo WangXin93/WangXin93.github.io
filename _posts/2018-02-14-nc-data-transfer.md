@@ -3,6 +3,7 @@ layout: post
 title:  "使用nc在局域网内传输文件"
 date:   2018-02-14 18:25:00 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言

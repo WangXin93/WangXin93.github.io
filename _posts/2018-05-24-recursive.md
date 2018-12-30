@@ -3,6 +3,7 @@ layout: post
 title:  "Recursive"
 date: 2018-05-24 13:11:00 +0800
 categories: Python
+toc: true
 ---
 ## Recursive
 一个函数如果在主体部分调用自身，那么这个函数就被称为递归函数。

@@ -3,6 +3,7 @@ layout: post
 title:  "Command Line Browser（命令行浏览器）"
 date: 2018-10-13 13:38:57 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言
@@ -29,14 +30,14 @@ $ sudo apt-get install w3m w3m-img
 
 其中w3m是主程序，w3m-img是一个帮助内嵌图片浏览的包。在你的X server失效的时候，w3m提供了另一个在服务器浏览网页图片的方案。
 
-# 基本操作：
+### 基本操作：
 
 * Tab: 让cursor跳转到下一个hyperlink，enter键就可以进入超链接的页面
 * Shift-B: 回到超链接跳转前一个网页
 * Shif-U: 打开一个地址栏提示，输入url可以跳转到新的网页
 * Shift-H: 显示帮助页面，记录了更多的快捷键
 
-# Image
+### Image
 
 显示image需要在xterm上打开w3m，使用`o`可以进入设置页面，找到display inline image选项来选择是否显示image。
 
@@ -46,20 +47,20 @@ $ sudo apt-get install w3m w3m-img
 
 ![image](https://www.howtogeek.com/wp-content/uploads/2012/01/xscreenshot5.png.pagespeed.gp+jp+jw+pj+ws+js+rj+rp+rw+ri+cp+md.ic.ZSpweFI8zr.png)
 
-# Tab
+### Tab
 w3m支持tab，你可以使用：
 
 Shift-T: 打开一个新的Tab，你可以这时候使用shift-U输入新的网站的url
 
 你可以使用鼠标来在不同的Tab之间进行选择，或者使用`{`和`}`在不同的tab之间前后切换。
 
-# Bonus
+### Bonus
 
 在w3m的窗口中点击右键可以弹出菜单，快去试试吧。（GNOME Terminal）目前还不支持这个操作，但是xterm这些特性都是有效的。
 
 ![right_click](https://www.howtogeek.com/wp-content/uploads/2012/01/xscreenshot6.png.pagespeed.gp+jp+jw+pj+ws+js+rj+rp+rw+ri+cp+md.ic.6q0dQd2t-d.png)
 
-# 常见问题
+### 常见问题
 
 * 中文显示乱码？
 

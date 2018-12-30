@@ -3,6 +3,7 @@ layout: post
 title:  "Late Binding in Python Closures"
 date: 2018-05-15 22:21:00 +0800
 categories: Python
+toc: true
 ---
 
 ## Closures in Python

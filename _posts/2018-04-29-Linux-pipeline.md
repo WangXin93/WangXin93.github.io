@@ -3,6 +3,7 @@ layout: post
 title:  "Linux pipeline介绍"
 date: 2018-04-29 10:34:47 +0800
 categories: Linux
+toc: true
 ---
 
 ## 前言

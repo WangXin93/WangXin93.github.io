@@ -3,6 +3,7 @@ layout: post
 title:  "Bash中的循环与选择结构"
 date: 2018-09-16 21:16:00 +0800
 categories: Bash
+toc: true
 ---
 
 ## 前言
@@ -11,7 +12,7 @@ categories: Bash
 
 ## 循环结构
 
-# While loop
+### While loop
 
 基本语法：
 
@@ -65,7 +66,7 @@ do
 done
 ```
 
-# For loop
+### For loop
 
 For使用的时候比while更加直观，下面是for loop的基本语法：
 
@@ -129,7 +130,7 @@ for i in $arr
 
 ## 选择结构
 
-# If-then 选择结构
+### If-then 选择结构
 
 ```bash
 #!/bin/bash
@@ -142,7 +143,7 @@ fi
 
 这段代码的功能是说：如果存在``/bin/ls``这个可执行文件，那么就打印we have ls。其中``test -x``的功能就是检查是否存在可执行文件，在bash中也可以写成``[[ -x /bin/ls ]]``。
 
-# Case 选择结构
+### Case 选择结构
 
 和JavaScript，C/C++一样，bash语言中也有case结构，一种**多选择**结构。下面的例子的功能模仿了很多命令行工具中询问用户是否要执行程序：
 

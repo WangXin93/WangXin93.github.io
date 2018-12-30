@@ -3,6 +3,7 @@ layout: post
 title:  Python classmethod and staticmethod
 date:   2018-02-03 21:14:23 +0800
 categories: Python
+toc: true
 ---
 
 ## 前言

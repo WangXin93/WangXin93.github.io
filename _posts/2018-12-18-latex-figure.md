@@ -3,6 +3,7 @@ layout: post
 title:  "Figure in Latex（Latex中的图片）"
 date: 2018-12-18 02:09:44 +0800
 categories: latex
+toc: true
 ---
 
 ## 前言
