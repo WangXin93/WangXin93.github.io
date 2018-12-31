@@ -3,9 +3,24 @@
 
 @import "{{ site.theme }}";
 
-div.related-posts
-{
-	border-style:solid;
-	border-width:1px;
-    color: blue;
+.post-content-left {
+    @extend .post-content;
+    margin-bottom: $spacing-unit;
+    float: left;
+    width: 75%;
+    @media screen and (max-width: $on-palm) {
+        position:static;
+        width: 100%;
+    }
+}
+
+.toc {
+    float: right;
+    width: 25%;
+    margin-top: $spacing-unit;
+    margin-bottom: $spacing-unit;
+    @media screen and (max-width: $on-palm) {
+        position:static;
+        width: 100%;
+    }
 }
