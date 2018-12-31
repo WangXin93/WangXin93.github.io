@@ -2,7 +2,7 @@
 layout: post
 title:  "TensorFlow 对模型的save和restore操作"
 date: 2018-03-30 22:48:13 +0800
-categories: Python, Tensorflow
+categories: Python Tensorflow
 toc: true
 ---
 

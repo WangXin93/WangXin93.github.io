@@ -2,7 +2,7 @@
 layout: post
 title:  "论文阅读12.09: CNN Training Tricks"
 date: 2018-12-09 14:26:00 +0800
-categories: bash
+categories: Bash
 toc: true
 ---
 

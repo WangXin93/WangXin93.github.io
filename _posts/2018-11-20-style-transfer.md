@@ -2,7 +2,7 @@
 layout: post
 title:  "Style Transfer"
 date: 2018-11-20 19:50:16 +0800
-categories: algorithm
+categories: Algorithm
 toc: true
 ---
 

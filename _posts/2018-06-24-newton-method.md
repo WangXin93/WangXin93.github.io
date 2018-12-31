@@ -2,7 +2,7 @@
 layout: post
 title:  "牛顿法（Newton's Method）"
 date:  2018-06-24 19:22:36 +0800
-categories: Algorithm Math
+categories: Algorithm Mathematics
 toc: true
 ---
 

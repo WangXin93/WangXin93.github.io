@@ -2,7 +2,7 @@
 layout: post
 title:  "这是我的第一篇博客"
 date:   2018-01-25 20:26:46 +0800
-categories: Hello
+categories: Jekyll
 ---
 
 这是我的第一篇博客。 这里记录Jekyll中Markdown的语法。

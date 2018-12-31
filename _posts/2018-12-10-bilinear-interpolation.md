@@ -2,7 +2,7 @@
 layout: post
 title:  "双线性插值（Bilinear Interpolation）"
 date: 2018-12-10 23:56:40 +0800
-categories: mathematics
+categories: Mathematics
 toc: true
 ---
 

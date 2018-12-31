@@ -2,7 +2,7 @@
 layout: post
 title:  "Mac 挂载NTFS移动硬盘进行读写操作"
 date: 2018-04-14 14:41:17 +0800
-categories: osX
+categories: OSX
 toc: true
 ---
 

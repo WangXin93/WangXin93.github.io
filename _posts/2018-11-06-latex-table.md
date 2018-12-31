@@ -2,7 +2,7 @@
 layout: post
 title:  "Table in Latex（Latex中的表格）"
 date: 2018-11-06 18:48:00 +0800
-categories: latex
+categories: LaTeX
 toc: true
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "Use Bash Parameter Expansion"
 date: 2018-12-08 00:29:05 +0800
-categories: bash
+categories: Bash
 toc: true
 ---
 

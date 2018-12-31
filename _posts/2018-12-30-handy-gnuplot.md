@@ -2,7 +2,7 @@
 layout: post
 title:  "Handy GNUPlot"
 date: 2018-12-31 10:22:24 +0800
-categories: linux
+categories: Linux
 toc: true
 ---
 
