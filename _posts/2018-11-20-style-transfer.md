@@ -10,9 +10,47 @@ toc: true
 
 ### Neural Style
 
-### Pix2Pix
+### A Learned representation for artistic style
 
-### Cycle GAN
+### Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization
+
+根据之前的工作（A Learned representation for artistic style），通过调整图像feature的均值和方差，保持卷积核的参数不变即可以改变图片的style。所以通过直接统计style图片中的均值和方差即可以对content图像的feature进行normalize，这被称为AdaIN（Adaptive instance normalization）：
+
+$$
+AdaIN(x, y) = \sigma(y) (\frac{x-\mu(y)}{\sigma(x)}) + \mu(y)
+$$
+
+该工作的网络使用了一个encoder-decoder结构：
+
+<div style="text-align:center">
+<img src="https://i.imgur.com/KSpXdaP.png" style="width:60%; padding: 10px;"/>
+</div>
+
+它使用一个content图片$$c$$和style图片$$s$$图片作为输入，通过一个fixed的VGG网络作为encoder将两张图片映射到特征空间，然后通过AdaIN层将两个feature map的均值和方差进行对齐，得到目标feature map $$t$$：
+
+$$
+t = AdaIN(f(c), f(s))
+$$
+
+然后一个可学习的decoder用来将feature map映射到图片空间得到风格化的图片$$T(c, s)$$：
+
+$$
+T(c, s) = g(t)
+$$
+
+decoder的结构和encoder类似，不过将所有的pooling层替换为了nearest up-sampling层，同时避免使用BN或者IN来避免对生成图像的风格再改变（参考原文讨论）。在encoder和decoder中都使用reflection padding来避免border artifacts。该方法可以以15 FPS的速度在Pascal Titan X机器上生成512x512的图像，并且可以适应任何风格。
+
+[[paper](https://arxiv.org/abs/1703.06868)][[code](https://github.com/xunhuang1995/AdaIN-style)]
+
+### Controlling Perceptual Factors in Neural Style Transfer
+
+### Deep Photo Style Transfer
+
+### GAN Method
+
+#### Pix2Pix
+
+#### Cycle GAN
 
 不像Pix2Pix，CycleGAN可以训练这个风格转变，而且不需要两个domain的一对一匹配的数据来训练。取而代之的是使用一个两步的方法将source domain的映射到target domain，然后再将它映射会source domain。Generator用来将source domain的图像映射到target domain，而discriminitor与generator对抗训练来提高生成的图片的质量。
 
@@ -54,4 +92,4 @@ CycleGAN的整体框架如下：
 
 ## 参考
 * [Understanding and Implementing CycleGAN in TensorFlow](https://hardikbansal.github.io/CycleGANBlog/)
-
+* [谈谈图像的style transfer（二）](http://www.voidcn.com/article/p-bvwsffhl-bbs.html)
