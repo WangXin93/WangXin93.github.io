@@ -2,4 +2,4 @@
 
 ## Welcome! :-)
 
-<http://wangxin93.top/>
+<http://wangxin93.github.io/>

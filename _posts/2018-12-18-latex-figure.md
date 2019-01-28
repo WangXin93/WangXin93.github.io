@@ -8,7 +8,7 @@ toc: true
 
 ## 前言
 
-[上节](http://wangxin93.top/latex/2018/11/06/latex-table.html)记录了如何用LaTeX给论文插入表格。本节记录了如何用LaTeX给论文中插入图片和Caption。
+[上节](http://wangxin93.github.io/latex/2018/11/06/latex-table.html)记录了如何用LaTeX给论文插入表格。本节记录了如何用LaTeX给论文中插入图片和Caption。
 
 ## A quick example:
 

@@ -104,7 +104,7 @@ def GetBilinearPixel(imArr, posX, posY):
     return out
 
 # Read Image from Internet, here use the favicon of this website
-r = requests.get("http://wangxin93.top/favicon.ico")
+r = requests.get("http://wangxin93.github.io/favicon.ico")
 data = r.content
 img = Image.open(io.BytesIO(data)).convert("RGB")
 img = np.array(img)

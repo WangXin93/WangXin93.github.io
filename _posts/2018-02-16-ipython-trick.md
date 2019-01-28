@@ -176,7 +176,7 @@ IPython.display.HTML(s)
 
 或者这样展示一个外部站点：
 ```python
-IPython.display.HTML('<iframe src=http://wangxin93.top width=700 height=350></iframe>')
+IPython.display.HTML('<iframe src=http://wangxin93.github.io width=700 height=350></iframe>')
 ```
 
 除此之外，IPython notebook还可以display Javascript，SVG，PDF等等。用它写一个技术说明书一定很酷！
