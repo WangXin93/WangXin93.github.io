@@ -151,4 +151,5 @@ Congraulations！
 * [How to perform bilinear interpolation in Python?](https://stackoverflow.com/questions/8661537/how-to-perform-bilinear-interpolation-in-python)
 * [Wifipedia: bilinear interpolation](https://en.wikipedia.org/wiki/Bilinear_interpolation)
 * [Bilinear interpolation in different language](https://rosettacode.org/wiki/Bilinear_interpolation#Python)
+* [OpenCV的resize方法与双线性插值](https://www.jianshu.com/p/2df3edf09478)
 

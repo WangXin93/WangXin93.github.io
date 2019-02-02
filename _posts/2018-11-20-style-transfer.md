@@ -50,6 +50,17 @@ decoder的结构和encoder类似，不过将所有的pooling层替换为了neare
 
 #### Pix2Pix
 
+该工作Image translation的开山之作。该工作的贡献在于：
+
+1. 使用U-net形式的Generator
+2. 使用PatchGAN形式的Discriminator。PatchGAN会将输入图片downsample成$$N \times N$$个patch，然后通过对每个patch的分数取平均来判断图片的真伪。这种做法和L1 loss相互补充。L1 loss部分约束低频部分的正确性，而PatchGAN约束高频部分（纹理，风格）的正确性，将模型注意力限制到局部的patch上。
+
+细节：
+
+1. 在最终的模型中，噪声的输入是来自generator中的前3层中的dropout操作，而不是一个单独变量。
+
+[[reference](https://colab.research.google.com/github/tensorflow/tensorflow/blob/master/tensorflow/contrib/eager/python/examples/pix2pix/pix2pix_eager.ipynb)]
+
 #### Cycle GAN
 
 不像Pix2Pix，CycleGAN可以训练这个风格转变，而且不需要两个domain的一对一匹配的数据来训练。取而代之的是使用一个两步的方法将source domain的映射到target domain，然后再将它映射会source domain。Generator用来将source domain的图像映射到target domain，而discriminitor与generator对抗训练来提高生成的图片的质量。
@@ -89,6 +100,13 @@ CycleGAN的整体框架如下：
 2. 判别器成功判断所有generated images为1。
 3. 生成器成功生成被判别为0的generated images。
 4. 生成器生成的图像满足cyclic consistency。
+
+#### MIXGAN: Learning Concepts from Different Domains for Mixture Generation
+有没有方法让GAN从一个domain中学习content，另一个domain中学习style，然后generate出融合后的样本？该工作提供了一个这样的思路。
+
+它的整体框架如下， mixture generator $$G$$ 包含两个部分 content decoder $$G_c$$ 和 mixture decoder $$G_m$$。content decoder使用一个AAE将内容图片encode到一个高斯分布。然后mixture decoder融合content decoder的输出，并将生成的图片和style 图片做判别。判别器部分使用PatchGAN来学习style部分信息。
+
+![MIXGAN](https://i.imgur.com/404Dvex.png)
 
 ## 参考
 * [Understanding and Implementing CycleGAN in TensorFlow](https://hardikbansal.github.io/CycleGANBlog/)
