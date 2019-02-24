@@ -24,11 +24,12 @@ $$
 
 [[slides](https://www.csie.ntu.edu.tw/~r01922136/slides/ffm.pdf)]
 
+## PNN
 
 ## DeepFM
 
 
-## DCN
+## DCN(Deep Cross Network)
 
 ## xDeepFM
 
@@ -36,3 +37,4 @@ $$
 
 * [机器学习算法讲堂(3)：FM算法 Factorization Machine](https://www.bilibili.com/video/av31750829/)
 * [深入FFM原理与实践](https://tech.meituan.com/2016/03/03/deep-understanding-of-ffm-principles-and-practices.html)
+* [Factorization Machine笔记及Pytorch 实现](http://shomy.top/2018/12/31/factorization-machine/)
