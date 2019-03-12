@@ -77,6 +77,53 @@ Floats的位置和源码文本的位置不一定一致，而是插入到页面�
 
 ![subfigure](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Latex_example_subfig.png/500px-Latex_example_subfig.png)
 
+
+同样的可以用`subtable`来创建子表格。
+
+```latex
+\begin{table}[h]
+	\begin{subtable}[h]{0.16\textwidth}
+		\centering
+		\begin{tabular}{|l|l|}
+		XXX & YYY\\
+		\hline
+		value X   & value Y\\
+	
+		\end{tabular}
+		\caption{Caption Subtable A}
+		\label{tab:label subtable A}
+	\end{subtable}
+	\hfill
+	\begin{subtable}[h]{0.15\textwidth}
+		\centering
+		\begin{tabular}{|l|l|}
+		XXX & YYY\\
+		\hline
+		 value X    & value Y\\
+		 
+		\end{tabular}
+		\caption{Caption Sub Table B}
+		\label{tab:label subtable B}
+	\end{subtable}
+	\hfill
+	\begin{subtable}[h]{0.16\textwidth}
+		\centering
+		\begin{tabular}{|l|l|}
+		XXX & YYY\\
+		\hline
+	 	 value X   & value Y\\
+		
+		\end{tabular}
+		\caption{Caption SubTable C}
+		\label{tab:label subtable C}
+	\end{subtable}
+	\caption{Caption Main/ All Table}
+	\label{tab:label all table}
+\end{table}
+```
+
+注意这里的`\hfill`可以帮助各个子表格水平排列。
+
 ## Reference
 
 * [Wiki: LaTeX/Floats, Figures and Captions](https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions)
