@@ -2,7 +2,7 @@
 layout: post
 title:  "Attention Mechanism"
 date: 2019-02-24 20:00:00 +0800
-categories: LaTeX
+categories: Algorithm
 toc: true
 ---
 
