@@ -15,8 +15,8 @@ toc: true
 要实现这个目标，目前的方法有：
 
 * Occulsion sentivity
-* Guided Back-propagation
 * Deconvolution
+* Guided Back-propagation
 * CAM
 * Grad-CAM
 * LIME
@@ -32,7 +32,19 @@ Occulsion sentivity的思想可以这样理解，假设有一张“一个男人�
 * [Visualizing and Understanding Convolutional Networks](https://arxiv.org/pdf/1311.2901.pdf)
 * [Network Visualization Based on Occlusion Sensitivity](https://blogs.mathworks.com/deep-learning/2017/12/15/network-visualization-based-on-occlusion-sensitivity/)
 
-## Deconvolution & Guided Back-propagation
+## Deconvolution
+
+Deconvnet的使用和训练好的convnet同样的参数，但是使用相反的计算过程。
+
+要想可视化一个convnet，可以在convnet的每一层附带上一层deconvnet。deconvnet输入一个feature map（比如输入最大响应的那个feature map），然后将其它层的激活值设为0。接着对输入的feature map连续进行unpooling，rectify和filter。deconvnet layer和unpool的图示如下：
+
+![1554562983905](G:\WangXin93.github.io\assets\2018-10-23-cnn-visualization\deconvnet.png)
+
+参考：
+
+- [Visualizing and Understanding Convolutional Networks](https://arxiv.org/pdf/1311.2901.pdf)
+
+## Guided Back-propagation
 
 反卷积和导向反向传播的基础都是反向传播，主要思想是对输入模型的内容进行求导。不同的是普通反向传播是将输入大于0的梯度传递回去，反卷积是将梯度大于0对应的梯度传递回去，导向反向传播是将输入和梯度均大于0的梯度传递回去。
 
