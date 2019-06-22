@@ -38,6 +38,11 @@ show_excerpts: False
 # Enabling Google Analytics
 google_analytics: UA-128271507-1
 
+# Customize navigation links
+header_pages:
+  - about.md
+  - blogs.md
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
