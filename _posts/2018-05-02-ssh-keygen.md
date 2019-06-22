@@ -9,7 +9,7 @@ toc: true
 ## 前言
 我们一般使用`PuTTY`等`SSH`客户端来远程管理`Linux`服务器。但是，一般的密码方式登录，容易有密码被暴力破解的问题。所以，一般我们会将`SSH`的端口设置为默认的`22`以外的端口，或者禁用`root`账户登录。其实，有一个更好的办法来保证安全，而且让你可以放心地用`root`账户从远程登录:**那就是通过密钥方式登录**。
 
-## 設置方法
+## SSH Server設置方法
 ### 安裝openssh
 使用apt安裝openssh：
 ```bash
@@ -85,7 +85,83 @@ $ ssh -i /path/to/id_rsa username@hostname
 
 如果剛才設置了密鑰鎖碼，這時則需要輸入。完成後即可登錄服務器。
 
-## 參考資料
+### 參考資料
 * [ubuntu设置 SSH 通过密钥登录](https://blog.csdn.net/permike/article/details/52386868)
 * [Ubuntu下修改SSH端口以及使用密匙登录](https://www.linuxidc.com/Linux/2012-11/75086.htm)
 * [ubuntu开启SSH服务](http://www.cnblogs.com/nodot/archive/2011/06/10/2077595.html)
+
+## VNC 远程登陆 Ubuntu16.04 图形界面
+
+### 安装相关工具
+
+```
+sudo apt-get install xfce4 vnc4server xrdp
+```
+
+## 初始化
+
+```
+vncserver
+#启动vncserver，第一次需要输入设置登录密码, 可以使用vncpasswd重置密码
+```
+
+### 修改配置文件xstartup
+
+```
+sudo gedit ~/.vnc/xstartup
+
+# 修改为如下内容:
+
+#!/bin/sh
+# Uncomment the following two lines for normal desktop:
+# unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
+#[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+#[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+#xsetroot -solid grey
+#vncconfig -iconic &
+#x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+#x-window-manager &
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+vncconfig -iconic &
+xfce4-session &
+```
+
+### 重新启动vncserver和xrdp
+
+```
+sudo vncserver -kill :1
+#杀死关闭vncserver
+
+vncserver
+#vncserver再次重启
+
+sudo service xrdp restart
+#重新启动xrdp
+```
+
+### 从客户端连接VNC Server
+
+Ubuntu用户使用自带的Remmina远程桌面
+
+【新建】->协议选择【SVN-虚拟网络计算】->服务器【IP:1】
+
+输入VNC密码就可以连接了。
+
+再次关闭，然后使用【IP:5901】进行连接。
+
+如果是使用了防火墙，需要在防火墙上开启5901远程端口（sudo ufw allow 5901）。
+
+Mac和Windows用户可以使用Real VNC做客户端。可以先用ssh将服务器端口映射到本地, 然后客户端填写127.0.0.1:5901
+
+```
+ssh -NfL 5901:127.0.0.1:5901 user@hostname
+```
+
+### 参考资料
+* [Ubuntu 16.04配置VNC进行远程桌面连接](https://www.cnblogs.com/EasonJim/p/7529156.html)
+* [Ubuntu 16.04 安装 VNC 及 gnome 桌面环境](https://www.htcp.net/2524.html)
+* [Ubuntu16.04 远程桌面连接（VNC）](https://blog.csdn.net/qq_28284093/article/details/80166614)
