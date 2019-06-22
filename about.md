@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-* [CV](/assets/cv/cv.pdf)
+* CV [[EN](/assets/cv/cv_en.pdf)] [[CN](/assets/cv/cv.pdf)]
 * [Wang Xin's Recipes](/recipes/)
 * [WeekWork](/WeekWork/)
 
