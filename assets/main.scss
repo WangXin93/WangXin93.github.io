@@ -24,3 +24,10 @@
         width: 100%;
     }
 }
+
+.home-intro-box {
+    display: flex;
+    @media screen and (max-width: $on-palm) {
+        flex-direction: column;
+    }
+}

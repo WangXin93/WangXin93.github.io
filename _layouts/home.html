@@ -3,9 +3,19 @@ layout: default
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+
+  <div class="home-intro-box">
+    <div style="flex: 1; padding-right: 10px">
+      <img src="/assets/index/me.jpg" />
+    </div>
+    <div style="flex: 1; overflow: hidden;">
+      <p>I'm a Ph.D candidate in the Textile Institute at Donghua University in Shanghai, China.</p>
+      <p>My research interests lie at the understanding of fashion images, text descrptions and fashion compatibility
+        and recommendation based on different modalilites of information.</p>
+    </div>
+  </div>
+
+  <br>
 
   {{ content }}
 
