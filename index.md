@@ -8,7 +8,8 @@ title: Home
 
 ## Selected Publications
 * [Outfit Compatibility Prediction and Diagnosis with Multi-Layered Comparison Network]() \\
-  Under review
+  Xin Wang, Bo Wu, Yueqi Zhong \\
+  ACM Multimedia 2019
 
 * [Fabric Identification Using Convolutional Neural Network](https://link.springer.com/chapter/10.1007%2F978-3-319-99695-0_12) \\
   Xin Wang, Ge Wu, Yueqi Zhong \\
