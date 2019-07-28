@@ -1,166 +1,126 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Stylish Curriculum Vitae
+% Medium Length Professional CV
 % LaTeX Template
-% Version 1.0 (18/7/12)
+% Version 2.0 (8/5/13)
 %
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
 %
 % Original author:
-% Stefano (http://stefano.italians.nl/)
+% Rishi Shah 
 %
-% IMPORTANT: THIS TEMPLATE NEEDS TO BE COMPILED WITH XeLaTeX
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-% The main font used in this template, Adobe Garamond Pro, does not 
-% come with Windows by default. You will need to download it in
-% order to get an output as in the preview PDF. Otherwise, change this 
-% font to one that does come with Windows or comment out the font line 
-% to use the default LaTeX font.
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper, oneside, final]{scrartcl} % Paper options using the scrartcl class
-
-\usepackage{scrpage2} % Provides headers and footers configuration
-\usepackage{titlesec} % Allows creating custom \section's
-\usepackage{marvosym} % Allows the use of symbols
-\usepackage{tabularx,colortbl} % Advanced table configurations
-\usepackage{fontspec} % Allows font customization
-\usepackage[UTF8]{ctex} % Allows chinese support
-\usepackage[hidelinks]{hyperref} % Allows highlight url and hyperref
-\usepackage{fontawesome} % Allow awesome symbols like faGraduationCap
-
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Adobe Garamond Pro} % Main document font
-
-\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule] % Section formatting
-
-\pagestyle{scrheadings} % Print the headers and footers on all pages
-
-\addtolength{\voffset}{-0.5in} % Adjust the vertical offset - less whitespace at the top of the page
-\addtolength{\textheight}{3cm} % Adjust the text height - less whitespace at the bottom of the page
-
-\newcommand{\gray}{\rowcolor[gray]{.90}} % Custom highlighting for the work experience and education sections
-
 %----------------------------------------------------------------------------------------
-% FOOTER SECTION
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\headfont}{\normalfont\rmfamily} % Font settings for footer
+\documentclass{resume} % Use the custom resume.cls style
 
-\cofoot{
-\fontsize{12}{17}\selectfont % Letter spacing and font size
-
-North Renmin Road Number 2999 Building 3 {\large\textperiodcentered} Songjiang {\large\textperiodcentered} Shanghai \\ % Your mailing address
-{\Large\Letter} wangxin19930411@163.com \ {\Large\Telefon} (+86) 133-9148-8435 \ 
-{\Large\faGithub} github.com/WangXin93% Your email address and phone number
-}
-
-%----------------------------------------------------------------------------------------
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+\usepackage{hyperref}
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Xin Wang} % Your name
+\address{Building 3, Number 2999 Nroth Renmin Road, Songjiang,  Shanghai} % Your address
+%\address{123 Pleasant Lane \\ City, State 12345} % Your secondary addess (optional)
+\address{(+86)133-9148-8435 \\ \href{mailto:wangx@mail.dhu.edu.cn}{wangx@mail.dhu.edu.cn} \\ \href{https://wangxin93.github.io}{wangxin93.github.io}} % Your phone number and email
 
 \begin{document}
 
-\begin{center} % Center everything in the document
-
 %----------------------------------------------------------------------------------------
-% HEADER SECTION
+%	EDUCATION SECTION
 %----------------------------------------------------------------------------------------
 
-{\addfontfeature{LetterSpace=20.0}\fontsize{36}{36}\selectfont\scshape Xin Wang} % Your name at the top
+\begin{rSection}{Education}
+
+{\bf Donghua University, Shanghai} \hfill {\em Sep. 2015 - Pres.} 
+\\ Ph.D in Digital Textile Engineering
+\\ Related courses: Numerical analysis, Computer graphics, Computer vision
+\\ Self-educated: CS231n, CS20SI, Machine Learning, Python
+
+{\bf Lanzhou University of Technology, Gansu} \hfill {\em Sep. 2011 - Jul. 2017} 
+\\ Bachelor of Textile Engineering.
+\\ Related courses: Advanced mathematics，Linear algebra, Probability theory and mathematical statistics
+%Minor in Linguistics \smallskip \\
+%Member of Eta Kappa Nu \\
+%Member of Upsilon Pi Epsilon \\
+
+
+\end{rSection}
+%--------------------------------------------------------------------------------
+%    Projects And Seminars
+%-----------------------------------------------------------------------------------------------
+\begin{rSection}{Research}
+{\bf Outfit Compatibility Prediction and Diagnosis with \\ Multi-Layered Comparison Network} \hfill {\em Aug. 2018 - Pres.}
+\\ - [\href{https://github.com/WangXin93/fashion_compatibility_mcn}{Code}] - ACM Multimedia 2019, First Author
+\begin{itemize}
+    \item Proposed to diagnose the compatibility of the outfit, which is implemented by using the gradient values to approximate the importance of input similarities.
+    \item Proposed to learn outfit compatibility from all pairwise similarities.
+    \item Leverage the feature hierarchy of CNN to provide both low-level and high-level features for prediction and diagnosis.
+\end{itemize}
+
+{\bf Fabric Idenfication using Convolutional Neural Network} \hfill {\em Oct. 2017 - Jul. 2018}
+\\ - [\href{https://github.com/WangXin93/FabricID}{Code}] - Artificial Intelligence on Fashion and Textile Conference (AIFT) 2018, First Author
+\begin{itemize}
+    \item Explored to retrieve fabric texture with deep extracted features, which is implemented with a CNN with softmax cross entropy and centor loss.
+\end{itemize}
+
+\end{rSection}
 
 %----------------------------------------------------------------------------------------
-%	OBJECTIVE
+%	WORK EXPERIENCE SECTION
 %----------------------------------------------------------------------------------------
 
-\section{\faInfo\ Introduction}
-\begin{flushleft}
-I'm a Ph.D candidate in the Textile Institute at Donghua University in Shanghai, China.
+\begin{rSection}{Intership}
 
-My research interests lie at the understanding of fashion images, text descrptions and fashion compatibility and recommendation based on different modalilites of information.
-\end{flushleft}
+\begin{rSubsection}{JD AI Research, Beijing}{Aug. 2018 - Mar. 2019}{Computer Vision and Multimedia Lab, R\&D Intern}{}
+\item Built a multi-task network for fashion attribute classification, achieved state-of-the-art performance on DeepFashion dataset.
+\item Implemented metric learning and sequence models for fashion outfit compatibility prediction, proposed multi-layered comparison network for superior prediction performance and diagnosis ability.
+\end{rSubsection}
 
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
 
-\section{\faUsers\ Researches \& Projects}
+\end{rSection}
 
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Time & \textbf{Aug 2018 --- Mar 2019}\\
-\gray Location & \textbf{JD AI Research} \\
-\gray Title & \textbf{Outfit Compatibility Prediction and Diagnosis with Multi-Layered Comparison Network (ACM MM19 Under Review)}\\
-\gray Tools & \textbf{Python, PyTorch}\\
-& Propose to not only predict the compatibility of fashion outfit but also diagnose the incompatible factor in it. Our method features for: (1) learn outfit compatibility from all pairwise similarities. (2) Leverage the feature hierarchy of CNN to provide both low-level and high-level features for prediction and diagnosis. (3) Use gradients to approximate the importance of each input similarity for explanation.
-\end{tabularx}
 
-\vspace{12pt}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Time & \textbf{Oct 2017 --- Jul 2018}\\
-\gray Title & \textbf{Fabric Idenfication using Convolutional Neural Network (\href{https://www.polyu.edu.hk/itc/aift2018/}{AIFT2018})}\\
-\gray Tools & \textbf{Python, TensorFlow}\\
-& Propose to retrieve fabric texture with deep extracted features, which is implemented with a CNN with softmax cross entropy and centor loss. Code: \url{https://github.com/WangXin93/FabricID}
-\end{tabularx}
-
-\vspace{12pt}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Time & \textbf{Mar 2018 --- Jul 2018}\\
-\gray Title & \textbf{\href{http://fashionai.alibaba.com/}{FashionAI Global Challenge}}\\
-\gray Tools & \textbf{Python, PyTorch}\\
-& Recognize 8 fashion attribute with convolutional neural network. We go through the first round and achieve \href{https://tianchi.aliyun.com/competition/rankingList.htm?\&season=0\&raceId=231649\&pageIndex=5}{66th} in the second round. Code: \url{https://github.com/WangXin93/torchfashion}
-\end{tabularx}
-
-\vspace{12pt}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Time & \textbf{Jul 2018}\\
-\gray Title & \textbf{\href{https://fashion-challenge.github.io/}{JD AI Fashion-Challenge Style Recognition}}\\
-\gray Tools & \textbf{Python, PyTorch}\\
-& Multi-labeled prediction of 13 styles of female fashion images. I finetune the threshold of different labels and use {SWA} to improve the performance, finally achieve \href{https://fashion-challenge.github.io/style-rank.html}{4th} place in the competition.
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
+%	EXAMPLE SECTION
 %----------------------------------------------------------------------------------------
 
-\section{\faGraduationCap\ Education}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Time & \textbf{Sep 2015 --- Current}\\
-\gray Degree & \textbf{Digital Textile Engineering (Ph.D)}\\
-\gray Course & \textbf{Numerical analysis，Computer graphics，Computer vision，Self-educated: \href{https://github.com/WangXin93/CS231n-Spring-2017-Assignment}{CS231n}，\href{https://github.com/WangXin93/CS20SI-my-example}{CS20SI}， \href{https://github.com/WangXin93/machine_learning}{Machine Learning}，\href{https://github.com/WangXin93/My_python_demo}{Python}}\\
-\gray University & \textbf{Donghua University} \hfill Shanghai, China\\
-%& Extra information about degree
-\end{tabularx}
-
-\vspace{12pt}
-
-\begin{tabularx}{0.97\linewidth}{>{\raggedleft\scshape}p{2cm}X}
-\gray Time & \textbf{Sep 2011 --- Jul 2015}\\
-\gray Degree & \textbf{Textile Engineering (B.S.)}\\
-\gray Courses & \textbf{Advanced mathematics，Linear algebra，Probability theory and mathematical statistics}\\
-\gray University & \textbf{Langzhou University of Technology} \hfill Gansu, China\\
-%& Extra information about degree
-\end{tabularx}
+\begin{rSection}{Selected Awards} 
+\item Awarded The First Prize Scholarship for two years during my undergraduate period.
+\item Won the \href{https://fashion-challenge.github.io/style-rank.html}{4th} place in 2018 JD fashion style recognition challenge and got an internship.
+\end{rSection}
 
 %----------------------------------------------------------------------------------------
-%	SKILLS
+%	TECHNICAL STRENGTHS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{\faCogs\ Skills}
+\begin{rSection}{Technical Strengths}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
-Computer Language & Intermediate: Python; Basic: C/C++, Bash, Matlab, SQL \\
-Deep Learning Framework & TensorFlow, PyTorch \\
-Tools & Git, Vim, \LaTeX, Scrapy, Scikit-learn, Sed, Awk
+Computer Language \ & Intermediate: Python; Basic: C/C++, Bash, Matlab, SQL \\
+Deep Learning Framework \ & TensorFlow, PyTorch \\
+Tools \ & Git, Vim, \LaTeX, Scrapy, Scikit-learn, Sed, Awk
 \end{tabular}
 
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	Personal Interests SECTION
 %----------------------------------------------------------------------------------------
 
-\end{center}
+% \begin{rSection}{Personal Interests}
+
+% \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+% Amateur guitar player.
+% \end{tabular}
+
+% \end{rSection}
+
 
 \end{document}
