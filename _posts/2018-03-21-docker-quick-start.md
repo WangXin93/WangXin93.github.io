@@ -156,6 +156,35 @@ docker run -it \
     -v $CURRENT:/root/workdir \
 	tensorflow:0.11
 ```
+### 10. 常见问题
+
+#### 10.1 [解决docker数据文件过大导致根目录满的问题](https://www.zhangshengrong.com/p/9MNlq89XJr/)
+
+过多的镜像可能会导致根目录迅速被占满，可以考虑把镜像保存到其它分区，这可以通过建立软链接来实现。
+
+先关闭docker进程：
+```
+# /etc/init.d/docker stop
+```
+
+然后迁移数据，可以发现镜像都存在于这个目录：
+
+```
+# 假定要存放的新目录叫/mnt/
+# mv /var/lib/docker /mnt/ 
+```
+
+接着制作软链接：
+
+```
+# ln -s /mnt/docker /var/lib/docker
+```
+
+最后重新启动docker和容器：
+
+```
+# /etc/init.d/docker start
+```
 
 ## 参考链接
 * [菜鸟教程Docker安装](http://www.runoob.com/docker/ubuntu-docker-install.html)
