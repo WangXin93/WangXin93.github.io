@@ -189,8 +189,9 @@ print("Accuracy: {}/{}={:.2%}".format(c, len(y_test), c / len(y_test)))
 
 * [How To Implement The Decision Tree Algorithm From Scratch In Python](https://machinelearningmastery.com/implement-decision-tree-algorithm-scratch-python/)
 * [Classification And Regression Trees for Machine Learning](https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/)
-* [Decision Tree from scratch (not sklearn)](https://www.kaggle.com/jarvvis/decision-tree-from-scratch-not-sklearn)
+* [A Complete Tutorial on Tree Based Modeling from Scratch (in R & Python)](https://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/)
 
 ### 代码
 
 * [scikit-learn的决策树实现](https://github.com/scikit-learn/scikit-learn/blob/1495f6924/sklearn/tree/tree.py)
+* [Decision Tree from scratch (not sklearn)](https://www.kaggle.com/jarvvis/decision-tree-from-scratch-not-sklearn)
