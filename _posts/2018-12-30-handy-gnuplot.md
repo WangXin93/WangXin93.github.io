@@ -24,6 +24,21 @@ replot
 reset
 ```
 
+### 自定义函数与变量
+
+```gnuplot
+w = 2
+q = floor(tan(pi/2 - 0.1))
+f(x) = sin(w*x)
+sinc(x) = sin(pi*x)/(pi*x)
+delta(t) = (t == 0)
+ramp(t) = (t > 0) ? t : 0
+min(a,b) = (a < b) ? a : b
+comb(n,k) = n!/(k!*(n-k)!)
+len3d(x,y,z) = sqrt(x*x+y*y+z*z)
+plot f(x) = sin(x*a), a = 0.2, f(x), a = 0.4, f(x)
+```
+
 ### 自定义plot
 
 `plot`有这样的语法结构：
