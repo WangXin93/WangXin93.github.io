@@ -1,4 +1,6 @@
 # Make a directory in assets for a post
+# Usage:
+# sh mkassets.sh FILENAME
 
 FILE=$1
 if test -e "../assets/${FILE%.md}"
