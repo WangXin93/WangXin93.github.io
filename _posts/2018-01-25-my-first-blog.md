@@ -5,7 +5,7 @@ date:   2018-01-25 20:26:46 +0800
 categories: Jekyll
 ---
 
-这是我的第一篇博客。 这里记录Jekyll中Markdown的语法。
+这是我的第一篇博客。 这里记录Jekyll中Markdown的语法, Source file 在[这里](https://github.com/WangXin93/WangXin93.github.io/blob/master/_posts/2018-01-25-my-first-blog.md)。
 
 ## Header 2 (H1 is reserved for post titles)##
 
@@ -49,9 +49,43 @@ to create linebreak tags
 Finally, horizontal lines
 
 ---
+
+## 在jekyll的markdown文件中使用公式
+
+参考：[cs231n blogs](https://github.com/cs231n/cs231n.github.io)
+
+行内公式
+
+```
+text \\( E = MC^2 \\) text
+text \\( P(A \| B) \\) text # 行内公式的|符号需要在前面添加反斜杠，不然会导致格式混乱
+```
+
+行间公式
+
+```
+$$ E = MC^2 $$
+$$ P(A|B) $$ # 行外公式可以直接使用|符号
+```
+
 ***
 
-## Source file 在[这里](https://github.com/WangXin93/WangXin93.github.io/blob/master/_posts/2018-01-25-my-first-blog.md)
+## Jekyll 链接
+
+Jekyll usage [documentation](https://jekyllrb.com/)
+
+You can find the source code for Minima at GitHub:
+[jekyll][jekyll-organization] /
+[minima](https://github.com/jekyll/minima)
+
+You can find the source code for Jekyll at GitHub:
+[jekyll][jekyll-organization] /
+[jekyll](https://github.com/jekyll/jekyll)
+
+
+[jekyll-organization]: https://github.com/jekyll
+
+---
 
 ## 参考
 
