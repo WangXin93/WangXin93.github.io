@@ -138,6 +138,38 @@ logging.info("This is info.")
 logging.debug("This is debug.")
 ```
 
+## [命令行中的进度条tqdm](https://github.com/tqdm/tqdm)
+
+使用进度条，并给进度条添加说明：
+
+```python
+from tqdm import tqdm
+import time
+
+loss = 100
+acc = 0
+
+with tqdm(total=50) as pbar:
+    pbar.set_description("Train")
+    for batch_idx, batch in enumerate(range(50)):
+        time.sleep(0.1)
+        loss -= 0.1
+        acc += 1
+        postfix = {'acc':"{:.2f}".format(acc), 'loss':"{:.2f}".format(loss)}
+        pbar.set_postfix(**postfix)
+        pbar.update()
+```
+
+在bash中记录拷贝和压缩文件的进度：
+
+```bash
+# copy many files
+cp -v src/* dest | tqdm --total $(ls src | wc -l) --unit file >> /dev/null
+
+# backuping a large directory
+7z a -bd -r backup.7z docs/ | grep Compressing | tqdm --total $(find docs/ -type f | wc -l) --unit files >> backup.log
+```
+
 
 ## 参考链接
 
