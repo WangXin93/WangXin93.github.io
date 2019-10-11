@@ -168,6 +168,10 @@ cp -v src/* dest | tqdm --total $(ls src | wc -l) --unit file >> /dev/null
 
 # backuping a large directory
 7z a -bd -r backup.7z docs/ | grep Compressing | tqdm --total $(find docs/ -type f | wc -l) --unit files >> backup.log
+
+## Unzip a zipfile
+unzip filename.zip | tqdm --total $(unzip -l filename.zip | wc -l) >> /dev/null
+unzip filename.zip | tqdm --total $(less filename.zip | wc -l) >> /dev/null
 ```
 
 
