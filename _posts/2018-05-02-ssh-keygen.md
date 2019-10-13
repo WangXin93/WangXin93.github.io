@@ -165,3 +165,29 @@ ssh -NfL 5901:127.0.0.1:5901 user@hostname
 * [Ubuntu 16.04配置VNC进行远程桌面连接](https://www.cnblogs.com/EasonJim/p/7529156.html)
 * [Ubuntu 16.04 安装 VNC 及 gnome 桌面环境](https://www.htcp.net/2524.html)
 * [Ubuntu16.04 远程桌面连接（VNC）](https://blog.csdn.net/qq_28284093/article/details/80166614)
+
+
+## 用X11打开远程GUI应用
+
+1. 在远程机器安装X11 Client
+
+```
+sudo apt-get install xauth
+```
+
+2. 在本地机器安装X11 Server
+
+本地Ubuntu使用:
+
+```
+sudo apt-get install xorg
+sudo apt-get install openbox
+```
+
+Windows 可以使用[Xming](https://sourceforge.net/projects/xming/)
+
+Max 可是使用[XQuatz](https://www.xquartz.org/)
+
+### 参考资料
+
+* <https://askubuntu.com/questions/213678/how-to-install-x11-xorg>
