@@ -7,6 +7,10 @@ categories: Algorithm
 toc: true
 ---
 
+<div align="center">
+<img src="/assets/2018-10-21-naive-bayes/bayesian_rule.png" style="width:80%"/>
+</div>
+
 ## 前言
 
 朴素贝叶斯分类器是一个用来分类的简单可靠的机器学习算法。它主要用来进行文本分类，尤其是对于高维度的训练数据。Naive bayes被称为naive的原因就是因为它假设每一个特征都于其它特征独立。尽管如此它的表现有时能和决策树，神经网络等方法不相上下。应用的场景比如spam filtering， sentimental analysis，或者classifying news articles。

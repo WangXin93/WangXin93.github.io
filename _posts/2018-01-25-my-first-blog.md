@@ -17,6 +17,13 @@ A link to [Jekyll Now](http://github.com/barryclark/jekyll-now/). A big ass lite
 
 ![an image alt text]({{ site.baseurl }}/favicon.ico "an image title")
 
+```
+居中插入图片，同时改变图像尺寸比例
+<div align="center">
+<img src="/assets/2018-10-21-naive-bayes/bayesian_rule.png" style="width:80%"/>
+</div>
+```
+
 * A bulletted list
 - alternative syntax 1
 + alternative syntax 2
