@@ -178,4 +178,5 @@ That's all! Congratulations!
 
 * [Linux Bash Shell Scripts: P13, Loop](https://www.bilibili.com/video/av23774844/?p=13)
 * [Linux Bash Shell Scripts: P16, Control Flow](https://www.bilibili.com/video/av23774844/?p=16)
+* [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
 
