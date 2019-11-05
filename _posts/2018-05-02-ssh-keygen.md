@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "設置ssh密鑰登錄"
+title:  "配置远程服务器ssh登录"
 date: 2018-05-02 10:15:05 +0800
 categories: Linux
 toc: true
@@ -90,6 +90,40 @@ $ ssh -i /path/to/id_rsa username@hostname
 * [Ubuntu下修改SSH端口以及使用密匙登录](https://www.linuxidc.com/Linux/2012-11/75086.htm)
 * [ubuntu开启SSH服务](http://www.cnblogs.com/nodot/archive/2011/06/10/2077595.html)
 
+
+## 用X11打开远程GUI应用
+
+* 在远程机器安装X11 Client
+
+```
+sudo apt-get install xauth
+```
+
+* 在本地机器安装X11 Server
+
+本地Ubuntu使用:
+
+```
+sudo apt-get install xorg
+sudo apt-get install openbox
+```
+
+Windows 可以使用[Xming](https://sourceforge.net/projects/xming/)
+
+Max 可是使用[XQuatz](https://www.xquartz.org/)
+
+* [“can't open display” error](https://serverfault.com/questions/765606/xming-cant-open-display-error/800464)
+
+尝试在``/etc/ssh/sshd_config``加上一行：
+
+```
+X11UseLocalhost no
+```
+
+### 参考资料
+
+* <https://askubuntu.com/questions/213678/how-to-install-x11-xorg>
+
 ## VNC 远程登陆 Ubuntu16.04 图形界面
 
 ### 安装相关工具
@@ -165,29 +199,3 @@ ssh -NfL 5901:127.0.0.1:5901 user@hostname
 * [Ubuntu 16.04配置VNC进行远程桌面连接](https://www.cnblogs.com/EasonJim/p/7529156.html)
 * [Ubuntu 16.04 安装 VNC 及 gnome 桌面环境](https://www.htcp.net/2524.html)
 * [Ubuntu16.04 远程桌面连接（VNC）](https://blog.csdn.net/qq_28284093/article/details/80166614)
-
-
-## 用X11打开远程GUI应用
-
-1. 在远程机器安装X11 Client
-
-```
-sudo apt-get install xauth
-```
-
-2. 在本地机器安装X11 Server
-
-本地Ubuntu使用:
-
-```
-sudo apt-get install xorg
-sudo apt-get install openbox
-```
-
-Windows 可以使用[Xming](https://sourceforge.net/projects/xming/)
-
-Max 可是使用[XQuatz](https://www.xquartz.org/)
-
-### 参考资料
-
-* <https://askubuntu.com/questions/213678/how-to-install-x11-xorg>
