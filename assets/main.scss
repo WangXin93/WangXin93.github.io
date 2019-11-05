@@ -14,7 +14,7 @@
     }
 }
 
-.toc {
+.toc-right {
     float: right;
     width: 25%;
     margin-top: $spacing-unit;
@@ -23,6 +23,11 @@
         position:static;
         width: 100%;
     }
+}
+
+.toc {
+    position:static;
+    width: 100%;
 }
 
 .home-intro-box {

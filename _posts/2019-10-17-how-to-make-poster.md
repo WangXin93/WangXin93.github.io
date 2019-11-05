@@ -3,6 +3,7 @@ layout: post
 title:  "如何制作学术海报"
 date:   2019-10-17 18:02:49 +0800
 categories: Writing
+toc: true
 ---
 
 ## 什么是学术海报？
