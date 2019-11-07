@@ -10,7 +10,7 @@ toc: true
 
 自上而下地说，推荐系统是根据用户地兴趣推荐符合他们地产品。推荐系统是众多机器学习系统中地重要部分，许多零售商家实现推荐系统是为了驱动市场的销售。
 
-推荐系统用到到数据包括用户对商品到明确评价（比如看过到电影，听过到音乐）；搜索或者购买到历史，亦或者用户自身到信息（性别，职业，爱好等）。类似于网易云音乐，bilibili，youtube这样的网站利用这样的信息来推送给用户他们可能喜欢的内容，比如网易云音乐的每日推荐，youtube的视频推荐。
+推荐系统用到到数据包括用户对商品到明确评价（比如看过到电影，听过到音乐）；搜索或者购买到历史，亦或者用户自身到信息（性别，职业，爱好等）。类似于网易云音乐，bilibili，youtube这样的网站利用这样的信息来推送给用户他们可能喜欢的内容，比如网易云音乐的每日推荐，youtube的视频推荐；在商品推荐方面有亚马逊，天猫，京东等公司案例；在社交媒体内容推荐方面，有facebook，twitter，新浪微博，今日头条等例子。还有一些专门等推荐系统比如餐厅推荐，约会对象推荐；推荐系统还被开发用于搜索论文，专家和工作同事招聘，金融分析，生命保险。
 
 ## 为什么需要推荐系统
 
@@ -28,6 +28,11 @@ toc: true
 * 基于内容的推荐系统：使用特征信息。
 * 协同滤波推荐系统：基于用户和商品的交互。
 * 混合推荐系统：希望结合上面两种方法来避免它们单独使用时候的缺点。
+
+为了阐明基于内容的推荐方法和基于协同滤波的推荐方法的区别，可以用早期的两个音乐推荐系统来说明：([Last.fm](https://en.wikipedia.org/wiki/Last.fm)和[Pandora Radio](https://en.wikipedia.org/wiki/Pandora_Radio))
+
+* Last.fm 通过记录用户常听的歌曲和乐队来和其它用户进行对比。Last.fm会推荐播放没有出现在用户曲库中，但是被同类用户所喜欢的音乐。这种利用了用户行为而不需要音乐本身特征的方法，就是协同滤波技术的一个例子。
+* Pandora使用一个歌曲或者一个艺术家的特征来搜寻类似的音乐（使用了[Music Geome Project](https://en.wikipedia.org/wiki/Music_Genome_Project)的400个特征中的一个子集）。用户的反馈可以被用来细化约束推荐的结果，用户选择“不喜欢”的特征在后续推荐结果中会被弱化，用户选择“喜欢”的结果会在后续推荐中被强化。这是一个基于内容的推荐的例子。
 
 ### 基于内容的推荐系统
 
@@ -58,6 +63,33 @@ toc: true
 * **Memory-based models** are based on similarity between items or users, where we use cosine-similarity.
 * **Model-based CF** is based on matrix factorization where we use SVD to factorize the matrix.
 * Models that use both ratings and content features are called **Hybrid Recommender Systems** where both Collaborative Filtering and Content-based Models are combined. Hybrid recommender systems usually show higher accuracy than Collaborative Filtering or Content-based Models on their own: they are capable to address the cold-start problem better since if you don't have any ratings for a user or an item you could use the metadata from the user or item to make a prediction. 
+
+### 多标准推荐系统（Multi-criteria recommender systems）
+多标准推荐系统（MCRS）是指在多个标准下预测一个用户对于位置商品的偏好。一些研究者将MCRS看作一个多标准决策问题（multi-criteria decision making problem）。可以参考[这里](https://web.archive.org/web/20140630021251/http://ids.csom.umn.edu/faculty/gedas/NSFCareer/MCRS-chapter-2010.pdf)得到更多介绍。
+
+### 具有风险意识的推荐系统（Risk-aware recommender system）
+目前大多数的推荐系统关注于如何使用上下文信息来推荐给用户最相关的内容，但是没有考虑到用户会被不想收到到通知而打扰。考虑到用户会在特定场景下不希望被推荐结果打扰是非常有必要的。因此，推荐系统的性能在一定程度上包含了推荐过程对于风险的估计。这个问题的一个解决方法是DRARS，一个模拟类似于老虎机（[bandit problem](https://en.wikipedia.org/wiki/Multi-armed_bandit)）机制的系统。这个系统既包含了推荐内容方面的技术，也包含了一些bandit算法。
+
+### 移动推荐系统（Mobile recommender system）
+移动推荐系统利用智能手机的信息来提供个性化，对环境敏感的推荐结果，比如手机的定位信息。这方法的研究是相对困难的，因为手机的数据比常规的推荐数据更加复杂，它是异质的（heterogeneous），有噪音的，需要时间和空间上的相关匹配等。
+
+影响手机推荐系统的预测和准确率的因素包含：上下文信息，推荐方法和隐私。此外，移动推荐系统还面临移植问题，推荐结果不一定适用于全部区域，比如推荐了一个菜谱，但是有的地方没有相关原材料）
+
+移动推荐的一个例子是Uber的打车推荐系统，它使用数据来推荐出一系列的接车点，以期望最优化时间和金钱利益。
+
+### 混合推荐系统（Hybrid recommender system）
+现在的推荐系统大多使用混合的方法，结合协同滤波，内容推荐和其它方法。这样的结合可以让多种方法互相取长补短。多个研究表面，这样的混合推荐系统可以提供相对于协同滤波，内容推荐更加精准的推荐结果。这个方法也可以用来克服推荐结果中的冷启动和稀疏问题，还有基于知识的方法的特征工程瓶颈。
+
+常用的混合方法包括：
+
+* 加权：以一定权重结合不同的推荐成分。
+* 切换：根据情况选择一种合适的推荐成分。
+* 混合：将多个推荐结果都展示到用户面前。
+* 特征结合：从不同的知识领域得到的特征结合起来用于单个推荐结果。
+* 特征增广：计算一部分特征，作为下一个技术的一部分输入。
+* 级联：给出推荐结果的优先级，低优先级的那些和高优先级的那些没有关系。
+* 元结合：一个推荐技术的结果用于另一些模型的输入
+
 
 ## 用于推荐系统的技术
 
@@ -104,6 +136,17 @@ toc: true
 ### 离线评估
 
 离线方法适合于实验阶段。，它不会让用户实际参与而是划分出训练集和验证集。但是这样也会导致有些因素在实验时候无法考虑到，比如季节，天气，用户在某个时间段的情绪等。
+
+### 除了准确率之外的标准
+
+* 多样性：用户会对多样的推荐结果更满意，比如来自不同艺术家的作品。
+* 持续性：在有些情况，再次展示有些推荐结果，或者让用户重新评价商品是有效的。因为第一次时候用户可能由于没仔细看忽略了一些商品。
+* 隐私：推荐系统用到的用户信息经常会是敏感信息，但是在面对隐私数据条款的时候，有些数据不能使用，必然对推荐结果产生影响。
+* 用户状态：有学者发现年纪大大用户比年轻用户会更加喜欢推荐的结果。
+* 鲁棒性：当用户参与到推荐系统的时候，欺诈的问题必须被解决。
+* 惊奇程度：这衡量了推荐结果对于用户是否有惊喜效果。比如对一个在食品杂货店的用户推荐牛奶是非常准确的，但是这过于明显是用户想买的。
+* 信任度：推荐系统只有在用户相信这个系统的时候才能正常工作。建立这样的信任可以通过解释为什么产生这样的推荐结果来达到。
+* 标注：用户对于推荐结果的满意程度可能被推荐的标注而影响。比如如果这是标注“赞助推荐”，那么点击率可能为5.93%；如果标注为“组织推荐”，那么点击率会提升到8.86%；如果什么都不标注，这时点击率却是最高的为9.87%。
 
 ## 参考
 
