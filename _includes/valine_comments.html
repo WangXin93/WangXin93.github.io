@@ -1,0 +1,15 @@
+{% if site.valine.enable %}
+<header class="post-header">
+<h1 class="post-title"> 🥳  评论区 </h1>
+</header>
+<div id="vcomments"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '{{ site.valine.leancloud_appid }}',   //这里变量的取值在网站配置文件里_config.yml
+        app_key: '{{ site.valine.leancloud_appkey }}', //这里变量的取值在网站配置文件里_config.yml
+        placeholder:'{{ site.valine.placeholder }}'    //这里变量的取值在网站配置文件里_config.yml
+    });</script>
+{% endif %}
