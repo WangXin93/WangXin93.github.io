@@ -30,6 +30,7 @@ valine:
     leancloud_appid: z3odPusDI6yEgyXmIJgkmDf0-gzGzoHsz
     leancloud_appkey: iaCUG4aB5HWCFYnXmCRhatsM
     placeholder: Leave you comments here :-)
+    visitor: true // 阅读量统计
 
 # Build settings
 markdown: kramdown

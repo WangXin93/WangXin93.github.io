@@ -34,6 +34,15 @@ layout: default
     {%- include valine_comments.html -%}
     {%- endif -%}
 
+    {%- if site.valine.visitor -%}
+    <p>
+    <span id="{{ page.url }}" class="leancloud_visitors" data-flag-title="{{ page.title | escape }}">
+        <em class="post-meta-item-text">当前访问次数 </em>
+        <i class="leancloud-visitors-count">10000</i>
+    </span>
+    </p>
+    {%- endif -%}
+
     <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
 
