@@ -109,3 +109,4 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 * [Jekyll: Markdown Basics](http://simpleprimate.com/blog/markdown-basics)
 * Jeklly使用Liquid模板语言来控制模板的格式，这里可以学习Liquid基础：[Jekyll: Liquid Syntax Basics](http://simpleprimate.com/blog/liquid-syntax)
 * 这个博客的TOC使用[jekyll-toc](https://github.com/allejo/jekyll-toc)生成。
+* [Make your Static Site Searchable with Jekyll-Algolia](https://dev.to/adrienjoly/make-your-static-site-searchable-with-jekyll-algolia-edh)
