@@ -94,6 +94,13 @@ You can find the source code for Jekyll at GitHub:
 
 ---
 
+Add similar search bar powered by Algolia:
+
+* Step1: [Getting started, build algolia application, upload website data](https://community.algolia.com/jekyll-algolia/getting-started.html)
+* [Step2: Frontend design, add searchbar](https://community.algolia.com/jekyll-algolia/blog.html)
+
+---
+
 ## 参考
 
 * [quick-ref-jekyll-markdown.md](https://gist.github.com/roachhd/779fa77e9b90fe945b0c)
