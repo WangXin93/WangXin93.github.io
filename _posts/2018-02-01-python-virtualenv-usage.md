@@ -196,6 +196,15 @@ pipenv check --style project.py
 $ pipenv run pip freeze
 ```
 
+## Pyenv
+
+[Pyenv](https://github.com/pyenv/pyenv)是另一种切换不同python版本的解决方案。它的解决思路是：
+
+* 变换全局的python版本
+* 提供了不同项目的python版本
+* 允许使用一个环境变量来重写python版本
+* 允许通过命令来搜寻多个python版本，这对于跨python版本的测试（比如使用tox）会有帮助。
+
 ## Pipx
 
 [Pipx](https://github.com/pipxproject/pipx)用来帮助安装使用python编写的命令行工具。和pip相比，pip是用来安装python编写的库，而pipx是用来安装已经发布的python应用。使用pipx的优点在于：
