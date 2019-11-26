@@ -1,0 +1,20 @@
+<div id="archives">
+  <h1 class="page-heading">Archive</h1>
+
+  {% for category in site.categories %}
+  {% capture category_name %}{{ category | first }}{% endcapture %}
+  <a href="{{ site.baseurl }}/search/#{{ category_name | slugify }}"><code><nobr>{{ category_name }}({{ category | last | size }})</nobr></code></a>
+  {% endfor %}
+
+  {% for category in site.categories %}
+  {% capture category_name %}{{ category | first }}{% endcapture %}
+  <div id="#{{ category_name | slugify }}"></div>
+  <p></p>
+
+  <a name="{{ category_name | slugify }}"></a>
+  <h2>#{{ category_name }}</h2>
+  {% for post in site.categories[category_name] %}
+  <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  {% endfor %}
+  {% endfor %}
+</div>

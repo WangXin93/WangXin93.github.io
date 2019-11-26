@@ -2,7 +2,7 @@
 layout: post
 title:  "TikZ Tutorial"
 date: 2019-04-10 19:58:42 +0800
-categories: latex
+categories: LaTeX
 toc: true
 ---
 

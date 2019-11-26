@@ -2,7 +2,7 @@
 layout: post
 title:  "阅读《How to Write Papers That Get Cited and Proposals That Get Funded》"
 date: 2019-04-28 19:07:00 +0800
-categories: Reading
+categories: Writing
 toc: true
 ---
 
