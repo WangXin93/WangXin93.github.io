@@ -24,6 +24,13 @@ A link to [Jekyll Now](http://github.com/barryclark/jekyll-now/). A big ass lite
 </div>
 ```
 
+```
+居中嵌入视频
+<div align="center">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/stgYW6M5o4k" frameborder="0" allowfullscreen></iframe>
+</div>
+```
+
 * A bulletted list
 - alternative syntax 1
 + alternative syntax 2
