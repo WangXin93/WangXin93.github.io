@@ -113,6 +113,39 @@ Forward & FW & Jamie McMaster \\ \hline
 \end{tabular}
 ```
 
+### 为表格添加脚注
+
+为表格添加脚注需要用到[threeparttable](https://www.ctan.org/pkg/threeparttable?lang=en)包。
+
+```latex
+ \documentclass{article}
+    \usepackage[flushleft]{threeparttable}
+    \begin{document}
+    \begin{table*}[ht]
+    \caption{Revisions}
+     \begin{threeparttable}
+    \centering
+        \begin{tabular}{p{0.10\linewidth}
+                        p{0.15\linewidth}
+                        p{0.45\linewidth}
+                        p{0.20\linewidth}}
+        \hline
+            Title 1 & Title 2 & Title 3 & Title 4          \\
+        \hline
+            Cell 1  & Cell 1  & Cell 3  & Cell 4 \tnote{a} \\
+            Cell 1  & Cell 1  & Cell 3  & Cell 4 \tnote{b} \\
+        \hline
+        \end{tabular}
+        \begin{tablenotes}
+            \item[a] My Note.
+            \item[b] My Other Note.
+        \end{tablenotes}
+     \end{threeparttable}
+    \end{table*}
+    \end{document}
+```
+
 ## Reference
 
 * [Wiki: LaTeX/Tables](https://en.wikibooks.org/wiki/LaTeX/Tables)
+* [How can I insert simple Table Notes?](https://tex.stackexchange.com/questions/146127/how-can-i-insert-simple-table-notes/146129)
