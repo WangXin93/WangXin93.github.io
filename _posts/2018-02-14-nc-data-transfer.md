@@ -181,7 +181,48 @@ $ rsync -anv --include=file2* --exclude=* dir1/ wangx@my-ip-address:/home/wangx/
 $ rsync -a --delete --backup --backup-dir=/path/to/backups /path/to/source destination
 ```
 
+通常文件压缩后传输会更快，``pigz``是一个利用多核并行提高压缩速度的工具。
+
+```bash
+## Compress everything found in a directory named 'my_data' to a compressed tar file named my_data.tar.gz in a group area
+$ tar cf - my_data | pigz -p $NUM_CORE > /mnt/username/my_data.tar.gz
+       #
+       #
+       # Note that a '-' here means the output is sent through the
+       # pipe (the | symbol) to the pigz command, not to an intermediate
+       # tar file.
+
+## Extract
+$ pigz -dc target.tar.gz | tar xf -
+$ tar -xvf --use-compress-program=pigz filename # alternative
+```
+
+## SSHFS
+
+sshfs是实现远程文件和本地文件互相传输的另一个思路，它实际上是将远程机器中的某个目录作为本地的一个挂载目录，这样就能通过本地文件管理实现文件传输。
+
+在linux机器上，可以使用``sshfs``指令实现，例如：
+
+```bash
+# make a directory to use as an access point for your remote home-directory
+$ mkdir remote
+
+# mount remote directory to local directory named remote
+$ sshfs username@hostname:/home/username remote
+
+# unmount
+$ fusemount -u remote # linux
+$ umount remote # mac
+```
+
+注意，Mac OS使用``sshfs``需要安装 [FUSE for macOS](https://github.com/osxfuse/osxfuse/releases) 和 [SSHFS](https://github.com/osxfuse/sshfs/releases).
+
+Windows下可以考虑[WinFSP](http://www.secfs.net/winfsp/)和[SSHFS-Win](https://www.google.com/search?q=sshfs+win&oq=sshfs+win&aqs=chrome..69i57j0l7.2105j0j1&sourceid=chrome&ie=UTF-8).
+
 ## 参考：
 
 - [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
+- [Copying files to and from compute systems](http://ri.itservices.manchester.ac.uk/userdocs/file-transfer/)
+- [File Management FAQ](http://ri.itservices.manchester.ac.uk/userdocs/file-management/)
+- [Fastest way to extract tar.gz](https://serverfault.com/questions/270814/fastest-way-to-extract-tar-gz)
 
