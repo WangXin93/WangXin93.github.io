@@ -7,6 +7,12 @@ title: Home
 ---
 
 ## Selected Publications
+* [Inpainting-based Virtual Try-On Network for Selective Garment Transfer](https://ieeexplore.ieee.org/abstract/document/8836494) \\
+  Li Yu, Yueqi Zhong, Xin Wang \\
+  IEEE Access \\
+  [[Paper](https://ieeexplore.ieee.org/abstract/document/8836494)]
+  [[Code](https://github.com/maktu6/Inpaint-TON)]
+
 * [Outfit Compatibility Prediction and Diagnosis with Multi-Layered Comparison Network](https://arxiv.org/abs/1907.11496) \\
   Xin Wang, Bo Wu, Yueqi Zhong \\
   ACM Multimedia 2019 \\
