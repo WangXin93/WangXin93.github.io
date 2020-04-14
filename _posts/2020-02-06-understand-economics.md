@@ -20,7 +20,47 @@ toc: true
 4. 创造能自动化的公司或投资中小企业
 5. 创作者型被动收入：主要有版权和专利费，经营个人频道。
 
+## 股票(Stock)
+
+持有股票意味着你是一个公司的拥有者(ownership)之一，例如，你持有一份(one share)苹果的股票，那么你也是苹果公司的拥有者之一。
+
+### 在哪里可以交易股票？
+
+* [Robinhood](https://robinhood.com/gb/en/): 免佣金（commission），但是消费者服务会较差，适合初学者。
+* [Fidelity](https://www.fidelity.com/): 佣金$5每笔交易，消费者服务会更好一些, 交易数量大的时候可以随时提问比如安全问题。
+* [Webnull](https://www.webull.com/): 国内可以交易的APP。
+
+### 如何从股票中收益？
+
+两个主要收益方式是：
+
+* 股价差价：如果你购买了股价$100每股的股票，在股价$120的时候出售，那么就可以从这个差价之后收益。
+* 股息（divident）: 公司每三个月会给投资者账户发放股息，比如一个公司每年的股息是2%，那么一年的股息就可以赚$2。 值得注意的是，对于运营状况好的公司，股息的比例会增长。
+
+### 投资策略有哪些？
+
+* Day Trading: 利用短时间的交易价格变化赚取收益。
+* Swing Trading: 利用一些短期条件变化，比如政府的新政策来进行短期交易赚取收益，时间可以是几天，几周甚至几个月。
+* Long-Term Trading: 长期持有股票持续3-5年甚至10年，赚取大量的股息和差价。这也是巴菲特的主要策略。
+
+### 如何了解一个公司的财务状况？
+
+假如你看上一支股票，如何了解它？可以你用Google 搜索 COMPANY NAME investor relation。比如搜索Apple investors relation，大概率你会在第一页找到想要的网页。
+
+* 10K Annual Report: 包含很多信息，比如公司的经济状况，收入，余额，策略。例如苹果2019的[10K](https://s2.q4cdn.com/470004039/files/doc_financials/2019/ar/_10-K-2019-(As-Filed).pdf)报告。
+* C.C.: Conference Call: 例如苹果的[C.C.](https://www.apple.com/investor/earnings-call/)
+* 10Q: 例如苹果的[10Q](https://s2.q4cdn.com/470004039/files/doc_financials/2020/q1/_10-Q-Q1-2020-(As-Filed).pdf)
+
+或者使用一些财经媒体比如雅虎财经，CNBC。
+
+### 懒人的投资方法？
+
+* 401K: 是美国于1981年创立一种延后课税的退休金账户计划，美国政府将相关规定明订在国税法第401(k)条中，故简称为401(k)计划。401(k)退休福利计划允许雇员划拨部分薪水至个人的退休账户直至离职，划拨部分多寡可自行决定。该账户内的金额在退休前提取往往会导致罚金，但在退休后提领则可享受税收优惠，雇主亦可以资金激励雇员投放。
+* 指数基金（Index Fund）：基金通俗来说是把钱交给专业人士来投资，指数就是说平均数，股票指数就是指按一定规则选择的股票的平均数，比如上证50指数：就是把上海证券交易所规模最大、流动性最好的50家公司的股票统计起来的股票平均值。新手最适合的方式就是基金定投。
+
 ## Reference
 
 * [How The Economic Machine Works by Ray Dalio](https://www.youtube.com/watch?v=PHe0bXAIuk0)
 * [经济机器是怎样运行的](https://www.youtube.com/watch?v=rFV7wdEX-Mo)
+* [Stock Market For Beginners 2019](https://www.youtube.com/watch?v=3EqqfQQEbKQ)
+* [什么是指数基金？](https://www.zhihu.com/question/23028423)
