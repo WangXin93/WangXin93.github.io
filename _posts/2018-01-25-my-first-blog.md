@@ -99,6 +99,23 @@ You can find the source code for Jekyll at GitHub:
 
 [jekyll-organization]: https://github.com/jekyll
 
+## 插入Diagram
+
+```
+<center>
+{% graphviz %}
+digraph graphname {
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a;
+}
+{% endgraphviz %}
+</center>
+```
+
+目前只能在本地显示网页中嵌入的diagram，github page暂不支持[自定义的plugin](https://help.github.com/en/enterprise/2.13/user/articles/configuring-jekyll-plugins)。
+
 ---
 
 ## Search Bar
@@ -109,6 +126,7 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 * Step2: [Frontend design, add searchbar](https://community.algolia.com/jekyll-algolia/blog.html)
 
 ---
+
 
 ## 参考
 

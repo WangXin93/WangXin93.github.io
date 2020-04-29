@@ -32,6 +32,17 @@ graph graphname {
 }
 ```
 
+<center>
+{% graphviz %}
+graph graphname {
+        a -- b;
+        b -- c;
+        b -- d;
+        d -- a;
+}
+{% endgraphviz %}
+</center>
+
 我们将使用该脚本绘制一个无向图，创建一个Makefile文件：
 
 ```
@@ -59,6 +70,17 @@ digraph graphname {
 }
 ```
 
+<center>
+{% graphviz %}
+digraph graphname {
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a;
+}
+{% endgraphviz %}
+</center>
+
 ### 节点与边的属性
 
 如果希望在图上显示节点的属性或者边上的属性，可以分开记录节点的属性和节点的关系：
@@ -78,6 +100,23 @@ digraph graphname {
 }
 ```
 
+<center>
+{% graphviz %}
+digraph graphname {
+        /* Entities */
+        a [label="First" shape="circle" fontcolor="green" color="red"]
+        b [label="Second" shape="square" fontcolor="blue"]
+        c [label="thrid" shape="box"]
+
+        /* Relationships */
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a [label="Edge Attribute"];
+}
+{% endgraphviz %}
+</center>
+
 所有的属性的可选项可以在[这里](https://www.graphviz.org/doc/info/attrs.html)找到。
 
 ### 排版方向
@@ -93,6 +132,18 @@ digraph graphname {
         d -> a;
 }
 ```
+
+<center>
+{% graphviz %}
+digraph graphname {
+        rankdir="LR";
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a;
+}
+{% endgraphviz %}
+</center>
 
 ### Rank
 
@@ -112,9 +163,29 @@ digraph graphname {
         d -> a [label="Edge Attribute"];
 
         /* Ranks */
-i       {rank=same b d}
+        {rank=same b d}
 }
 ```
+
+<center>
+{% graphviz %}
+digraph graphname {
+        /* Entities */
+        a [label="First" shape="circle" fontcolor="green" color="red"]
+        b [label="Second" shape="square" fontcolor="blue"]
+        c [label="thrid" shape="box"]
+
+        /* Relationships */
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a [label="Edge Attribute"];
+
+        /* Ranks */
+        {rank=same b d}
+}
+{% endgraphviz %}
+</center>
 
 这是b和d节点会被排列到同一条水平线上。
 
@@ -139,6 +210,25 @@ digraph graphname {
 }
 ```
 
+<center>
+{% graphviz %}
+digraph graphname {
+        a [label="First" shape="circle" fontcolor="green" color="red"]
+        b [label="Second" shape="square" fontcolor="blue"]
+        c [label="thrid" shape="box"]
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a;
+
+        subgraph subs {
+            d -> b;
+            c;
+        }
+}
+{% endgraphviz %}
+</center>
+
 如果subgraph的名字使用``cluster``开头，那么它就是一个[cluster](https://renenyffenegger.ch/notes/tools/Graphviz/elems/cluster/index)，一个不是cluster的subgraph只有一个属性可以设置``rank``。
 
 cluster会在周围有一个方形边框，你可以给cluster设置一个名字：
@@ -160,6 +250,26 @@ digraph graphname {
         }
 }
 ```
+
+<center>
+{% graphviz %}
+digraph graphname {
+        a [label="First" shape="circle" fontcolor="green" color="red"]
+        b [label="Second" shape="square" fontcolor="blue"]
+        c [label="thrid" shape="box"]
+        a -> b;
+        b -> c;
+        b -> d;
+        d -> a;
+
+        subgraph cluster_subs {
+            label="b & c & d";
+            d -> b;
+            c;
+        }
+}
+{% endgraphviz %}
+</center>
 
 ### Records
 
@@ -184,8 +294,30 @@ digraph {
 }
 ```
 
+<center>
+{% graphviz %}
+digraph {
+  rankdir="BT"
+
+  Hero [ 
+    shape="record"
+    label="{Hero|+ health : int\l|+ save(k : Kingdom) : bool\l}"
+  ]
+  Villain [
+    shape="record"
+    label="{Villain|+ health : int\l|+ brood() : void\l}"
+  ]
+  Character [ shape="record" ]
+
+  Hero -> Character [ arrowhead="empty" ]
+  Villain -> Character [ arrowhead="empty" ]
+}
+{% endgraphviz %}
+</center>
+
 ## 参考链接
 * [Official DOT Documentation](https://graphviz.gitlab.io/_pages/doc/info/lang.html)
 * [graphviz教程](https://blog.csdn.net/mcgrady_tracy/article/details/47132485)
 * [Quick Introduction to graphviz](https://www.worthe-it.co.za/programming/2017/09/19/quick-introduction-to-graphviz.html)
 * [VSCode Markdown Enhanced Previewed 支持在markdown文件中插入dot文件代码块来画图](https://shd101wyy.github.io/markdown-preview-enhanced/#/diagrams)
+* [在Jekyll网站中嵌入Graphviz](https://github.com/zhustec/jekyll-diagrams)
