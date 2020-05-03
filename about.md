@@ -16,4 +16,5 @@ permalink: /about/
 
 <br/>
 <img src="/assets/qrcode.png" width = "200" height = "200" alt="qrcode"/>
+<img src="/assets/eagle.svg" width = "200" height = "200" alt="eagle"/>
 
