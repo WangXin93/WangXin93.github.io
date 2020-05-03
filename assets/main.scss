@@ -2,6 +2,7 @@
 ---
 
 @import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
 .post-content-left {
     @extend .post-content;
@@ -35,4 +36,8 @@
     @media screen and (max-width: $on-palm) {
         flex-direction: column;
     }
+}
+
+.site-title {
+    font-family: 'Shadows Into Light', cursive;
 }
