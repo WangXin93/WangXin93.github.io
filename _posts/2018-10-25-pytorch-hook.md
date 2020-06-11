@@ -2,7 +2,7 @@
 layout: post
 title:  "Pytorch中的hook有什么用？"
 date: 2018-10-25 15:39:00 +0800
-categories: Pytorch
+categories: PyTorch
 toc: true
 ---
 
