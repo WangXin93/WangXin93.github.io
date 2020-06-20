@@ -7,7 +7,7 @@ categories: Jekyll
 
 这是我的第一篇博客。 这里记录Jekyll中Markdown的语法, Source file 在[这里](https://github.com/WangXin93/WangXin93.github.io/blob/master/_posts/2018-01-25-my-first-blog.md)。
 
-## Header 2 (H1 is reserved for post titles)##
+## Header 2 (H1 is reserved for post titles)
 
 ### Header 3
 
