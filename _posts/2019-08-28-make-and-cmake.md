@@ -80,11 +80,25 @@ clean:
         rm -rvf foo.o foo
 ```
 
-## CMake
-
-## 参考资料
+### 参考资料
 * [GNU manual make](https://www.gnu.org/software/make/manual/make.html)
 * [Introduce make from debian reference](https://www.debian.org/doc/manuals/debian-reference/ch12.en.html#_make)
 * [Using make and writing Makefiles](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html)
 * [CMake](https://www.cs.swarthmore.edu/~adanner/tips/cmake.php)
 * [What is phony in a makefile](https://stackoverflow.com/questions/2145590/what-is-the-purpose-of-phony-in-a-makefile)
+
+## CMake
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+
+# set the project name
+project(Tutorial)
+
+# add the executable
+add_executable(Tutorial tutorial.cxx)
+```
+
+## 参考资料
+* [Source code](https://github.com/Kitware/CMake/tree/master/Help/guide/tutorial)
+* [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
