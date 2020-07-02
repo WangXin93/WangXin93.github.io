@@ -28,7 +28,7 @@ toc: true
 下面的视频很好的解释了一维坐标轴上的随机游走，并展示了随着不同的游走步数产生的不同的黑点落点位置的分布：
 
 <div align="center">
-<iframe width="420" height="315" src="http://www.youtube.com/embed/stgYW6M5o4k" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/stgYW6M5o4k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 我们可以将1维坐标轴上的随机游走推广到更多的情况中，比如二维，三维的情况，比如在一个graph上的情况.

@@ -7,6 +7,10 @@ categories: Jekyll
 
 这是我的第一篇博客。 这里记录Jekyll中Markdown的语法, Source file 在[这里](https://github.com/WangXin93/WangXin93.github.io/blob/master/_posts/2018-01-25-my-first-blog.md)。
 
+---
+
+## 文字格式
+
 ## Header 2 (H1 is reserved for post titles)
 
 ### Header 3
@@ -14,22 +18,6 @@ categories: Jekyll
 #### Header 4
 
 A link to [Jekyll Now](http://github.com/barryclark/jekyll-now/). A big ass literal link <http://github.com/barryclark/jekyll-now/>
-
-![an image alt text]({{ site.baseurl }}/favicon.ico "an image title")
-
-```
-居中插入图片，同时改变图像尺寸比例
-<div align="center">
-<img src="/assets/2018-10-21-naive-bayes/bayesian_rule.png" style="width:80%"/>
-</div>
-```
-
-```
-居中嵌入视频
-<div align="center">
-<iframe width="420" height="315" src="http://www.youtube.com/embed/stgYW6M5o4k" frameborder="0" allowfullscreen></iframe>
-</div>
-```
 
 * A bulletted list
 - alternative syntax 1
@@ -62,6 +50,18 @@ to create linebreak tags
  
 Finally, horizontal lines
 
+---
+
+## 插入图片
+
+![an image alt text]({{ site.baseurl }}/favicon.ico "an image title")
+
+```
+居中插入图片，同时改变图像尺寸比例
+<div align="center">
+<img src="/assets/2018-10-21-naive-bayes/bayesian_rule.png" style="width:80%"/>
+</div>
+```
 ---
 
 ## 在jekyll的markdown文件中使用公式
@@ -110,6 +110,34 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 
 ---
 
+## 嵌入视频音频
+
+```
+居中嵌入视频
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/enjhlnqaXOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+```
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/enjhlnqaXOE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+```
+插入音频
+<audio controls>
+<source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Creative_Commons/Paper_Navy/All_Grown_Up/Paper_Navy_-_08_-_Swan_Song.mp3" type="audio/mpeg">
+"Your browser does not support the audio element."
+</audio>
+```
+
+<audio controls>
+<source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/Creative_Commons/Paper_Navy/All_Grown_Up/Paper_Navy_-_08_-_Swan_Song.mp3" type="audio/mpeg">
+"Your browser does not support the audio element."
+</audio>
+
+---
+
 ## 参考
 
 * [quick-ref-jekyll-markdown.md](https://gist.github.com/roachhd/779fa77e9b90fe945b0c)
@@ -117,3 +145,5 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 * Jeklly使用Liquid模板语言来控制模板的格式，这里可以学习Liquid基础：[Jekyll: Liquid Syntax Basics](http://simpleprimate.com/blog/liquid-syntax)
 * 这个博客的TOC使用[jekyll-toc](https://github.com/allejo/jekyll-toc)生成。
 * [Make your Static Site Searchable with Jekyll-Algolia](https://dev.to/adrienjoly/make-your-static-site-searchable-with-jekyll-algolia-edh)
+* <https://github.com/nathancy/jekyll-embed-video>
+* [Embed vidoe without jekyll plugin]<https://jekyllcodex.org/without-plugin/open-embed/#>
