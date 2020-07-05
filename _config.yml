@@ -53,8 +53,13 @@ algolia:
 # Customize navigation links
 header_pages:
   - blogs.md
+  - gallery.md
   - about.md
   - search.md
+
+collections:
+  albums:
+    output: true
 
 
 # Exclude from processing.

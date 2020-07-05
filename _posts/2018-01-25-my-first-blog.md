@@ -62,6 +62,10 @@ Finally, horizontal lines
 <img src="/assets/2018-10-21-naive-bayes/bayesian_rule.png" style="width:80%"/>
 </div>
 ```
+
+Image gallery with [jeykll collections](https://alligator.io/jekyll/collections/).
+
+* <https://stackoverflow.com/questions/46500871/jekyll-photo-gallery-without-plugins>
 ---
 
 ## 在jekyll的markdown文件中使用公式
@@ -147,3 +151,4 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 * [Make your Static Site Searchable with Jekyll-Algolia](https://dev.to/adrienjoly/make-your-static-site-searchable-with-jekyll-algolia-edh)
 * <https://github.com/nathancy/jekyll-embed-video>
 * [Embed vidoe without jekyll plugin]<https://jekyllcodex.org/without-plugin/open-embed/#>
+* [minima v2.5.0 customization](https://github.com/jekyll/minima/tree/v2.5.0)
