@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "理解经济学"
+title:  "Investment"
 date:   2020-02-06 10:03:00 +0000
 categories: Economics
 toc: true
