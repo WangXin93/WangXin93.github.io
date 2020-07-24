@@ -66,6 +66,7 @@ Finally, horizontal lines
 Image gallery with [jeykll collections](https://alligator.io/jekyll/collections/).
 
 * <https://stackoverflow.com/questions/46500871/jekyll-photo-gallery-without-plugins>
+
 ---
 
 ## 在jekyll的markdown文件中使用公式
