@@ -46,6 +46,21 @@ toc: true
 * 疑问（Question）
 * 回答（Answer）
 
+<div align="center">
+<img src="/assets/2020-07-24-pyramid-princeple/intro1.png" style="width:80%"/>
+</div>
+
+<div align="center">
+<img src="/assets/2020-07-24-pyramid-princeple/intro2.png" style="width:80%"/>
+</div>
+
+通过大量阅读和写作文章，你可能会发现文章大体是在回答以下四类问题：
+
+1. 我们应该做什么？
+2. 我们应该如何做？
+3. 我们是否应该这样做？
+4. 为什么会发生这样的事情？
+
 ## 如何构建金字塔
 
 ### 自上而下方法
