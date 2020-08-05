@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Investment"
+title:  "Money, Money, Money"
 date:   2020-02-06 10:03:00 +0000
 categories: Economics
 toc: true
@@ -78,3 +78,19 @@ toc: true
 * [Stock Market For Beginners 2019](https://www.youtube.com/watch?v=3EqqfQQEbKQ)
 * [什么是指数基金？](https://www.zhihu.com/question/23028423)
 * [Stock market for beginners 2020 - Investing Basics UK](https://www.youtube.com/watch?v=RT9hCwuXe_Q)
+* 小狗钱钱
+
+## 贷款
+
+等额本金：最后利息稍微少点
+
+等额本息：每个月还款额固定，最后利息稍微多点
+
+小额贷款的坑：
+
+1. 直接使用年化利率计算利息
+2. 利息先付
+
+## Reference
+
+* [李永乐讲等额本金和等额本息算法](https://www.youtube.com/watch?v=T6FBfNpiBYw)
