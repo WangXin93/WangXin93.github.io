@@ -120,7 +120,7 @@ $ rsync -r dir1/ dir2
 对两个目录下文件进行同步，``-r``选项意味这recursive。另一个替代方案是使用``-a``选项：
 
 ```bash
-$ rsync -a dir1/ dir
+$ rsync -a dir1/ dir2
 ```
 
 ``-a``意味着archive，它不光会recusive地同步文件，还会保留symbolic links，special and device files，文件修改时间，group，owner，permissions。所以比``-r``更加常用。
