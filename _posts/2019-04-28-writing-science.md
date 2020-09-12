@@ -162,6 +162,41 @@ Simple意味着一个重要的观点用一个简洁压缩的方式表达出它�
 
 从内容载体来看：期刊文章会发表在一个公开或者封闭的期刊中，而会议文章会收集整理在一个会议论文集（conference proceedings book）或者在线仓库（online proceedings repository）中。值得注意的是，发表在会议上的期刊，根据会议组织者的情况，是有可能进一步发表到期刊上的，者通常需要会议文章内容明显超过平均水平，这时会议组织者有可能提供这样的机会将会议发表到期刊。不过是否说没有被选为期刊的会议文章就是不好的呢？答案是否，每篇被选为会议的文章包含研究者对于某个问题长达数月的实验研究结果和思考，通过会议的方式展示给其它同行，这是值得骄傲的一件事，如果你只需要期刊文章，你可以直接将文章投至期刊而不是会议。
 
+## Business Storytelling
+
+> The difference between business stories and coventional stories is that they are told with a clear goal or objective in mind.
+
+### Effective business stories enable us to:
+
+* Connect and communicate with colleagues, customers, suppliers, stakeholders and partners.
+* Build rapport and help develop trusting working relationships.
+* Persuade - a good story can inspire people to change the way they think, feel or act.
+* Remember key information - details communicated in the form of a story are more likely to stick.
+
+### What makes a good story?
+
+All good business stories comprise these essential elements:
+
+* Simplicity. They use language that’s easy to understand, with no unnecessary detail. 
+* Authenticity. The story should be meaningful and the teller should be completely honest.
+* Emotion. Your audience should be able to identify with the main character and empathise with their emotions, whatever they may be (joy, pain, humour).
+* Short. Business stories should aim to be three to five minutes long. Any longer and you run the risk of losing your audience.
+
+### Ten tips for effective storytelling
+
+1. Start with the     end in mind. What message do you want to get across to your audience? What     do you want them to do as a result of your story?
+2. Begin with a     bang. Surprise or shock your audience to get their attention.
+3. Create     characters that people can easily relate to. The more people identify with     the main character, the more likely they are to buy in to your message,     and be persuaded to change the way they think, feel or behave.
+4. Be creative     with your words. Use vivid, descriptive language to keep your audience     engaged.
+5. Use a simple     story ‘arc’ structure - set-up, conflict and resolution. Establish the     main characters, the way they change through the events that happen, the     choices they make, and what happens in the end.
+6. Play on     people’s emotions by using humour, or pulling on their heart strings.
+7. Don’t leave     out the ‘bad bits’. Admitting to mistakes shows vulnerability, which can     help build trust.
+8. Introduce     dramatic tension and conflict. Compelling stories have a series of ups and     downs, twists and turns before reaching their resolution.
+9. ‘Show, don’t     tell.’ Allow your audience to join the dots and reach the conclusion by     themselves. It will help draw them in and reinforce their positive     feelings (about the story, and about you and your organisation too).
+10. Find the right medium. You could use     video, virtual events or traditional paper-based methods, but make sure     that whatever you choose works for your particular story.
+
+* [Once Upon A Time: The Subtle Power of Business Storytelling](https://app.goodpractice.net/#/manchester-tfl/s/ec758b67)
+
 
 ## 参考
 
