@@ -144,7 +144,31 @@ Simple意味着一个重要的观点用一个简洁压缩的方式表达出它�
 
 ## The Challenge
 
+在challenge章节，你需要描述你希望获得的具体某个知识。这从驱动你进行研究的“问题”开始。你进行研究工作来发现答案。从问题出发的时候，我们有时候会形成一个“假设”，还会声明一个“目标”，来描述我们需要展示的信息。有些作者只展示问题，有些人会展示三样东西，问题，假设和研究目标。这两种方案都有不少人采用，其中“问题”是核心。如果你没有一个问题，那么你不是在做好的科学研究；如果读者不能说出问题是什么，那么你不是在写一篇好的研究论文。
+
+有一些人认为：如果没有假设，这就不是科学。不同领域的学科有不同的传统和习惯，作者在投往National Science Foundation Biology Directorate的提案中对方要求有假设存在，而投往Geoscience的提案对于生物学家喜欢的假设感到困惑。框定一个假设可以作为你组织论文思想的有力工具，但是“假设”只是将你的问题转换为了一个可以证伪的预测。而提出的“问题”依然是定义知识空白的的关键所在。
+
+假设通常是用来检验一个关系是否存在。进化生物学家会提问花的颜色是否影响授粉者的访问，他们可能会假设“蜂鸟偏好红色花朵”，这个假设是可以检验和证伪的。Vaghjiani 和 Ravishankara尽管知道甲烷甲烷和羟基会产生反应，可是反应速率怎么假设呢？对于是否要给出假设，本书不给出一致的建议，你要知道你领域内的文化，但是要记住优先给出“问题”并说明清楚。
+
+在说出问题之后，一个好的“调整”就可以将研究方法进行展开。这时候，你就可以告诉读者你的研究目标和需要生成的信息。如果你要研究污染物是否致癌，那么你是使用毒理学还是流行病学？如果你要验证一种细菌的存在，你是将它们培养生长出来还是从环境样本中提取DNA序列？如果你要测量一个反应的速率，那么你是在气相中实验还是在溶液中？也有一些将结论的一小部分透露在这里，使用类似于“In this paper we show...”这样的语言，形成一种telegraphed OCAR结构，这适合于一些不太耐心的读者。
+
+在专业杂志中，一个好的“挑战”总是能被压缩成“to learn X, we did Y”。就是说，他们提出了一个问题，并展开了一个方法来回答它。下面的例子展示了生活在复杂环境中是否可能提高大脑发育。
+
+> Our goal in this study was twofold. First, we tested whether an animal’s phys- ical environment would affect hippocampal attributes. Specifically, we tested whether food-caching mountain chickadees (*Poecile gambeli*) housed in cap- tivity differed in hippocampal volume, hippocampal neuron number and neuronal density as compared with fully developed wild-caught conspecifics. We predicted that captivity, with reduced environmental complexity and restricted memory-based experiences (compared with memory-based expe- riences afforded in the natural environment), would reduce hippocampal volume, neuron number and, potentially, neuron density.
+
+如果“挑战”不清晰，读者读文章时候就会被甩在后面。如果一个“挑战”在说明时候没有具体地说明问题和假设或者给了读者错误的印象，那么它就是低效的。不清晰的挑战的最常见类型是作者过于关注他们给出的信息而不是他们获取的知识。他们丢掉了“to learn X...”，只保留了“we did Y”。这样只保留研究目标，而不是问题。这些作者落入这样的陷阱的原因可能是在对于他们来说这些问题是显而易见的，而读者知道的内容很难和作者完全一样，如果作者不把挑战说明清楚，那么读者理解这篇论文的挑战的机会就只能交给运气了。
+
 ## Action
+
+> You are not just representing your results, you are telling story.
+
+在OCAR结构中，action部分位于challenge和resolution之间，构成了故事的主体。在本文中，它包含Materials，Methods，Results和一部分的Discussion。在proposal中，它是你要做什么事情的描述。如果你在写一本书，这部分会是你一本书的主要部分，包含怎么展示你的数据，图表，这是信息是财富和宝藏。
+
+在这部分的撰写中，最重要的是记住**你不是在展示结果，你在讲述一个故事**。随意，散漫地展示你的结果会带来你的文章和提案被拒绝。读者希望知道你在做什么，你发现了什么，但是如果不把你的实验行动嵌入到一个更大的故事中，读者很容易就会失去目标，无法同步，变得迟钝。这个所有工作的点在哪？这些结果意味着什么？这些内容回答了论文的问题吗？它是否支持你的假设和结论？
+
+将“行动”嵌入到故事中，你的论文内容就有了结构和走向。你用故事来帮助读者在这些结果之间浏览，寻找它们的意思以及它们如何结合到最后的结论。你在写这个部分的时候，试着给每个章节都想出一个小故事和OCAR的结构，多个小故事最后汇入更大的故事，这样整个文章展示在这样的框架下会自然得到你的工作结论。
+
+“行动”章节可以分为两个部分：描述你做了什么（Materials和Methods），描述你从中得到了什么（Results和Discussion）。
 
 ## The Resolution
 
