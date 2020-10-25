@@ -19,6 +19,7 @@ title: Home
   [[Code](https://github.com/WangXin93/fashion_compatibility_mcn)]
   [[Arxiv](https://arxiv.org/abs/1907.11496)]
   [[Paper](https://dl.acm.org/citation.cfm?id=3350909)]
+  [[Reproducibility](https://dl.acm.org/doi/10.1145/3394171.3414812)]
   [[Demo](https://outfit-diagnosis.herokuapp.com/)]
 
 * [Fabric Identification Using Convolutional Neural Network](https://link.springer.com/chapter/10.1007%2F978-3-319-99695-0_12) \\
