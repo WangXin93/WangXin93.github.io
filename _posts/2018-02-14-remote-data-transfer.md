@@ -197,9 +197,20 @@ $ pigz -dc target.tar.gz | tar xf -
 $ tar -xvf --use-compress-program=pigz filename # alternative
 ```
 
+``zsh``包含一个[`rsync``的插件](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rsync/rsync.plugin.zsh)，它实际上设置了多个alias来缩短了``rsync``的指令：
+
+```bash
+alias rsync-copy="rsync -avz --progress -h"
+alias rsync-move="rsync -avz --progress -h --remove-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-synchronize="rsync -avzu --delete --progress -h"
+```
+
 ## SSHFS
 
 sshfs是实现远程文件和本地文件互相传输的另一个思路，它实际上是将远程机器中的某个目录作为本地的一个挂载目录，这样就能通过本地文件管理实现文件传输。
+
+你的操作系统可以支持不同的文件后端，只要你有一个操作不同文件系统的共同语言。比如你运行``touch``创建一个文件，``touch``命令在内核部分进行系统调用，然后内核进行文件系统调用才创建了文件。[``FUSE``](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)（Filesystem in User Space）让用户程序来实现文件系统变成可能，FUSE给用户空间的代码和内核接口的文件系统调用驾了一座桥。比如，FUSE可以用来在你给虚拟文件系统进行操作的时候，这个操作通过SSH来传输到一个远端的机器上，并在远端执行并把结果返回到本地。这样远端服务器的文件就好像在本地程序中一样。这个就是``sshfs``的功能。
 
 在linux机器上，可以使用``sshfs``指令实现，例如：
 
@@ -219,10 +230,17 @@ $ umount remote # mac
 
 Windows下可以考虑[WinFSP](http://www.secfs.net/winfsp/)和[SSHFS-Win](https://www.google.com/search?q=sshfs+win&oq=sshfs+win&aqs=chrome..69i57j0l7.2105j0j1&sourceid=chrome&ie=UTF-8).
 
+还有一些其它使用FUSE文件系统的例子比如：
+* [rclone](https://rclone.org/commands/rclone_mount/) - Mount cloud storage services like Dropbox, GDrive, Amazon S3 or Google Cloud Storage and open data locally.
+* [gocryptfs](https://nuetzlich.net/gocryptfs/) - Encrypted overlay system. Files are stored encrypted but once the FS is mounted they appear as plaintext in the mountpoint.
+* [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
+* [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
+
 ## 参考：
 
 - [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
 - [Copying files to and from compute systems](http://ri.itservices.manchester.ac.uk/userdocs/file-transfer/)
 - [File Management FAQ](http://ri.itservices.manchester.ac.uk/userdocs/file-management/)
 - [Fastest way to extract tar.gz](https://serverfault.com/questions/270814/fastest-way-to-extract-tar-gz)
+- <https://missing.csail.mit.edu/2020/potpourri/#fuse>
 
