@@ -66,6 +66,13 @@ mysql> SElECT * FROM tb1;
 
 ## SQLite
 
+```sql
+.open db.sqlite3
+.tables
+
+SELECT * FROM auth_user;
+```
+
 获取帮助：``.help``
 
 ### 创建table
