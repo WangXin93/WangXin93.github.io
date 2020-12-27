@@ -225,3 +225,4 @@ All good business stories comprise these essential elements:
 ## 参考
 
 * How to Write Papers That Get Cited and Proposals That Get Funded
+* <https://www.cis.upenn.edu/~sweirich/icfp-plmw15/slides/peyton-jones.pdf>
