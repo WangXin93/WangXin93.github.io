@@ -2,7 +2,7 @@
     <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
     <div class="wrapper">
-        <h2 class="footer-heading" >{{ site.title | escape }}</h2>
+        <h2 class="footer-heading">{{ site.title | escape }}</h2>
 
         <div class="footer-col-wrapper">
             <div class="footer-col footer-col-1">
@@ -24,7 +24,18 @@
                 <p>{{ site.description | escape }}</p>
             </div>
         </div>
-
+        <div class="newsletter-container">
+            <h4 class="newsletter-title">Subscribe</h4>
+            <form class="newsletter-form"
+                action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"
+                onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=WangXinsBlog', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+                <p class="newsletter-text">Enter your email address:</p>
+                <input class="newsletter-email" type="text" placeholder="name@example.com" name="email" />
+                <input type="hidden" value="WangXinsBlog" name="uri" />
+                <input type="hidden" name="loc" value="en_US" />
+                <input class="newsletter-submit" type="submit" value="Subscribe" />
+            </form>
+        </div>
 
     </div>
 

@@ -115,6 +115,14 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 
 ---
 
+## News Letter Subscription
+
+当博客内容更新时候，给订阅用户发送邮件提醒，使用FeedBurner实现，参考教程：
+
+* [How to add a newsletter to a Jekyll blog](https://medium.com/@davideiaiunese/the-problem-why-a-newsletter-baae4409a526)
+
+---
+
 ## 嵌入视频音频
 
 ```
@@ -153,3 +161,4 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 * <https://github.com/nathancy/jekyll-embed-video>
 * [Embed vidoe without jekyll plugin]<https://jekyllcodex.org/without-plugin/open-embed/#>
 * [minima v2.5.0 customization](https://github.com/jekyll/minima/tree/v2.5.0)
+* [How to add a newsletter to a Jekyll blog](https://medium.com/@davideiaiunese/the-problem-why-a-newsletter-baae4409a526)
