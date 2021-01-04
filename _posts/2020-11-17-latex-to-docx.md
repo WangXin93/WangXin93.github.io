@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Latex文件转换至MS Word"
+title:  "Latex to MS Word（Latex文件转Word文档）"
 date: 2020-11-17 11:20:22 +0800
 categories: LaTeX
 toc: true

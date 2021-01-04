@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python re 模块使用"
+title:  "Python re，Python中的正则表达式模块"
 date:   2018-03-10 15:16:29 +0800
 categories: Python
 toc: true

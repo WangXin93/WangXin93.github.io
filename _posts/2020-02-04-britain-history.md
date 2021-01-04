@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Britain History"
+title:  "Britain History，英国历史小记"
 date:   2020-02-04 15:59:00 +0000
 categories: Culture
 toc: true

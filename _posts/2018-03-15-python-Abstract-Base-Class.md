@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python Abstract Base Class"
+title:  "Python Abstract Base Class，Python中的抽象基类"
 date:   2018-03-15 10:42:00 +0800
 categories: Python
 toc: true
