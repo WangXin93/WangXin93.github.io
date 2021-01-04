@@ -255,6 +255,38 @@ datefmt=
 
 使用配置文件的好处是可以将配置代码过程和配置参数分开，方便没有代码基础的使用者也能调整日志。
 
+## 使用[``coloredlogs``](https://pypi.org/project/coloredlogs/)给日志添加颜色
+
+``coloredlogs``包让日志在终端的输出文字能够显示颜色。它使用一个 ColoredFormatter 类来继承 logging.Formatter 然后使用 ANSI escape sequences 来渲染终端信息，所以UNIX终端都可以让日志显示颜色。
+
+```bash
+pip install coloredlogs --user
+```
+
+```python
+import coloredlogs, logging
+
+# Create a logger object.
+logger = logging.getLogger(__name__)
+
+# By default the install() function installs a handler on the root logger,
+# this means that log messages from your code and log messages from the
+# libraries that you use will all show up on the terminal.
+coloredlogs.install(level='DEBUG')
+
+# If you don't want to see log messages from libraries, you can pass a
+# specific logger object to the install() function. In this case only log
+# messages originating from that logger will show up on the terminal.
+coloredlogs.install(level='DEBUG', logger=logger)
+
+# Some examples.
+logger.debug("this is a debugging message")
+logger.info("this is an informational message")
+logger.warning("this is a warning message")
+logger.error("this is an error message")
+logger.critical("this is a critical message")
+```
+
 ## [命令行中的进度条tqdm](https://github.com/tqdm/tqdm)
 
 使用进度条，并给进度条添加说明：
