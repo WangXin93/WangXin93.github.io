@@ -7,25 +7,23 @@ toc: true
 ---
 
 ## 前言
-**情人节快乐!**
 
-在家中或者学校，经常需要在多台电脑之间传输文件，怎么传文件才方便呢？
-1. 存到U盘，再把U盘插到另一台电脑
-2. 家中或者学校的多台电脑通常连接在一个局域网中，可以用它吗？
-
-可以！
+在家中或者学校，经常需要在多台电脑之间传输文件，怎么传文件才方便呢？最简单的方法是存到U盘，再把U盘插到另一台电脑，但是因为家中或者学校的多台电脑通常连接在一个局域网中，我们也可利用局域网来在多台计算机之间传输文件。
 
 ## 如何在局域网内传输文件？
 
 这里UNIX系统携带的工具`nc`或者叫`netcat`，使用`man nc`可以查看关于它的介绍与说明。`nc`可以帮助在一台计算机打开一个端口，而在另一台计算机可以使用`nc`访问这个端口，从而可以在两台计算机之间传输数据。
 
 假定需要讲文件从电脑A传输到电脑B，首先，需要在电脑B终端输入：
+
 ```bash
 $ nc -l 1234 > filename.out
 ```
+
 这里做的事情是在电脑B开放一个端口，端口号为1234，就像一幢大楼的号码为1234的房间门打开来等待其他计算机的访问。传输的数据会被存放在命名为`filename.out`的文件，如果没有这个文件，`nc`会自己创建一个。
 
 然后，要知道电脑B端的局域网IP地址，在电脑B终端输入：
+
 ```bash
 $ ifconfig
 enp3s0    Link encap:以太网  硬件地址 f0:de:f1:f3:ce:9e  
@@ -53,16 +51,18 @@ wlp9s0    Link encap:以太网  硬件地址 44:6d:57:5e:b0:42
           碰撞:0 发送队列长度:1000 
           接收字节:193005806 (193.0 MB)  发送字节:11263841 (11.2 MB)
 ```
+
 关注`wlp9s0`这一行，可以知道电脑B的局域网IP为`192.168.2.102`。
 
 然后，在电脑A的终端输入：
+
 ```bash
 $ nc 192.168.2.102 1234 < filename.in
 ```
+
 等待命令执行完成，命名为`filename.in`的文件会被传输到电脑B。文件传输完成后，连接会自动断开。大功告成～利用局域网成功在两台计算机之间传输文件。
 
 **完整帮助参考命令`man nc`,然后键入`/DATA TRANSFER`，寻找到相关章节**
-
 
 ## 使用scp向Linux云服务器上传和下载文件
 随着时间推移，我发现了更多向云端传输数据的方法。使用nc传输数据时，有时候因为`<`符号弄反了导致待复制文件被重写真的太恐怖了。
@@ -236,7 +236,7 @@ Windows下可以考虑[WinFSP](http://www.secfs.net/winfsp/)和[SSHFS-Win](https
 * [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
 * [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
 
-## 参考：
+### 参考：
 
 - [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
 - [Copying files to and from compute systems](http://ri.itservices.manchester.ac.uk/userdocs/file-transfer/)
@@ -244,3 +244,63 @@ Windows下可以考虑[WinFSP](http://www.secfs.net/winfsp/)和[SSHFS-Win](https
 - [Fastest way to extract tar.gz](https://serverfault.com/questions/270814/fastest-way-to-extract-tar-gz)
 - <https://missing.csail.mit.edu/2020/potpourri/#fuse>
 
+## Samba
+
+A Samba file server enables file sharing across different operating systems over a network. It lets you access your desktop files from a laptop and share files with Windows and macOS users.
+
+使用命令行安装samba：
+
+```bash
+sudo apt install samba
+```
+
+运行命令结束后后使用``whereis samba``来确认安装完成，如果命令行返回下面内容说明安装成功：
+
+```
+samba: /usr/sbin/samba /usr/lib/samba /etc/samba /usr/share/samba /usr/share/man/man7/samba.7.gz /usr/share/man/man8/samba.8.gz
+```
+
+然后需要配置samba的服务，这包括选择一个需要共享的位置和编写配置文件让samba知道如何从这个位置共享。选择一个共享位置比如``/home/<username>/sambashare/``，如果这个位置不存在你需要创建一个这样的目录。接着编写samba的配置文件，使用命令``sudo vim /etc/samba/smb.conf``，在文件底部加上下面的内容：
+
+```
+[sambashare]
+    comment = Samba on Ubuntu
+    path = /home/username/sambashare
+    read only = no
+    browsable = yes
+```
+
+这里内容的含义是：
+
+* comment: A brief description of the share.
+* path: The directory of our share.
+* read only: Permission to modify the contents of the share folder is only granted when the value of this directive is no.
+* browsable: When set to yes, file managers such as Ubuntu’s default file manager will list this share under “Network” (it could also appear as browseable).
+
+文件内容修改后，将它保存然后重启samba来让配置文件生效：
+
+```
+sudo service smbd restart
+```
+
+还需要配置防火墙规则来允许samba通过：
+
+```
+sudo ufw allow samba
+```
+
+由于samba不使用系统的账户，所以需要给samba设立账户密码。需要注意这里的username必须是系统账户中的一个，不然会失败。
+
+```
+sudo smbpasswd -a username
+```
+
+最后，在另一台计算机上连接到samba服务器：
+
+* 在windows系统可以在我的电脑的地址栏中输入``\\id-address\sambashare``来访问
+* 在linux的系统可以在默认的文件管理器中找到Connect to server选项输入``smb://ip-address/sambashare``来访问
+* 在OSX的系统中可以到finder的Go -> Connect to Server 选项输入地址``smb://ip-address/sambashare``来访问
+
+### 参考
+
+* <https://ubuntu.com/tutorials/install-and-configure-samba>
