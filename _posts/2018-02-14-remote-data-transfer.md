@@ -10,7 +10,7 @@ toc: true
 
 在家中或者学校，经常需要在多台电脑之间传输文件，怎么传文件才方便呢？最简单的方法是存到U盘，再把U盘插到另一台电脑，但是因为家中或者学校的多台电脑通常连接在一个局域网中，我们也可利用局域网来在多台计算机之间传输文件。
 
-## 如何在局域网内传输文件？
+## 使用``netcat``在局域网内传输文件
 
 这里UNIX系统携带的工具`nc`或者叫`netcat`，使用`man nc`可以查看关于它的介绍与说明。`nc`可以帮助在一台计算机打开一个端口，而在另一台计算机可以使用`nc`访问这个端口，从而可以在两台计算机之间传输数据。
 
@@ -65,6 +65,7 @@ $ nc 192.168.2.102 1234 < filename.in
 **完整帮助参考命令`man nc`,然后键入`/DATA TRANSFER`，寻找到相关章节**
 
 ## 使用scp向Linux云服务器上传和下载文件
+
 随着时间推移，我发现了更多向云端传输数据的方法。使用nc传输数据时，有时候因为`<`符号弄反了导致待复制文件被重写真的太恐怖了。
 下面介绍scp指令的使用。scp指令的基本格式如下：
 
@@ -107,7 +108,7 @@ pwd # 显示远程服务器当前工作目录
 lpwd # 显示当前主机（本地）的当前工作目录
 ```
 
-## Next: rsync
+## 使用``rsync``上传和下载文件
 
 rsync的意思是'remote sync'，它可以把远端或者本地的文件进行同步。rsync使用[差分编码](https://zh.wikipedia.org/zh-hans/%E5%B7%AE%E5%88%86%E7%B7%A8%E7%A2%BC)来最小化数据传输的量。
 
@@ -122,7 +123,7 @@ $ touch dir1/file{1..100}
 
 使用``ls dir1``可以发现创建好了file1到file100这100个文件。
 
-## 同步两个目录
+### 同步两个目录
 
 然后可以使用：
 
@@ -286,7 +287,7 @@ alias rsync-synchronize="rsync -avzu --delete --progress -h"
 * <https://linuxize.com/post/how-to-exclude-files-and-directories-with-rsync/>
 * <https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories>
 
-## SSHFS
+## 使用SSHFS将远程目录挂载到本地
 
 sshfs是实现远程文件和本地文件互相传输的另一个思路，它实际上是将远程机器中的某个目录作为本地的一个挂载目录，这样就能通过本地文件管理实现文件传输。
 
@@ -316,15 +317,7 @@ Windows下可以考虑[WinFSP](http://www.secfs.net/winfsp/)和[SSHFS-Win](https
 * [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
 * [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
 
-### 参考：
-
-- [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
-- [Copying files to and from compute systems](http://ri.itservices.manchester.ac.uk/userdocs/file-transfer/)
-- [File Management FAQ](http://ri.itservices.manchester.ac.uk/userdocs/file-management/)
-- [Fastest way to extract tar.gz](https://serverfault.com/questions/270814/fastest-way-to-extract-tar-gz)
-- <https://missing.csail.mit.edu/2020/potpourri/#fuse>
-
-## Samba
+## 使用Samba上传和下载文件
 
 A Samba file server enables file sharing across different operating systems over a network. It lets you access your desktop files from a laptop and share files with Windows and macOS users.
 
@@ -383,4 +376,9 @@ sudo smbpasswd -a username
 
 ### 参考
 
+- [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
+- [Copying files to and from compute systems](http://ri.itservices.manchester.ac.uk/userdocs/file-transfer/)
+- [File Management FAQ](http://ri.itservices.manchester.ac.uk/userdocs/file-management/)
+- [Fastest way to extract tar.gz](https://serverfault.com/questions/270814/fastest-way-to-extract-tar-gz)
+- <https://missing.csail.mit.edu/2020/potpourri/#fuse>
 * <https://ubuntu.com/tutorials/install-and-configure-samba>
