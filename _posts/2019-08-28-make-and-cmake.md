@@ -100,5 +100,7 @@ add_executable(Tutorial tutorial.cxx)
 ```
 
 ## 参考资料
+
 * [Source code](https://github.com/Kitware/CMake/tree/master/Help/guide/tutorial)
 * [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
+* [Learn Makefiles With the tastiest examples](https://makefiletutorial.com/)

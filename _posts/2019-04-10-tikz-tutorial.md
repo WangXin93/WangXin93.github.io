@@ -8,20 +8,33 @@ toc: true
 
 ## 前言
 
-[TikZ](http://cremeronline.com/LaTeX/minimaltikz.pdf)是一个[LaTeX包](https://ctan.org/pkg/pgf?lang=en)，它可以帮助你来创造高质量的图片，尤其是复杂的图片。在绘制复杂的图片之前，首先需要对TikZ的基本操作进行了解。
+[TikZ](http://cremeronline.com/LaTeX/minimaltikz.pdf)是一个[LaTeX包](https://ctan.org/pkg/pgf?lang=en)，它可以帮助你来创造高质量的图片，尤其是复杂的图片。
+
+根据TikZ的作者Till Tantau，PGF/TikZ分别代表着"Portable Graphics Format"和"TikZ ist kein Zeichenprogramm"。PGF是引擎，TikZ是一个前端程序，也就是说如果你愿意的话也可以用PGF做引擎编写一个自己的前端程序。
+
+TikZ可以用在PostScript的输出文件上（dvips），或者用在PDF文件的生成上（pdflatex，dvipdfmx）。它和LaTeX以及Beamer结合地很好。
+
+很多用户使用TikZ来绘制二维图片，对于3D图片，还有其它的工具可以选择，比如Asymptote。
 
 ## TikZ基础
 
 ### Environment配置
 
-使用``TikZ``需要在tex文件中先加载对应的包：``\usepackage{tikz}``。然后绘制图形的代码需要写在``tikzpicture``环境中。一个最简单的TikZ代码的模版如下所示：
+在绘制复杂的图片之前，首先需要对TikZ的绘图环境配置进行了解。使用``TikZ``需要在tex文件中先加载对应的包：``\usepackage{tikz}``。你可以使用``\usetikzlibrary{arrows,shapes,trees,...}``来加载对应的TikZ扩展。
+
+你可以选择在一行文字内容中间插入绘制的图片，或者选择单独的行来绘整幅的图片。
+
+行内图片需要使用``\tikz ...;``来表示后面的内容是绘制的图片；绘制整幅图片的代码需要写在``tikzpicture``环境中。一个最简单的TikZ代码的模版如下所示：
 
 ```latex
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
+%\usetikzlibrary{arrows,shapes,trees,...}
 
 \begin{document}
+
+The inline commands are like ``\tikz \draw (0pt, 0pt) -- (20pt, 6pt);`` and ``\tikz \fill[orange] (0,0) circle (1ex);``.
 
 \begin{tikzpicture}
 % draw somthing here
@@ -42,9 +55,9 @@ toc: true
 \end{document}
 ```
 
-### ``\draw``命令
+### ``\draw``命令绘制简单的线条和形状
 
-``TikZ``中最简单也最常用的命令是``\draw``命令，如果希望绘制一个直线，需要使用输入这个命令同时给出开始位置的坐标，两个dash符号，接着是结束位置的坐标，然后使用分号结束一个statement。
+``TikZ``中最简单也最常用的命令是``\draw``命令，如果希望绘制一个直线，需要使用输入这个命令同时给出开始位置的坐标，两个dash符号，接着是结束位置的坐标，然后使用分号结束一个statement。绘图的坐标系统是从图纸的左下角开始的。
 
 ```latex
 \draw (0, 0) -- (4, 0);
@@ -188,7 +201,28 @@ toc: true
 
 ![shadedraw](/assets/2019-04-10-tikz-tutorial/shadedraw.svg)
 
-### 绘制坐标轴
+### 使用``\clip``和``scope``对绘制图形进行剪裁
+
+``\clip``指令让后续的绘图只有在剪裁的区域内部分才会被显示。为了闲置``\clip``的作用范围，可以使用``scope``环境进行限制。在下面的代码中，灰色的矩形只有在两个圆相交的区域内的部分被显示了出来，由于``scope``的作用，之后绘制的两个圆可以被完全显示。
+
+```latex
+\begin{tikzpicture}
+\draw (-2, 1.5) rectangle (2, -1.5);
+\begin{scope}
+\clip (-0.5, 0) circle (1);
+\clip (0.5, 0) circle (1);
+\fill[color=gray] (-2, 1.5) rectangle (2, -1.5);
+\end{scope}
+\draw (-0.5, 0) circle (1);
+\draw (0.5, 0) circle (1);
+\end{tikzpicture}
+```
+
+![clip](/assets/2019-04-10-tikz-tutorial/clip.svg)
+
+> ``\draw``，``\fill``，``\shade``，``\filldraw``分别是``\path[draw]``，``\path[fill]``，``\path[shade]``，``\path[fill,draw]``的缩写。一个Path是一系列的直线或者曲线线段。Path和Node是最基本的绘图元素。
+
+### 使用``node``绘制带点的坐标轴
 
 将上面的内容进行结合，可以绘制一个包含网络的坐标系，同时每个坐标轴上标有坐标。要想完成这个图的绘制，首先需要绘制两条普通的直线，它们分别从原点(0,0)出发，需要进行加粗并添加箭头，箭头可以在方括号中写入``->``来添加属性：
 
@@ -218,6 +252,25 @@ toc: true
 ```
 
 ![axes3](/assets/2019-04-10-tikz-tutorial/axes3.svg)
+
+### 使用``\node``预先绘制节点再连接
+
+另一种将标注连接起来的方法是先使用``\node``指令绘制多个节点，然后再绘制线条将这些节点连接起来。
+
+对于绘制单个节点，你可以使用``\path (x,y) node[Options] (node name) {TeX content of node}``或者``\node[Options] (node name) at (x,y) {TeX content of node}``。下面的例子预先绘制了3个节点，然后使用``\draw``命令绘制箭头将它们连接起来：
+
+```latex
+\begin{tikzpicture}[scale=.9, transform shape]
+\tikzstyle{every node} = [circle, fill=gray!30]
+\node (a) at (0, 0) {A};
+\node (b) at +(0: 1.5) {B};
+\node (c) at +(60: 1.5) {C};
+\foreach \from/\to in {a/b, b/c, c/a}
+\draw [->] (\from) -- (\to);
+\end{tikzpicture}
+```
+
+![node](/assets/2019-04-10-tikz-tutorial/node.svg)
 
 ## 从GeoGebra生成TikZ代码
 
@@ -586,7 +639,68 @@ child [concept color=purple!50] { node {TikZ Series}
 
 ## 使用 TikZ 绘制 Neural Network
 
+使用TikZ绘制Neural Network的工具之一是开源包 [PlotNeuralNet](https://github.com/HarisIqbal88/PlotNeuralNet).
+
+一个最小化的绘制Neural Network的例子如下，它的功能是绘制了两个连续的卷积层。首先需要使用``git``下载PlotNeuralNet软件包，然后到其下的``example``目录，新建一个``tex``文件，输入下面的内容。
+
+其中在preamble部分的``\subimport{../../layers/}{init}``导入了软件宝中的``init.tex``文件，之后是导入了tikz扩展``positioning``和``3d``，``\dev\Convolor{rgb:yellow,5;red,2.5;white,5}``定义了用于填充的颜色，``\tikzstyle{connection}``定义了一个``connectin``风格用于连接不同的卷积层。卷积层的绘制部分使用``\pic``指令来绘制``Box``元素，``\draw[connection]``用来绘制之前定义好的``connection``风格的连接线。
+
+```latex
+\documentclass[border=8pt, multi, tikz]{standalone} 
+\usepackage{import}
+\subimport{../../layers/}{init}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d} %for including external image 
+
+\def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+\def\PoolColor{rgb:red,1;black,0.3}
+
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{connection}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+
+\pic[shift={(0,0,0)}] at (0,0,0) 
+    {Box={
+        name=conv0,
+        caption= ,
+        xlabel={{1, }},
+        zlabel=32,
+        fill=\ConvColor,
+        height=32,
+        width=1,
+        depth=32
+        }
+    };
+
+
+\pic[shift={(1,0,0)}] at (conv0-east) 
+    {Box={
+        name=conv1,
+        caption= ,
+        xlabel={{6, }},
+        zlabel=28,
+        fill=\ConvColor,
+        height=28,
+        width=6,
+        depth=28
+        }
+    };
+
+
+\draw [connection]  (conv0-east)    -- node {\midarrow} (conv1-west);
+
+
+\end{tikzpicture}
+\end{document}
+```
+
+![minimal](/assets/2019-04-10-tikz-tutorial/minimal.svg)
+
 ## 参考
 
 * [LaTeX Graphics using TikZ Series](https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_1)%E2%80%94Basic_Drawing)
+* [PGF/TikZ - Graphics for LaTeX A Tutorial from Uni Leipzig](https://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf)
+* [A very minimal introduction to TikZ](http://cremeronline.com/LaTeX/minimaltikz.pdf)
+* [TikZ & PGF Manual](http://cremeronline.com/LaTeX/minimaltikz.pdf)
+* [A great source of examples: TEXample.net](http://www.texample.net/tikz/)
 * [PlotNeuralNet Github](https://github.com/HarisIqbal88/PlotNeuralNet)
