@@ -6,7 +6,15 @@ categories: Python
 toc: true
 ---
 
-## Virtualenv
+## 前言
+
+使用Python开发程序的工作者会使用[``pip``](https://en.wikipedia.org/wiki/Pip_(package_manager)或者[``easy_install``](https://pythonhosted.org/setuptools/easy_install.html)来安装其它开发者编写的软件包来帮助自己的开发过程。大多数情况下，Python可以自动地寻找已经安装好的软件包用户不需要额外操作，但是如果在同时开发多个项目的时候可能会遇到问题。
+
+这个问题是不同的项目可能需要不同的软件包，但是Python这时候还不能够同时处理两个不同版本的软件包。如果对Python寻找软件包的原理稍作了解就可以知道其中的原因。Python寻找安装包的方法是从预定义的路径中去搜索，有的包被称为system package，它们是Python标准库中的一部分，你可以在自己的电脑用命令``python -c "import sys; print(sys.prefix)"``来看到这个路径；另一些包被称为site package，它们是从第三方下载安装的包，你可以通过命令``python -c "import site; print(site.getsitepackages())"``来看到这个路径。所有的项目都会从上面打印出的路径中寻找包，但是如果*项目A*使用v1.0的第三方包，*项目B*使用v2.0的第三方包，如果同时安装两个版本的包，这两个包都会被放在同一个存放site package的路径，这时候Python就不能够区分到底为你调用哪个版本的包。
+
+这个问题的解决办法是使用*Python虚拟环境*（[virtual environment](https://docs.python.org/3/library/venv.html#venv-def)）。一个虚拟环境是一个独立的Python环境，这个独立的环境提供独立的Python解释器，库，以及脚本，它和其它虚拟环境以及系统安装的Python分开，从而避免了其它项目安装的软件包的带来的冲突。你可以使用不同的工具来创建这样的虚拟环境，比如[virtualenv](https://virtualenv.pypa.io/en/latest/)，[venv](https://docs.python.org/3/library/venv.html)，pyenv，conda等。
+
+## ``virtualenv``
 
 ### 安装
 
@@ -22,7 +30,7 @@ $ source .env/bin/activate
 $ deactivate
 ```
 
-## Venv
+## ``venv``
 
 ### 安装
 
@@ -37,7 +45,7 @@ $ source .env/bin/activate
 $ deactivate
 ```
 
-## Virtualenvwrapper
+## ``virtualenvwrapper``
 
 Virtualenvwrapper是virtualenv的进一步扩展，它将所有的虚拟环境集中到一个目录下进行管理，避免了每个项目创建不同的虚拟环境，因此它的好处有：
 
@@ -78,7 +86,7 @@ Virutalenvwrapper 常用的命令包括：
 * deactivate: 离开虚拟环境
 
 
-## Pipenv
+## ``pipenv``
 `pipenv`是`python`项目的依赖管理器，近来社区不断推广使用之，比如董伟明的[这篇](http://www.dongwm.com/archives/%E4%BD%BF%E7%94%A8pipenv%E7%AE%A1%E7%90%86%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE/), 不光介绍了`pipenv`的特性，还介绍了一个利用`pipenv`的特性来卸载已安装的包及其所有依赖项的方法，点赞。本文为`pipenv`的速成介绍，适合熟悉`virtualenv`的用户，可以帮助`python`用户从`virtualenv`平滑过渡到`pipenv`。
 
 ---
@@ -196,7 +204,7 @@ pipenv check --style project.py
 $ pipenv run pip freeze
 ```
 
-## Pyenv
+## ``pyenv``
 
 [Pyenv](https://github.com/pyenv/pyenv)是另一种切换不同python版本的解决方案。它的解决思路是：
 
@@ -205,7 +213,7 @@ $ pipenv run pip freeze
 * 允许使用一个环境变量来重写python版本
 * 允许通过命令来搜寻多个python版本，这对于跨python版本的测试（比如使用tox）会有帮助。
 
-## Pipx
+## ``pipx``
 
 [Pipx](https://github.com/pipxproject/pipx)用来帮助安装使用python编写的命令行工具。和pip相比，pip是用来安装python编写的库，而pipx是用来安装已经发布的python应用。使用pipx的优点在于：
 
@@ -228,3 +236,93 @@ pipx completions
 ```
 
 pipx文档在[这里](https://pipxproject.github.io/pipx/)。
+
+## ``conda``
+Anaconda版Python中自带了虚拟环境管理功能，下面记录一些conda虚拟环境的基本用法。
+
+### 创建Python虚拟环境
+
+```
+$ conda create -n env_name python=X.X
+```
+
+这里env_name是即将创建的虚拟环境的名字，python=X.X可以设定虚拟环境中的Python版本。创建完成后可以用``conda env list``确认虚拟环境已经成功创建。
+
+###  激活虚拟环境
+
+```
+$ source activate env_name  # Linux and Mac
+$ activate env_name         # Windows
+```
+
+激活成功后可以使用``python --version``来检查当前Python版本是否是想要的。如果要退出虚拟环境使用：
+
+```
+$ source deactive           # Linux and Max
+$ deactive                  # Windows
+```
+
+对于不想要的虚拟环境使用下面指令删除：
+
+```
+$ conda remove -n env_name --all
+```
+
+### 包管理
+
+如果想要安装Anaconda发行版中所有的包可以使用：
+
+```
+$ conda install anaconda
+```
+
+如果不需要所有的包，可以使用下面命令安装指定某一个包：
+
+```
+$ conda install -n env_name pandas
+```
+
+安装完成后可以使用``conda list``来查看已经安装了哪些包或者使用``conda list -n env_name``查看指定环境中有哪些包。使用：
+
+```
+$ conda search pyqtgraph
+```
+
+可以搜索包，如果要更新包可以使用：
+
+```
+$ conda update numpy
+$ conda update anaconda
+```
+
+对于不想要的包可以使用下面指令卸载：
+
+```
+$ conda remove numpy
+$ conda remove --name env_name numpy
+```
+
+### 设置下载镜像
+
+访问国外资源网速太慢，使用镜像可以加速包的下载速度非常之多。使用国内镜像的具体方法如下：
+
+```
+$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+$ conda config --set show_channel_urls yes
+```
+
+或者修改`.condarc`文件，Windows下它的目录为：`C://Users/username/.condarc`，Linux或者Max下它的路径为：`~/.condarc`。修改它为如下内容：
+
+```
+channels:
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+ - defaults
+show_channel_urls: yes
+```
+
+## 参考链接
+
+* [Python Virtual Environments: A Primer](https://realpython.com/python-virtual-environments-a-primer/)
+* [There’s no magic: virtualenv edition](https://www.recurse.com/blog/14-there-is-no-magic-virtualenv-edition)
+* [Managing Multiple Python Versions With pyenv](https://realpython.com/intro-to-pyenv/)
+* [Conda Documentation](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
