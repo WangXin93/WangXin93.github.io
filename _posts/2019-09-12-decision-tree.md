@@ -14,9 +14,17 @@ toc: true
 
 创建决策树的过程其实是一个划分输入空间的问题。这个过程可以通过贪心搜索（greedy search）的方法来进行搜索，即在每一个节点的选择时候，每一个变量的每一种可能分割的方法都会被尝试，然后通过一个损失函数来决定什么是当前最优的分割点。对于回归任务，可以使用sum squared error来作为损失函数；对于分类任务，通常使用基尼系数（Gini Index）作为损失函数来衡量这个节点的纯度，流入当前节点的样本的种类越单一，纯度越高。分割决策树的过程可以通过定义最大深度和节点包含的最小样本数来停止递归。
 
-## 熵
+## 熵 和 熵的增益
 
-## 熵的增益
+熵（Entropy）和熵的增益（Information Gain）是用来衡量是否得到一个很好的分割节点的指标。
+
+$$
+H(S) = - \sum_i p_i(S)\log_2 p_i(S)
+$$
+
+$$
+IG(S, A) = H(S) - \sum_{v \in Values(A)} \frac{|S_v|}{S}H(S_v)
+$$
 
 ## 基尼系数
 
@@ -181,11 +189,20 @@ c = np.count_nonzero(y_hat == y_test)
 print("Accuracy: {}/{}={:.2%}".format(c, len(y_test), c / len(y_test)))
 ```
 
+## Random Forest
 
+为了提高性能表现，我们可以使用使用许多的树，每个树使用随机一部分的特征进行训练。
+
+* 每个树都使用所有特征中随机的一部分特征进行训练
+* 对于分类任务，m 通常取值为 p 的平方根, m 是选择的特征数量，p 是全部特征的数量
+
+为什么随机森林能够提高性能表现？通过每个数随机去掉了一些特征，每个训练后的决策树相互独立，因此平均后的结果减少了模型的variance。
 
 ## 参考资料
 
 ### 文档
+
+* [Chapter 8 of Introduction to Statistical Learning by Gareth James et al.](https://www.statlearning.com/)
 
 * [How To Implement The Decision Tree Algorithm From Scratch In Python](https://machinelearningmastery.com/implement-decision-tree-algorithm-scratch-python/)
 * [Classification And Regression Trees for Machine Learning](https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/)
