@@ -140,7 +140,9 @@ doc.add_picture("flower.jpg", width=docx.shared.Inches(4), height=docx.shared.In
 
 ## 结语
 
-Python 可以使用``python-docx``库完成对 Word 文件内容的读取，文件的段落，run，标题，图片的写入，从而完成 Word 文件的自动化操作，这可以用在批量修改或者生成 Word 文件，以及使用其他自然语言处理应用来处理 Word 文件的内容。在[官方文档](https://python-docx.readthedocs.io/en/latest/)中，还可以找到更多``python-docx``的操作方法比如字体和表格等等。
+Python 可以使用``python-docx``库完成对 Word 文件内容的读取，文件的段落，run，标题，图片的写入，从而完成 Word 文件的自动化操作，这可以用在批量修改或者生成 Word 文件，以及使用其他自然语言处理应用来处理 Word 文件的内容，比如批量给 Word 文档添加结尾，使用马尔可夫链随机生成文字内容来生成多个 Word 文档。在[官方文档](https://python-docx.readthedocs.io/en/latest/)中，还可以找到更多``python-docx``的操作方法比如字体和表格等等。
+
+除了 Word 软件，Python还可以使用[``openpyxl``](https://realpython.com/openpyxl-excel-spreadsheets-python/)库操作 Excel 表格，使用[``python-ppt``](https://python-pptx.readthedocs.io/en/latest/)库来操作 PPT，从而可以通过编写代码完成这两个软件的自动化操作，减少重复工作的时间。
 
 ## 参考
 
