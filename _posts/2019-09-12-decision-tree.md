@@ -50,8 +50,6 @@ FUNC TreeGenerate(dataset):
 		返回 Tree(TreeGenerate(left), TreeGenerate(right), 当前分割点条件)	
 ```
 
-
-
 ## 使用Python实现决策树
 
 [banknote](http://archive.ics.uci.edu/ml/datasets/banknote+authentication) 数据集包含1372条记录，每条记录包含5个变量，其中最后一个变量代表这个banknote是否是真的。这是一个典型的二分类问题。
@@ -168,8 +166,6 @@ if __name__ == "__main__":
     print("Accuracy: {:.2f}".format(acc))
 ```
 
-
-
 ## 使用sklearn实现决策树
 
 ```python
@@ -177,16 +173,40 @@ import numpy as np
 import sklearn.datasets as ds
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+# Load dataset and split
 X, y = ds.load_iris(return_X_y=True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=2033, test_size=0.33)
 
+# Single Decision Tree
 clf = DecisionTreeClassifier(criterion="entropy", min_samples_leaf=3)
+
+# Train phase
 dt_clf = clf.fit(X_train, y_train)
 
+# Predict phase
 y_hat = dt_clf.predict(X_test)
+
+# Evaluate phase
 c = np.count_nonzero(y_hat == y_test)
 print("Accuracy: {}/{}={:.2%}".format(c, len(y_test), c / len(y_test)))
+
+print("classification report:")
+print(classification_report(y_test, y_hat))
+
+sns.heatmap(
+    data=confusion_matrix(y_test, y_hat),
+    annot=True,cmap='rainbow',
+    linewidths=1.0,
+    annot_kws={'size':8},
+    yticklabels=['setosa', 'versicolor', 'virginica'],
+    xticklabels=['setosa', 'versicolor', 'virginica'],
+)
+plt.yticks(rotation=0)
+plt.show()
+plt.savefig("heatmap.svg")
 ```
 
 ## Random Forest
@@ -198,15 +218,133 @@ print("Accuracy: {}/{}={:.2%}".format(c, len(y_test), c / len(y_test)))
 
 为什么随机森林能够提高性能表现？通过每个数随机去掉了一些特征，每个训练后的决策树相互独立，因此平均后的结果减少了模型的variance。
 
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+rfc = RandomForestClassifier(n_estimators=100)
+
+# Train phase
+rfc.fit(X_train, y_train)
+
+# Evaluate phase
+y_hat = rfc.predict(X_test)
+
+c = np.count_nonzero(y_hat == y_test)
+print("Accuracy: {}/{}={:.2%}".format(c, len(y_test), c / len(y_test)))
+
+print(confusion_matrix(y_test, y_hat))
+
+print(classification_report(y_test, y_hat))
+```
+
+## 随机森林超参数的网格搜索
+
+交叉验证和网格搜索的目的是为了寻找最优的超参数。
+
+```python
+
+from sklearn.model_selection import GridSearchCV
+# Create the parameter grid based on the results of random search 
+param_grid = {
+    'bootstrap': [True],
+    'max_depth': [80, 90, 100, 110],
+    'max_features': [2, 3],
+    'min_samples_leaf': [3, 4, 5],
+    'min_samples_split': [8, 10, 12],
+    'n_estimators': [100, 200, 300, 1000]
+}
+
+rfc = RandomForestClassifier()
+
+grid_search = GridSearchCV(estimator = rfc, param_grid = param_grid, 
+                          cv = 3, n_jobs = -1, verbose = 2)
+
+# Train phase
+grid_search.fit(X_train, y_train)
+
+grid_search.best_params_
+
+best_grid = grid_search.best_estimator_
+
+y_hat = best_grid.predict(X_test)
+
+# Evaluate phase
+c = np.count_nonzero(y_hat == y_test)
+print("Accuracy: {}/{}={:.2%}".format(c, len(y_test), c / len(y_test)))
+
+print(confusion_matrix(y_test, y_hat))
+
+print(classification_report(y_test, y_hat))
+```
+
+![heatmap](/assets/2019-09-12-decision-tree/heatmap.png)
+
+## 决策树的可视化
+
+决策树的可视化可以使用 [graphviz](https://graphviz.org/download/) 和 `pydot` 库来实现。它们都可以通过命令进行安装。
+
+要想安装``graphviz``，对于 linux 用户:
+
+```
+sudo apt install graphviz
+```
+
+对于 mac 用户:
+
+```
+brew install graphviz
+```
+
+对于 windows 用户:
+
+```
+choco install graphviz
+```
+
+安装``pydot``包可以使用``pip``命令：
+
+```
+pip install pydot
+```
+
+```python
+from IPython.display import Image
+from io import StringIO
+from sklearn.tree import export_graphviz
+import pydot
+
+feature_names = ['Petal Length', 'Petal Width', 'Sepal Length', 'Sepal Width']
+class_names = ['setosa', 'versicolor', 'virginica']
+
+dotfile = StringIO()
+
+export_graphviz(
+    dt_clf, # decision tree or singel tree in random forest
+    out_file=dotfile,
+    feature_names=feature_names, 
+    class_names=class_names,
+    filled=True,
+    rounded=True
+)
+
+(graph,) = pydot.graph_from_dot_data(dotfile.getvalue())
+# graph.write_png("tree.png") # uncomment this if you want to save the picture
+Image(graph.create_png())
+```
+
+![tree_vis](/assets/2019-09-12-decision-tree/tree_vis.png)
+
 ## 参考资料
 
 ### 文档
 
 * [Chapter 8 of Introduction to Statistical Learning by Gareth James et al.](https://www.statlearning.com/)
-
 * [How To Implement The Decision Tree Algorithm From Scratch In Python](https://machinelearningmastery.com/implement-decision-tree-algorithm-scratch-python/)
 * [Classification And Regression Trees for Machine Learning](https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/)
 * [A Complete Tutorial on Tree Based Modeling from Scratch (in R & Python)](https://www.analyticsvidhya.com/blog/2016/04/complete-tutorial-tree-based-modeling-scratch-in-python/)
+* [Hyperparameter Tuning the Random Forest in Python](https://towardsdatascience.com/hyperparameter-tuning-the-random-forest-in-python-using-scikit-learn-28d2aa77dd74)
+* [How to Implement Random Forest From Scratch in Python](https://machinelearningmastery.com/implement-random-forest-scratch-python/)
+* [Enchanted Random Forest](https://towardsdatascience.com/enchanted-random-forest-b08d418cb411)
 
 ### 代码
 
