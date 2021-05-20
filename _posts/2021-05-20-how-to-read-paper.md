@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "如何阅读一篇论文"
-date:   2020-07-02 00:10:05 +0100
-categories: Cooperation
+date:   2021-05-21 09:41:35 +0800
+categories: Research
 toc: true
 ---
 

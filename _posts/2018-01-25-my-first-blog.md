@@ -151,8 +151,30 @@ Add similar search bar powered by [Algolia](https://www.algolia.com/):
 
 ---
 
+Ruby 术语简介
+
+Jekyll使用Ruby编写的。为了很好的理解Jekyll的配置，下面的一些术语会有帮助。
+
+* Gems：RubyGems 是 Ruby 的一个包管理器，它提供了一个分发 Ruby 程序和库的标准格式，Gem 是 Ruby 程序的标准包，每个 gem 都有特殊的功能，你可以在不同的项目使用共同的 gem，这些 gem 的功能有比如：转化 Ruby 对象成 JSON 格式，分页，和 GitHub API 进行交互等。Jekyll 是一个 gem，其它的 Jekyll 插件也是 gem，比如jekyll-feed，jekyll-seo-tag，jekyll-archives。
+* Gemfile：一个``Gemfile``是你的站点要用的一系列的 gem。每个站点在主文件夹都有一个``Gemfile``，一个简单的Jekyll站点的``Gemfile``如下。
+* Bundle: [``Bundle``](https://rubygems.org/gems/bundler)是一个用来安装``Gemfile``中所有gem的gem。你可以使用``gem install bundler``来安装bundler，你只需要安装它一次，不是每次创建 Jekyll 项目都要安装。你可以使用``bundle install``来安装Gemfile中所有的gem，使用``bundle exec jekyll serve``来其中本地的jekyll服务。
+
+```gemfile
+source "https://rubygems.org"
+
+gem "jekyll"
+
+group :jekyll_plugins do
+  gem "jekyll-feed"
+  gem "jekyll-seo-tag"
+end
+```
+
+---
+
 ## 参考
 
+* [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
 * [quick-ref-jekyll-markdown.md](https://gist.github.com/roachhd/779fa77e9b90fe945b0c)
 * [Jekyll: Markdown Basics](http://simpleprimate.com/blog/markdown-basics)
 * Jeklly使用Liquid模板语言来控制模板的格式，这里可以学习Liquid基础：[Jekyll: Liquid Syntax Basics](http://simpleprimate.com/blog/liquid-syntax)
