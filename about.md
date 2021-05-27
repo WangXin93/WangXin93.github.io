@@ -1,17 +1,22 @@
 ---
-layout: page
+layout: about
 title: About
 permalink: /about/
 ---
+
+## Links
 
 * CV [[EN](/assets/cv/en/cv_en.pdf)] [[CN](/assets/cv/cn/cv_cn.pdf)]
 * [Wang Xin's Recipes](/recipes/)
 * [WeekWork](/WeekWork/)
 
+## Quotes
+
 > 北冥有鱼，其名为鲲。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
 > 《齐谐》者，志怪者也。《谐》之言曰：“鹏之徙于南冥也，水击三千里，抟（tuán）扶摇而上者九万里，去以六月息者也。”野马也，尘埃也，生物之以息相吹也。天之苍苍，其正色邪？其远而无所至极邪？其视下也，亦若是则已矣。"
 > --《[庄子](https://zh.m.wikisource.org/zh-hans/%E8%8E%8A%E5%AD%90/%E9%80%8D%E9%81%99%E9%81%8A)》
 
-<br/>
+## QRCode
+
 <img src="/assets/qrcode.png" width = "200" height = "200" alt="qrcode"/>
 

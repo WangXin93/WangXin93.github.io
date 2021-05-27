@@ -4,18 +4,62 @@ layout: default
 
 <div class="home">
 
-  <div class="home-intro-box">
-    <div style="flex: 1; padding-right: 10px">
-      <img src="/assets/index/me.jpg" />
-    </div>
-    <div style="flex: 1; overflow: hidden;">
-      <p>I'm a Ph.D candidate at the College of Textile, Donghua University in Shanghai, China.</p>
-      <p>My research interest is an interdisciplinary study between fashion, multimedia, and artificial intelligence. It includes recognition and understanding of fashion images, developing methods to combine information from different modalities like visual and textual information, fashion compatibility and recommendation system, and fashion image generation.</p>
-    </div>
-  </div>
+    <h2 class="page-heading">Recent Blogs</h2>
 
-  <br>
+    {%- if site.posts.size > 0 -%}
+    <ul class="post-list">
+        {%- for post in site.posts limit: 5 -%}
+        <li>
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            <span class="post-meta">{{ post.date | date: date_format }}</span> &nbsp;
+            {%- if post.categories.size > 0 -%}
+            {%- for category in post.categories -%}
+            <a href="{{ site.baseurl }}/search/#{{ category | slugify }}"><code><nobr>{{ category }}</nobr></code></a>
+            {%- endfor -%}
+            {%- endif -%}
+            <h3>
+                <a class="post-link" href="{{ post.url | relative_url }}">
+                    {{ post.title | escape }}
+                </a>
+            </h3>
+        </li>
+        {%- endfor -%}
+    </ul>
 
-  {{ content }}
+    {%- endif -%}
+
+    <h2 class="page-heading">Selected Publications</h2>
+
+    <ul class="post-list">
+        <li>
+            <a href="https://ieeexplore.ieee.org/abstract/document/8836494">
+                Inpainting-based Virtual Try-On Network for Selective Garment Transfer
+            </a> <br/>
+            Li Yu, Yueqi Zhong, Xin Wang <br/>
+            IEEE Access <br/>
+            [<a href="https://ieeexplore.ieee.org/abstract/document/8836494">Paper</a>]
+            [<a href="https://github.com/maktu6/Inpaint-TON">Code</a>]
+        </li>
+        <li>
+            <a href="https://arxiv.org/abs/1907.11496">
+                Outfit Compatibility Prediction and Diagnosis with Multi-Layered Comparison Network
+            </a> <br/>
+            Xin Wang, Bo Wu, Yueqi Zhong <br/>
+            ACM Multimedia 2019 <br/>
+            [<a href="https://github.com/WangXin93/fashion_compatibility_mcn">Code</a>]
+            [<a href="https://arxiv.org/abs/1907.11496">Arxiv</a>]
+            [<a href="https://dl.acm.org/citation.cfm?id=3350909">Paper</a>]
+            [<a href="https://dl.acm.org/doi/10.1145/3394171.3414812">Reproducibility</a>]
+            [<a href="https://outfit-diagnosis.herokuapp.com/">Demo</a>]
+        </li>
+        <li>
+            <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-99695-0_12">
+                Fabric Identification Using Convolutional Neural Network
+            </a> <br/>
+            Xin Wang, Ge Wu, Yueqi Zhong <br/>
+            Artificial Intelligence on Fashion and Textile Conference (AIFT), 2018. <br/>
+            [<a href="https://github.com/WangXin93/FabricID">Code</a>]
+        </li>
+    </ul>
 
 </div>

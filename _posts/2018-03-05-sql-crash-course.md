@@ -1,22 +1,30 @@
 ---
 layout: post
-title:  "SQL使用笔记"
+title:  "MySQL使用笔记"
 date:   2018-03-05 16:27:14 +0800
 categories: SQL
 toc: true
 ---
 
 ## MySQL
+
 Mysql使用笔记。
 
 ---
 
 ### 安装mysql
+
+#### Ubuntu
+
 ```bash
-$ sudo apt-get install mysql-server
+sudo apt-get update # 更新 apt package index
+sudo apt-get install mysql-server # 安装 MySQL 包
 ```
 
+安装过程结束后，MySQL服务会自动启动。你可以使用``systemctl status mysql``来查看到当前的运行状态。
+
 ### 连接数据库
+
 ```bash
 $ mysql -u user -p
 mysql> QUIT # 退出连接
@@ -27,35 +35,41 @@ mysql> QUIT # 退出连接
 ---
 
 ### 查看数据库
+
 ```sql
 mysql> SHOW DATABASE;
 ```
 
 ### 创建数据库
+
 ```sql
 mysql> CREATE DATABASE db1;
 ```
 
 ### 使用数据库
+
 ```sql
 mysql> USE db1;
 ```
 
 ### 显示当前数据库中所有表
+
 ```sql
 mysql> TABLES;
 ```
 
 ### 删除数据库
+
 ```sql
 mysql> DROP DATABASE db1;
 ```
 
 ### 删除表
+
 ```sql
 mysql> DROP TABLE tablename;
 ```
- 
+
 ---
 
 ### 表操作
@@ -152,6 +166,15 @@ LEFT JOIN animals a ON
 
 * Difference between INNTER JOIN and LEFT JOIN: <https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins>
 * JOIN in SQLite: <https://www.sqlitetutorial.net/sqlite-join/>
+
+### Python Pandas 数据导出到 MySQL
+
+```python
+from sqlalchemy import create_engine
+engine = create_engine("mysql://username:password@host/database_name")
+con = engine.connect()
+df.to_sql('df', con=con, if_exists='replace',index=False)
+```
 
 ## 参考
 
