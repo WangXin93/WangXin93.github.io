@@ -151,9 +151,11 @@ for i in content:
 ---
 
 ## 6. 更多关于XPath的资料：
+
 - Use XPath with Scrapy Selectors: <https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors>
 - Learn XPath through examples: <http://zvon.org/comp/r/tut-XPath_1.html>
 - How to think in XPath: <http://plasmasturm.org/log/xpath101/>
 - w3c教程: <http://www.w3school.com.cn/xpath/>
 - 微软XPath语法界面: <https://msdn.microsoft.com/en-us/enus/library/ms256471>
+- 可以爬取的网页：<http://books.toscrape.com/>
 

@@ -5,7 +5,9 @@ date:   2018-01-25 20:26:46 +0800
 categories: Jekyll
 ---
 
-这是我的第一篇博客。 这里记录Jekyll中Markdown的语法, Source file 在[这里](https://github.com/WangXin93/WangXin93.github.io/blob/master/_posts/2018-01-25-my-first-blog.md)。
+这是我的第一篇博客。 这里记录Jekyll中Markdown的语法, 代码源文件在[这里](https://github.com/WangXin93/WangXin93.github.io/blob/master/_posts/2018-01-25-my-first-blog.md)。
+
+我的一些博客会用中文，一些博客会用英文，我会尽量避免两种语言混合使用，因为读者在阅读中切换不同的语言会增加额外的负担。
 
 ---
 

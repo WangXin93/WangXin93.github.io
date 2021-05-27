@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Style Transfer"
+title:  "风格迁移算法"
 date: 2018-11-20 19:50:16 +0800
 categories: Algorithm
 toc: true

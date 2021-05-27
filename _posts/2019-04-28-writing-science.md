@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  "How to Write Papers That Get Cited and Proposals That Get Funded: Impression After Reading"
+title:  如何写作出高质量的论文
 date: 2019-04-28 19:07:00 +0800
 categories: Writing
 toc: true
 ---
 
 ## 前言
+
+这是一篇 Joshua Schimel 的《How to Write Papers That Get Cited and Proposals That Get Funded》的读后感。
 
 * 提高写作水平的方法是要像一个**写作者**一样工作，堆砌工作时间不会让你的写作变的更出色。学习写作的渠道有很多：和mentor交流，从审稿人意见中学习，思考交流策略，反复读书中的写作，或者参加一些互动课程……
 * 写作有自己的原则。原则和规则不同，学会区分它，一位遵循规则可以提高写作水平，但是为了必要的写作目的可以打破规则。但是写作原则一旦不遵守，写作就会很难看。

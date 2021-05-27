@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "阅读《Pyramid Princeple》"
+title:  "金字塔原理（Pyramid Princeple）"
 date: 2020-07-24 19:02:34 +0100
 categories: Writing
 toc: true
