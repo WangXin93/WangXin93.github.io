@@ -2,9 +2,11 @@
 layout: post
 title:  "Latex to MS Word（Latex文件转Word文档）"
 date: 2020-11-17 11:20:22 +0800
-categories: LaTeX
+categories: LaTeX Word
 toc: true
 ---
+
+> LaTeX 是非常适合排版和编写论文的工具，但是很多情况下我们还是需要按要求提交 Word 文件。如果有一个将 LaTeX 文档转化为 Word 文档的方案就可以帮助 LaTeX 用户专心在一个工具上编写，而将提交的 Word 文件交给转化工具。这篇文章将会介绍如何使用 pandoc 来将 LaTeX 文件转化为 Word 文件，同时保留其中的文字内容，公式，图片，表格，引用和参考文献。
 
 ## TLDR
 

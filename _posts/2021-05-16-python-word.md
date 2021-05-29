@@ -2,9 +2,11 @@
 layout: post
 title:  "使用Python自动化操作Word文档"
 date:   2021-05-16 09:28:29 +0800
-categories: Python
+categories: Python Word
 toc: true
 ---
+
+> 办公自动化是 Python 提高工作效率的应用场景之一。使用 Python 批量修改，生成以及分析 Word 文档可以节省用户很多的拖拽鼠标和敲击键盘的时间。本篇文章将会介绍如何使用 Python 来操作 Word 文档编辑中的文件读取，文件写入，标题插入，段落添加，以及图片的插入。
 
 ## 前言
 

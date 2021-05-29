@@ -10,13 +10,13 @@ layout: default
 
     {%- if site.posts.size > 0 -%}
     <ul class="post-list">
-        {%- for post in site.posts limit: 5 -%}
+        {%- for post in site.posts limit: 3 -%}
         <li>
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
             <span class="post-meta">{{ post.date | date: date_format }}</span> &nbsp;
             {%- if post.categories.size > 0 -%}
             {%- for category in post.categories -%}
-            <a href="{{ site.baseurl }}/search/#{{ category | slugify }}"><code><nobr>{{ category }}</nobr></code></a>
+            <a href="{{ site.baseurl }}/search/#{{ category | slugify }}"><code><nobr>{{ category }}</nobr></code></a> &nbsp;
             {%- endfor -%}
             {%- endif -%}
             <h3>
@@ -24,9 +24,7 @@ layout: default
                     {{ post.title | escape }}
                 </a>
             </h3>
-            {%- if site.show_excerpts -%}
-              {{ post.excerpt }}
-            {%- endif -%}
+            {{ post.excerpt }}
         </li>
         {%- endfor -%}
     </ul>

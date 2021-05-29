@@ -2,9 +2,11 @@
 layout: post
 title:  "使用Python生成词云图片"
 date:   2021-05-16 18:19:35 +0800
-categories: Python
+categories: Python NLP
 toc: true
 ---
+
+> 词云图片将一组词语排列到一张图片内，并根据词频来设置词语的大小，它是可视化文本数据的重要方法。本篇文章将会介绍如何使用 Python 的第三方库 wordcloud 来生成新浪热搜词语的词云图片，并自定义词云图片的字体，尺寸，颜色，形状。
 
 ## 前言
 
