@@ -109,5 +109,8 @@ CycleGAN的整体框架如下：
 ![MIXGAN](https://i.imgur.com/404Dvex.png)
 
 ## 参考
+
+* [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://arxiv.org/pdf/1603.08155.pdf)
+* [A LEARNED REPRESENTATION FOR ARTISTIC STYLE](https://arxiv.org/pdf/1610.07629.pdf)
 * [Understanding and Implementing CycleGAN in TensorFlow](https://hardikbansal.github.io/CycleGANBlog/)
 * [谈谈图像的style transfer（二）](http://www.voidcn.com/article/p-bvwsffhl-bbs.html)
