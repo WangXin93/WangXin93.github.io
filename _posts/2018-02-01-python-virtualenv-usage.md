@@ -277,7 +277,7 @@ conda remove -n env_name --all
 $ conda install anaconda
 ```
 
-如果不需要所有的包，可以使用下面命令安装指定某一个包：
+这会把这个包安装到当前的conda环境，如果希望安装到指定的conda环境可以使用：
 
 ```
 conda install -n env_name pandas
