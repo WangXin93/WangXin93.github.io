@@ -237,13 +237,14 @@ pipx completions
 
 pipx文档在[这里](https://pipxproject.github.io/pipx/)。
 
-## ``conda``
-Anaconda版Python中自带了虚拟环境管理功能，下面记录一些conda虚拟环境的基本用法。
+## conda
+
+Anaconda 是 Python 和 R 编程语言为数据科学，机器学习而制作的发行版，它的特色是简化了软件包的管理和配置，并且包含了大量常见的数据科学用到的软件包。当你安装好 anaconda 发行版之后，你会发现同时会得到一个 conda 软件，conda 是一个跨平台的软件包和环境的管理器，你可以在 Mac，Windows，Linux 上都可以使用 conda 来安装，运行，升级软件包，你可以创建，更新，或者切换不同的 conda 环境来管理不同程序的运行环境。conda 是针对 python 开发的，但是你也可以用它来为其它编程语言管理环境，比如R, Ruby, Lua, Scala, Java, JavaScript, C/ C++, FORTRAN。
 
 ### 创建Python虚拟环境
 
 ```
-$ conda create -n env_name python=X.X
+conda create -n env_name python=X.X
 ```
 
 这里env_name是即将创建的虚拟环境的名字，python=X.X可以设定虚拟环境中的Python版本。创建完成后可以用``conda env list``确认虚拟环境已经成功创建。
@@ -251,21 +252,21 @@ $ conda create -n env_name python=X.X
 ###  激活虚拟环境
 
 ```
-$ source activate env_name  # Linux and Mac
-$ activate env_name         # Windows
+source activate env_name  # Linux and Mac
+activate env_name         # Windows
 ```
 
 激活成功后可以使用``python --version``来检查当前Python版本是否是想要的。如果要退出虚拟环境使用：
 
 ```
-$ source deactive           # Linux and Max
-$ deactive                  # Windows
+source deactive           # Linux and Max
+deactive                  # Windows
 ```
 
 对于不想要的虚拟环境使用下面指令删除：
 
 ```
-$ conda remove -n env_name --all
+conda remove -n env_name --all
 ```
 
 ### 包管理
@@ -279,27 +280,34 @@ $ conda install anaconda
 如果不需要所有的包，可以使用下面命令安装指定某一个包：
 
 ```
-$ conda install -n env_name pandas
+conda install -n env_name pandas
 ```
 
 安装完成后可以使用``conda list``来查看已经安装了哪些包或者使用``conda list -n env_name``查看指定环境中有哪些包。使用：
 
 ```
-$ conda search pyqtgraph
+conda search pyqtgraph
 ```
 
 可以搜索包，如果要更新包可以使用：
 
 ```
-$ conda update numpy
-$ conda update anaconda
+conda update numpy
+conda update anaconda
 ```
 
 对于不想要的包可以使用下面指令卸载：
 
 ```
-$ conda remove numpy
-$ conda remove --name env_name numpy
+conda remove numpy
+conda remove --name env_name numpy
+```
+
+conda 目前还不支持对于已有的环境进行重命名，但是如果你一定要重命名一个环境，可以先复制一个已有的环境换上新的名字，然后将原来的环境删除。
+
+```
+conda create --name new_name --clone old_name
+conda remove --name old_name --all # or its alias: `conda env remove --name old_name`
 ```
 
 ### 设置下载镜像
