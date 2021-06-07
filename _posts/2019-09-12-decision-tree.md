@@ -277,11 +277,7 @@ print(confusion_matrix(y_test, y_hat))
 print(classification_report(y_test, y_hat))
 ```
 
-<<<<<<< HEAD
 ![heatmap](/assets/2019-09-12-decision-tree/heatmap.svg)
-=======
-![heatmap](/assets/2019-09-12-decision-tree/heatmap.png)
->>>>>>> 94c8d5d97547f3a0da5d469540ff999b83b61e08
 
 ## 决策树的可视化
 
