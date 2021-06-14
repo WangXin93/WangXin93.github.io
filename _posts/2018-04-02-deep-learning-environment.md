@@ -58,6 +58,8 @@ AMD
 
 ### Ubuntu Configuration
 
+首先在系统上安装开发和编译常用的库：
+
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -76,14 +78,56 @@ sudo apt-get install -y linux-source linux-headers-generic
 
 ### Install Nvidia (Driver, CUDA, cuDnn)
 
+首先使用``ubuntu-drivers devices``可以查看当前的显卡型号和适配的驱动型号。
+
+安装对应版本的NVIDIA驱动可以用不同方法：
+
+* 使用``sudo ubuntu-drivers autoinstall``或者``sudo apt install nvidia-460``可以安装推荐版本的驱动
+* 使用PPA第三方软件库安装的步骤为：
+    ```
+    sudo apt-get purge nvidia*
+    sudo add-apt-repository ppa:graphics-drivers/ppa
+    sudo apt-get update
+    ubuntu-drivers devices # Search available drivers
+    sudo apt-get install nvidia-driver-460 #  Install the driver with the best version
+    ```
+* 到[NVIDIA驱动官网](https://www.nvidia.com/Download/index.aspx)找到对应驱动下载。然后禁用 ubuntu 自带的开源 NVIDIA 驱动，之后重启机器，重启完成后使用命令安装下载好的驱动。
+    ```
+    sudo bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    sudo bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    # 重启机器
+    sudo sh NVIDIA-Linux-x86_64-460.84.run
+    ```
+
+可以使用``nvidia-smi``来确认驱动安装是否完成，如果安装顺利完成，终端会显示类似于下面的信息：
+
 ```
-sudo apt-get purge nvidia*
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt-get update
-ubuntu-drivers devices # Search available drivers
-sudo apt-get install nvidia-driver-460 #  Install the driver with the best version
-nvidia-smi
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 460.84       Driver Version: 460.84       CUDA Version: 11.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce RTX 208...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 35%   51C    P0    67W / 300W |      0MiB / 11018MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce RTX 208...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 38%   43C    P0    26W / 300W |      0MiB / 11019MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
 ```
+
+下面的内容是安装cuda以及设置cuda的环境变量。
 
 ```
 wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_460.32.03_linux.run
@@ -93,6 +137,17 @@ export PATH=/usr/local/cuda-11.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 export CUDA_HOME=/usr/local/cuda
 ```
+
+使用``nvcc -V``可以查看cuda是否安装顺利。如果安装完成，终端会显示当前的cuda版本，类似于：
+
+```
+Copyright (c) 2005-2020 NVIDIA Corporation
+Built on Tue_Sep_15_19:10:02_PDT_2020
+Cuda compilation tools, release 11.1, V11.1.74
+Build cuda_11.1.TC455_06.29069683_0
+```
+
+下面安装 CuDNN
 
 ```
 tar -zvxf cudnn-11.2-linux-x64-v8.1.0.77.tgz
@@ -111,34 +166,7 @@ nvcc -V
 ### Install PyTorch
 
 ```
-conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c conda-forg
-```
-
-### Install mmcv mmdetection
-
-### 使用anaconda安装pytorch
-
-#### 1. 修改conda源
-
-直接使用官网链接下载安装时常网速太慢甚至下载失败，所以使用国内conda源加速安装包下载。这里使用清华和中科大的源,修改源的方法是修改`~/.condarc`文件为：（如果文件不存在，创建一个即可）
-
-```
-channels:
-- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-- http://mirrors.ustc.edu.cn/anaconda/pkgs/free/
-- defaults
-
-show_channel_urls: yes
-```
-
-可以使用`conda upgrade --all`确认conda源已经更改成功。
-
-#### 2. 下载安装pytorch
-
-这里只安装cpu版torch，执行以下命令即可安装：
-
-```
-conda install pytorch-cpu torchvision -c pytorch
+conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
 
 等待安装完成后执行：
@@ -149,6 +177,61 @@ import torchvision
 ```
 
 如果没有错误，表示pytorch已经成功安装。
+
+### Install mmcv mmdetection
+
+```
+pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/{cu_version}/{torch_version}/index.html
+# 例如
+pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110/torch1.7.0/index.html
+```
+
+```
+git clone https://github.com/open-mmlab/mmdetection.git
+```
+
+### 修改conda源
+
+直接使用官网链接下载安装时常网速太慢甚至下载失败，所以使用国内conda源加速安装包下载。这里使用[清华Anaconda镜像站](https://mirror.tuna.tsinghua.edu.cn/help/anaconda/)的源,修改源的方法是修改`~/.condarc`文件为：（如果文件不存在，创建一个即可）
+
+```
+channels:
+  - defaults
+show_channel_urls: true
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+```
+
+可以使用`conda upgrade --all`确认conda源已经更改成功。
+
+### 修改ubuntu源
+
+如果使用``sudo apt update``更新软件源的时候网络速度太慢，可以将原本的软件源文件备份，然后使用[国内Ubuntu镜像](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/)替换：
+
+```
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+```
 
 ## 参考
 
