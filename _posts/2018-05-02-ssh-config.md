@@ -217,6 +217,40 @@ ssh -NfL 5901:127.0.0.1:5901 user@hostname
 * [Ubuntu 16.04 安装 VNC 及 gnome 桌面环境](https://www.htcp.net/2524.html)
 * [Ubuntu16.04 远程桌面连接（VNC）](https://blog.csdn.net/qq_28284093/article/details/80166614)
 
+## 使用x2go远程使用Ubuntu图形化桌面
+
+[X2Go](https://wiki.x2go.org/doku.php) 是另一个实现“云端计算机”的方案，它可以实现一直在线，并且易于扩展，响应速度和安全性比VNC方案更高。下面的内容会介绍如何如何使用x2go来远程访问Ubuntu20.04[XFCE](https://www.xfce.org/)桌面环境，从而获得和本地桌面一样的体验。
+
+首先安装完整的``xubuntu-desktop``环境，当遇到选择display manager的时候，选择lightdm。
+
+```
+sudo apt-get install xubuntu-desktop
+```
+
+X2Go包含两个部分，一端是Server，负责管理和启动图形程度到client；一端是Client，负责查看和控制桌面应用。 在18.04版本之前，你需要[手动配置软件源](https://wiki.x2go.org/doku.php/wiki:repositories:ubuntu)，在Ubuntu20.04 Focal Fossa，X2Go已经包含在了软件源中，所以可以直接使用包管理器安装：
+
+```
+sudo apt-get install x2goserver x2goserver-xsession
+```
+
+服务端的配置已经完成，然后需要配置本地机器上的客户端。Ubuntu和Mac用户可以使用包管理器下载client，Windows用户可以从[这里](https://wiki.x2go.org/doku.php/download:start)下载安装包。Mac用户还需要安装[Xquartz](https://www.xquartz.org/)来运行X11。
+
+```
+sudo apt-get install x2goclient # ubuntu
+brew install x2goclient # mac
+```
+
+安装完成client后将它打开，找到session的偏好设置，输入IP，如果有ssh keys，输入key的地址，就可以连接到xfce桌面。
+
+![client](https://assets.digitalocean.com/articles/67306/x2goblur.png)
+
+如果有长期运行的桌面任务希望在后台运行，到一段时间后再查看，可以在连接后选择client的suspend按钮即可暂时退出桌面连接，但是这时任务仍然在运行。再次登录这个session，x2goclient会提示你是否要继续上次的环境。如果不希望在后台运行，可以在xfce桌面里选择log out在退出登录。
+
+### 参考资料
+
+* <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-remote-desktop-with-x2go-on-ubuntu-20-04>
+* <https://biomedicalhub.github.io/openstack/08-managing-x2go.html>
+
 ## ssh Client Configuration
 
 如果在登陆remote machine的时候有很多的参数，为了减少输入，一个方法是使用``alias``，
