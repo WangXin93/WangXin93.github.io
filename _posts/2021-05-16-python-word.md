@@ -140,6 +140,31 @@ doc.add_heading("This is level 3 heading", 2)
 doc.add_picture("flower.jpg", width=docx.shared.Inches(4), height=docx.shared.Inches(3))
 ```
 
+## 使用docxtpl填写word模版
+
+工作中会出现需要填写大量重复的类似内容的时候，比如希望给多个客户发送邮件，需要发送相同的内容，但是客户姓名，地址，发送日期不相同。这个问题其中一个较好的解决方法是去创建一个内容模版，然后根据不同客户的信息填入不同的参数。我们可以使用[``python-docx-template``](https://docxtpl.readthedocs.io/en/latest/)来实现这个功能。
+
+首先安装这个库：
+
+```
+pip install docxtpl
+```
+
+然后打开word编写文档作为模版，在变量部分使用``{{ variable }}``代替。完成后使用代码：
+
+```
+from docxtpl import DocxTemplate
+
+doc = DocxTemplate("my_word_template.docx")
+context = { 'company_name' : "World company" }
+doc.render(context)
+doc.save("generated_doc.docx")
+```
+
+即可得到填写好的word文档。
+
+使用模版的方法可以允许你完全使用word的功能来编写复杂的模版，然后在使用填写标记的方法自动进行局部的修改。
+
 ## 结语
 
 Python 可以使用``python-docx``库完成对 Word 文件内容的读取，文件的段落，run，标题，图片的写入，从而完成 Word 文件的自动化操作，这可以用在批量修改或者生成 Word 文件，以及使用其他自然语言处理应用来处理 Word 文件的内容，比如批量给 Word 文档添加结尾，使用马尔可夫链随机生成文字内容来生成多个 Word 文档。在[官方文档](https://python-docx.readthedocs.io/en/latest/)中，还可以找到更多``python-docx``的操作方法比如字体和表格等等。
