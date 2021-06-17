@@ -140,6 +140,7 @@ X11UseLocalhost no
 ### 参考资料
 
 * <https://askubuntu.com/questions/213678/how-to-install-x11-xorg>
+* <https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps>
 
 ## VNC 远程登陆 Ubuntu16.04 图形界面
 
@@ -250,6 +251,96 @@ brew install x2goclient # mac
 
 * <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-remote-desktop-with-x2go-on-ubuntu-20-04>
 * <https://biomedicalhub.github.io/openstack/08-managing-x2go.html>
+
+## 使用xrdp远程登录ubuntu图形化桌面环境
+
+### 安装桌面环境
+
+[xrdp](http://xrdp.org/)是一个开源的Microsoft RDP (Remote Desktop Protocol) Server 实现方案。你可以使用来以图形化界面的方式登录非Microsoft的系统，并且提供完整的RDP远程桌面环境一样的体验。它的工作原理是从X window系统桥接出一个图形界面，同时将收到的客户端的控制返回到X window系统。 xrdp支持双向剪切板粘贴，声音传输，硬盘共享。你可以使用不同的RDP客户端来登录远程机器：比如FreeRDP，rdesktop，NeutrinoRDP，Microsoft Remote Desktop Client（Windows，macOS，IOS，Android）。
+
+首选需要安装桌面环境。Ubuntu Server Desktop版本是已经安装好桌面环境的因此可以跳过这一步，如果是Ubuntu Server版本，它默认是没有安装桌面环境的，因此需要添加桌面环境到系统。你可以使用``tasksel``工具来安装桌面环境：
+
+```
+sudo apt install tasksel -y
+tasksel
+```
+
+使用键盘找到Ubuntu Desktop，使用空格键确认安装
+
+![tasksel](https://tecadmin.net/wp-content/uploads/2020/11/tasksel-ubuntu-desktop.png)
+
+安装完成后，你需要设置系统来启动到图形界面，需要执行下面的命令来实现：
+
+```
+systemctl set-default graphical.target
+```
+
+### 安装XRDP
+
+xrdp在系统软件源中已经伯阿汉，你可以通过下面的命令来安装：
+
+```
+sudo apt install xrdp -y
+```
+
+安装完成后，服务会自动启动，你可以通过下面的命令来确认服务的状态：
+
+```
+sudo systemctl status xrdp
+```
+
+### 配置 xrdp
+
+在安装过程中，xrdp会添加一个名为``xrdp``的用户到系统中，xrdp会话使用证书文件``“/etc/ssl/private/ssl-cert-snakeoil.key``，对于远程桌面非常重要。
+
+首先需要添加xrdp用户到ssl-cert群组：
+
+```
+sudo usermod -a -G ssl-cert xrdp 
+```
+
+如果用户遇到背景为黑色的情况，可以通过下面的步骤解决。需要编辑``/etc/xrdp/startwm.sh``文件，然后加入下面的两行在test Xsession 和 execute Xsession之前：
+
+```
+Unset DBUS_SESSION_ADDRESS
+Unset XDG_RUNTIME_DIR
+```
+
+![xsession](https://tecadmin.net/wp-content/uploads/2021/06/xrdp-fix-black-screen-in-background.png)
+
+保存文件后重启服务：
+
+```
+sudo systemctl restart xrdp 
+```
+
+### 调节防火墙
+
+xrdp 监听 3389 端口，这是RDP的默认端口，你需要调节防火墙来允许远端访问 3389 端口。
+
+如果系统正在运行防火墙，使用下面的命令来打开 LAN 网络下的 3389 端口：
+
+```
+sudo ufw allow from 192.168.1.0/24 to any port 3389 
+```
+
+然后重启UFW来应用新规则：
+
+```
+sudo ufw reload 
+```
+
+### 登录到远程桌面
+
+最后，使用RDP客户端连接到服务器。在windows系统上可以在命令行输入``mstcs``然后输入ip地址。
+
+在macOS系统可以使用Miscrosoft Remote Desktop 软件。
+
+Ubuntu系统下一个不错的RDP客户端是Remmina。
+
+### 参考
+
+* <https://tecadmin.net/how-to-install-xrdp-on-ubuntu-20-04/>
 
 ## ssh Client Configuration
 
