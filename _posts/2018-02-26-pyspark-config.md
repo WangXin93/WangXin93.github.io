@@ -144,9 +144,45 @@ PASSWD=$(python -c 'from notebook.auth import passwd; print(passwd("jupyter"))')
 echo "c.NotebookApp.password = u'${PASSWD}'"
 ```
 
+## 将jupyter notebook 配置为service
+
+创建一个 ``jupyter.service`` 文件，内容如下：
+
+```
+[Unit]
+Description=Jupyter Notebook
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/home/lab2033/miniconda3/bin/jupyter-notebook
+User=lab2033
+Group=lab2033
+WorkingDirectory=/home/lab2033/parttime
+Restart=always
+RestartSec=10
+[Install]
+WantedBy=multi-user.target
+```
+
+然后安装这个service：
+
+```
+sudo cp jupyter.service /etc/systemd/system/
+
+# Use the enable command to ensure that the service starts whenever the system boots
+sudo systemctl enable jupyter.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl start jupyter.service
+
+systemctl status jupyter.service
+```
+
 ### 参考链接
 * [jupyter Notebook 安装使用](https://cloud.tencent.com/developer/article/1019832)
 * [十分钟配置云端数据科学开发环境](https://cloud.tencent.com/developer/article/1004749)
+* [Jupyter notebook as a service on Ubuntu 18.04 with Python 3](https://naysan.ca/2019/09/07/jupyter-notebook-as-a-service-on-ubuntu-18-04-with-python-3/)
 
 ## 配置pyspark
 
