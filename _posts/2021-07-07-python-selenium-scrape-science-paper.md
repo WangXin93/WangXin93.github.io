@@ -6,7 +6,7 @@ categories: Python
 toc: true
 ---
 
-> 本博客会介绍如何使用 Python 和 Selenium 自动操作浏览器批量下载 Science 网站下某一个主题的论文。
+> 本博客会介绍如何使用 Python 和 Selenium 自动操作浏览器批量下载 Science 网站下某一个主题的论文。实现这个功能可以使用 Selenium 进行无头浏览器访问DOM元素，控制浏览器窗口，设置浏览器等待的时间来模拟正常浏览器的操作。
 
 ## 简介
 
