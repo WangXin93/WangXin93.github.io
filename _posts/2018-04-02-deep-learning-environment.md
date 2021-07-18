@@ -163,6 +163,33 @@ nvidia-smi
 nvcc -V
 ```
 
+在很多Linux发行版安装NVIDIA驱动时候会遇到下面的错误
+
+```
+ERROR: The Nouveau kernel driver is currently in use by your system. This driver is incompatible with the NVIDIA driver
+```
+
+这是因为系统没有禁用``Nouveau``。``Nouveau``是一个第三方为NVIDIA显卡开发的驱动程序，很多 Linux 发行版默认集成了 Nouveau 驱动，在遇到 NVIDIA 显卡时默认安装，这帮助Linux 能够应对不同的显卡环境，但是Nouveau在游戏速度上还无法与官方驱动相提并论。想要禁用Nouveau可以打开终端输入：
+
+```
+sudo vim /etc/modprobe.d/blacklist-nouveau.conf
+```
+
+在文件后面加入下面的内容：
+
+```
+blacklist nouveau
+options nouveau modeset=0
+```
+
+更新使其生效：
+
+```
+sudo update-initramfs -u
+```
+
+然后使用``reboot``重启机器，最后使用``lspci | grep nouveau``检查是否禁用成功，如果没有内容输出，说明禁用成功。
+
 ### Install PyTorch
 
 ```
