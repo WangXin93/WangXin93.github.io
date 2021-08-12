@@ -20,3 +20,6 @@ permalink: /about/
 
 <img src="/assets/qrcode.png" width = "200" height = "200" alt="qrcode"/>
 
+## Visitor Maps
+
+<a href='https://clustrmaps.com/site/1bjdj'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=600&t=n&d=iAh-HdRfaRsSJL9chSgu0GYamPNzhiWTqmlHAnkWwbk&co=2d78ad&ct=ffffff'/></a>
