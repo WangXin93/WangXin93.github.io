@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Pytorch中的hook有什么用？"
+title:  "Pytorch 使用简介"
 date: 2018-10-25 15:39:00 +0800
-categories: PyTorch
+categories: PyTorch DeepLearning
 toc: true
 ---
 
@@ -60,5 +60,7 @@ hook(grad) -> Variable or None
 至于``register_forward_hook``和``register_backward_hook``的用法和这个大同小异。只不过对象从``Variable``改成了你自己定义的``nn.Module``。当你训练一个网络，想要提取中间层的参数、或者特征图的时候，使用hook就能派上用场了。
 
 ## Reference
+
+在2021年，学习pytorch和深度学习前沿的一个好的地方就是pytorch的[官方博客](https://pytorch.org/blog/)。
 
 * [pytorch中的钩子（Hook）有何作用？](https://www.zhihu.com/question/61044004)

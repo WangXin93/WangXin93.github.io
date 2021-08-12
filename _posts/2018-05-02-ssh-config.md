@@ -342,6 +342,24 @@ Ubuntu系统下一个不错的RDP客户端是Remmina。
 
 * <https://tecadmin.net/how-to-install-xrdp-on-ubuntu-20-04/>
 
+## 使用anydesk进行远程桌面操作
+
+下载 anydesk 的 linux 客户端后使用命令行进行安装：
+
+```
+sudo dpkg -i anydesk.deb
+```
+
+使用[anydesk的命令行工具](https://support.anydesk.com/Command_Line_Interface#Linux)进行设置。首先设置登录密码：
+
+```
+echo password | sudo anydesk --set-password
+```
+
+然后通过``anydesk --get-id``得到身份码。
+
+在客户端通过输入身份码就可以操作远程的机器了。
+
 ## ssh Client Configuration
 
 如果在登陆remote machine的时候有很多的参数，为了减少输入，一个方法是使用``alias``，
@@ -374,6 +392,56 @@ Host *.mit.edu
 ### 参考资料
 
 * <https://missing.csail.mit.edu/2020/command-line/>
+
+## 使用Wake On LAN 远程开机Ubuntu
+
+主板开启 Wake On LAN
+
+```
+sudo apt install -y ethtool
+```
+
+```
+ip a
+```
+
+```
+sudo ethtool -s enp2s0 wol g
+```
+
+```
+wakeonlan macaddr
+```
+
+2033lab
+2033lab02 wakeonlan -i 10.199.166.102 4c:cc:6a:2f:c5:9d
+2033lab04 wakeonlan -i 10.199.167.238 50:46:5d:53:88:11
+2033lab   wakeonlan -i 10.199.167.1   ac:22:0b:c7:4a:e1
+
+```
+[Unit]
+Description=Configure Wake On Lan
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ethtool -s INTERFACE wol g
+
+[Install]
+WantedBy=basic.target
+```
+
+```
+sudo nano /etc/systemd/systemd/wol.service
+```
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable wol.service
+sudo systemctl start wol.service
+```
+
+* <https://www.youtube.com/watch?v=tdzrnGh94n8>
+
 
 ## SSH穿越跳板机登陆内网机器
 

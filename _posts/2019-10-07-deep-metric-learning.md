@@ -1,11 +1,15 @@
 ---
 layout: post
-title:  "Deep Metric Learning"
+title:  "深度度量学习（Deep Metric Learning）"
 date:   2019-10-07 15:05:35 +0800
 categories: Algorithm
 ---
 
-## 简介
+> 度量学习的任务是使用算法来学习输入对象之间的距离。它可以用于人脸识别认证，商品检索，通过训练的模型可以让相似对象之间的特征距离相近，不相似的对象之间的特征距离较远。深度学习模型能够有效学习这样的特征。本篇文章会介绍深度度量学习的基本原理和一些最近的进展。
+
+## 什么是度量学习？
+
+## 深度度量学习
 
 * Contrastive Loss
 
@@ -47,7 +51,13 @@ categories: Algorithm
 
 <https://github.com/MalongTech/research-ms-loss>
 
+* Proxy Anchor Loss
+
 ## 参考
 
 * [Deep Metric Learning in PyTorch](Deep Metric Learning in PyTorch)
 * [Deep Metric Learning](https://github.com/ronekko/deep_metric_learning)
+* [pytorch metric learning library](https://github.com/KevinMusgrave/pytorch-metric-learning)
+* [deep person reid library](https://github.com/KaiyangZhou/deep-person-reid)
+* [Stanford Online Products Retrieval Leaderboard](https://kobiso.github.io/Computer-Vision-Leaderboard/sop.html)
+* [The Why and the How of Deep Metric Learning](https://towardsdatascience.com/the-why-and-the-how-of-deep-metric-learning-e70e16e199c0)
