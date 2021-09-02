@@ -3,6 +3,6 @@ layout: album
 title: Blender
 ---
 
-My Inkscape art gallery.
+My Blender art gallery.
 
 {% include image-gallery.html folder="/assets/albums/blender" %}
