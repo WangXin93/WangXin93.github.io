@@ -95,6 +95,38 @@ crontab命令常见于Unix和类Unix的操作系统之中，用于设置周期�
 45  23 * * 6 /home/oracle/scripts/export_dump.sh
 ```
 
+## 使用 timeout 命令
+
+使用 timeout 可以让程序运行指定的时间，它的使用语法如下：
+
+```
+timeout DURATION PROGRAM
+```
+
+其中 DURATION 指定程序运行的时间，用s代表秒，m代表分钟，h代表小时，d代表天。例如：
+
+```
+timeout 10s watch -n1 date
+```
+
+可以在屏幕查看日期和时间并在10秒后退出程序。
+
+## 使用 sleep 和 kill 命令
+
+可以将程序运行在后台，这里的``&``可以实现这个功能，然后用sleep在指定的时间后关闭程序，这里``$!``存储了程序的PID：
+
+```
+command &
+sleep 30 && kill $!
+```
+
+也可以使用pkill和killall来关闭程序，例如：
+
+```
+firefox &
+sleep 30 && pkill firefox
+```
+
 ## 参考
 
 * <https://linuxconfig.org/how-to-schedule-tasks-using-at-command-on-linux>
