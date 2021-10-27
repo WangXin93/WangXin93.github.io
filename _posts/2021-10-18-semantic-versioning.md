@@ -8,7 +8,9 @@ toc: true
 
 > 软件开发是一个不断迭代累加的过程，版本号被用来标识不同版本经常出现在用户和开发者眼前。Semantic Versioning 是一个广泛使用的版本号标识方法，它使用Major.Minor.Patch的形式，修补bug只影响版本号的patch部分，添加或者改变向后兼容的API会增加版本号的minor部分，如果向后不兼容的API改变了就要增加major部分。用户可以通过 Semantic Versioning 定义的版本号知道当前版本添加内容的兼容性，减少了软件依赖项管理的时间精力。
 
-![semantic_versioning](/assets/2021-10-18-semantic-versioning/semantic_versioning.svg)
+<div align="center">
+<img src="/assets/2021-10-18-semantic-versioning/semantic_versioning.svg" style="width:80%"/>
+</div>
 
 符合 Semantic Versioning 的版本号使用 MAJOR.MINOR.PATCH 格式，在增加数字的时候遵循下面的规则：
 
