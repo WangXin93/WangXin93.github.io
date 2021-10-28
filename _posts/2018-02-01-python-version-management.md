@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python 中的虚拟环境"
+title:  "Python 版本管理"
 date:   2018-02-01 17:25:46 +0800
 categories: Python
 toc: true

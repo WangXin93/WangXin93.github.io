@@ -46,7 +46,7 @@ toc: true
 
 下面的代码实现了首先将摄像头中的图像转化到YCrCb颜色空间，然后对每一个位置的像素使用它的Cr和Cb值判断是否为人体皮肤，在椭圆区域内的会被判断为人体皮肤，反之则判断不是人体皮肤。
 
-![img3](/assets/2021-10-21-skin-detection/demo.png))
+![img3](/assets/2021-10-21-skin-detection/demo.png)
 
 ```python
 import cv2
