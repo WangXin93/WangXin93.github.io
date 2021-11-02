@@ -10,6 +10,7 @@ toc: true
 
 <div align="center">
 <img src="/assets/2019-09-12-decision-tree/tree_cover.jpg" style="width:80%"/>
+<br>
 <a href='https://www.freepik.com/vectors/tree'>Tree vector created by brgfx - www.freepik.com</a>
 </div>
 
