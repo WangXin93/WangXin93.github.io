@@ -196,11 +196,17 @@ sudo update-initramfs -u
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
 
-等待安装完成后执行：
+等待安装完成后执行可以查看安装的pytorch，cuda，cudnn的版本信息：
 
 ```python
 import torch
 import torchvision
+
+print(torch.__version__)
+
+print(torch.version.cuda)
+
+print(torch.backends.cudnn.version())
 ```
 
 如果没有错误，表示pytorch已经成功安装。
