@@ -66,7 +66,74 @@ Shift-T: 打开一个新的Tab，你可以这时候使用shift-U输入新的网�
 
 使用``w3m -O utf8 <url>``。
 
+## lynx
+
+[Lynx](https://lynx.invisible-island.net/) 是另一款基于文本的命令行浏览器。Lynx 是 University of Kansas 的 Academic Computing Services 中 Distributed Computing Group 开发的产品，最早在 1992 年由学生和老师开发，在2021年仍然在维护，是仍然在维护的最古老的浏览器。
+
+基本功能方面，Lynx 支持 SSL 和许多 HTML 功能，对于非文字的内容虽然不能直接显示但是可以启动外部程序比如图片浏览器和播放器打开。 Lynx 不支持 Javascript，只显示文本，不过因此它的速度快，对带宽要求很低，适合老型号的计算机或者用于远程机器访问网页，还适合被转换为可以阅读的内容。
+
+配置方面，Lynx支持142个runtime选项和233个配置参数在``lynx.cfg``文件。
+
+在隐私方法，lynx不会引入图形界面的问题和信息追踪，但是由于它支持 HTTP cookies，浏览历史和缓存，因此在这些方面需要注意。
+
+自动化方面，Lynx可以从 text 文件读取按键，这对于自动填写数据，自动浏览网页，网络爬取。网页设计者可以用它查看搜索引擎和爬虫看到的页面的样子。Lynx还被用来测试网页性能，因为它方便在远端机器上使用，所以用户可以测试在不同位置的访问连接性能。
+
+使用``lynx``打开一个网页使用命令：
+
+```
+lynx www.bing.com
+```
+
+基本操作：
+
+* g 打开一个地址
+* left 返回上个页面
+* right 激活链接 / 下一个页面
+* up/down 浏览页面
+
+runtime 选项``--dump``可以讲浏览器的网页内容存储下来，可以结合``grep``工具查看网页是否包含需要的信息：
+
+```
+lynx -dump www.bing.com | grep "something"
+
+lynx -dump www.bing.com | grep "something" && say "I find it"
+```
+
+### lynx 自动化web页面操作
+
+lynx 可以讲按键操作转换成命令写入文件保存，在读取文件中的命令重复保存的操作。实现这个功能需要用到两个 runtime 参数 ``--cmd_log`` 和 ``--cmd_script``。
+
+``--cmd_log``可以将按键转换成命令写入文件，进入浏览器后进行任何的按键都会被保存：
+
+```
+lyx --cmd_log log.lyx www.bing.com
+```
+
+重复执行刚才的按键可以使用命令：
+
+```
+lyx --cmd_script log.lyx www.bing.com
+```
+
+### 常见问题
+
+刚装完 lynx 后打开网页会询问是否允许 cookie，如果不经过设置每次打开都会显示该提示。如果希望关掉这些提示，可以添加``--acept_all_cookies`` runtime 选项：
+
+```
+lynx -accept_all_cookies www.bing.com
+```
+
+或者配置``/etc/lynx/lynx.cfg``文件。使用你熟悉的编辑器打开该文件，然后搜索到下面内容修改为TRUE：
+
+```
+ACCEPT_ALL_COOKIES:FALSE
+```
+
 ## Reference
 
 * [3 web browsers for the Linux command line](https://opensource.com/article/16/12/web-browsers-linux-command-line)
 * [How to Browse From the Linux Terminal With W3M](https://www.howtogeek.com/103574/how-to-browse-from-the-linux-terminal-with-w3m/)
+* [Simple web automation with lynx text web browser](https://www.youtube.com/watch?v=IV2lyEzXbe4&t=18s)
+* <https://en.wikipedia.org/wiki/Lynx_(web_browser)>
+* [Lynx Users Guide](https://lynx.invisible-island.net/lynx_help/Lynx_users_guide.html)
+* [Lynx(1) - Linux man page](https://linux.die.net/man/1/lynx)
