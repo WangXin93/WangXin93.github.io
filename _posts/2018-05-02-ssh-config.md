@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SSH远程远程服务器与配置"
+title:  "SSH 远程服务器与配置"
 date: 2018-05-02 10:15:05 +0800
 categories: Linux
 toc: true
