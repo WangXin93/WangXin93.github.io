@@ -374,6 +374,19 @@ sudo smbpasswd -a username
 * 在linux的系统可以在默认的文件管理器中找到Connect to server选项输入``smb://ip-address/sambashare``来访问
 * 在OSX的系统中可以到finder的Go -> Connect to Server 选项输入地址``smb://ip-address/sambashare``来访问
 
+常见问题：因为永恒之蓝的攻击，现在运营商将445端口拦截了。如果使用的路由器屏蔽了445端口，也就是默认的samba端口被屏蔽，可以修改samba服务的端口来解决该问题。首先需要到``/etc/samba/smb.conf``文件，在global部分添加一行``smb ports=3333``，然后使用``sudo systemctl restart smbd.service``来重启samba服务，这样samba服务就会使用新的3333端口。为了使用新的端口来访问samba服务，linux和mac系统在输入的地址部分需要修改为``smb://ip-address:port-number/sambashare``，windows系统目前只能使用默认的445端口不能修改，不过可以使用端口映射将远端的3333端口映射到本地的445端口。
+
+首先以管理员身份运行cmd，然后执行如下命令：
+
+```
+sc config LanmanServer start= disabled 
+net stop LanmanServer
+sc config iphlpsvc start= auto #启动端口转发
+netsh interface portproxy add v4tov4 listenport=445 connectaddress=公网IP connectport=端口 #配置端口转发
+```
+
+此时通过访问本地\\127.0.0.1就可以访问服务端配置的共享目录了
+
 ### 参考
 
 - [How To Use Rsync to Sync Local and Remote Directories on a VPS](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps)
@@ -382,3 +395,4 @@ sudo smbpasswd -a username
 - [Fastest way to extract tar.gz](https://serverfault.com/questions/270814/fastest-way-to-extract-tar-gz)
 - <https://missing.csail.mit.edu/2020/potpourri/#fuse>
 * <https://ubuntu.com/tutorials/install-and-configure-samba>
+- [修改samba端口映射](http://kworker.cn/2021/02/13/%E4%BF%AE%E6%94%B9samba%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/)
