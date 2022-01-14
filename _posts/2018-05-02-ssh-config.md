@@ -153,76 +153,170 @@ X11UseLocalhost no
 
 ## VNC 远程登陆 Ubuntu16.04 图形界面
 
-### 安装相关工具
+VNC（Virtual Network Computing）是一个允许你远程操作计算的图形界面的系统。本文下面的内容会介绍如何安装服务器端的vnc服务，如何访问vnc，如何通过ssh通道设置更加安全的vnc服务，如何设置vnc开启不同的图形界面，如何设置vnc为系统服务从而开机自动启动。
+
+### 安装桌面环境
+
+如果你安装的是ubuntu桌面版，它应该已经安装了桌面环境，你可以跳过本章节。
+
+如果你安装的是ubuntu服务器版，很可能你没有安装桌面环境。Linux桌面的环境有很多选择，包括：GNOME desktop，KDE Plasma desktop，Mate desktop，Budgie desktop，Xfce/Xubuntu desktop，Cinnamon Desktop。其中Xfce是一个很好的选择，因为它很快，稳定，易于安装。
+
+安装xfce可以通过apt命令：
 
 ```
-sudo apt-get install xfce4 vnc4server xrdp
+sudo apt install xfce4 xfce4-goodies
 ```
 
-### 初始化
+其中``xfce-goodies``是xfce桌面环境的增强包，它给xfce添加了很多好用的功能。
+
+在安装过程中，你可能会遇到需要你去选择默认的display manager，display manager允许你使用一个图形界面来选择和登入桌面环境，如果使用VNC客户端，由于xfce的会话已经登陆，所有display manager的选择不重要，任意选择一个就可以。
+
+### 快速开始VNC的服务和访问
+
+安装VNC服务可以使用命令：
 
 ```
-vncserver
-#启动vncserver，第一次需要输入设置登录密码, 可以使用vncpasswd重置密码
+sudo apt install tigervnc-standalone-server
 ```
 
-### 修改配置文件xstartup
+安装完成之后，可以在服务器启动vnc服务，命令为
 
 ```
-sudo gedit ~/.vnc/xstartup
-
-# 修改为如下内容:
-
-#!/bin/sh
-# Uncomment the following two lines for normal desktop:
-# unset SESSION_MANAGER
-# exec /etc/X11/xinit/xinitrc
-#[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-#[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-#xsetroot -solid grey
-#vncconfig -iconic &
-#x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
-#x-window-manager &
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-vncconfig -iconic &
-xfce4-session &
+vncserver -localhost no
 ```
 
-### 重新启动vncserver和xrdp
+``-localhost no``让vnc服务能够被其它主机访问，默认vnc服务开启后只能从本地访问，允许其它机器从网络直接访问只有一次密码作为安全保障，如果希望更加安全地访问vnc服务，可以通过ssh进行端口映射。
 
-```
-sudo vncserver -kill :1
-#杀死关闭vncserver
+之后程序会像你询问登陆密码，密码需求为6-8位，过长会被截断。之后会再询问一个View-Only password，使用这个密码用户可以访问vnc服务器看到桌面，但是不同进行鼠标和键盘操作，如果只是自己访问服务器View-Only可以选择n不进行设置。如果希望重新设置密码，可以使用命令``vncpasswd``。
 
-vncserver
-#vncserver再次重启
+密码设置完成后，vnc服务器会返回类``:1``的信息，意味着VNC使用5901端口发送信息，再次启动更多的vnc服务，端口会依次使用5902，5903。
 
-sudo service xrdp restart
-#重新启动xrdp
-```
+连接到VNC服务在不同的系统可以使用的客户端不同，常见的客户端包括：
 
-### 从客户端连接VNC Server
+- Windows 系统可以使用 RealVNC, TightVNC, UltraVNC
+- macOS 系统可以使用内建的Screen Shareing程序，或者使用RealVNC
+- Linux 系统可以使用 vinagre, krdc, RealVNC, TightVNC, Remmina
+- Android 可以使用 RealVNC
 
-Ubuntu用户使用自带的Remmina远程桌面
-
-【新建】->协议选择【SVN-虚拟网络计算】->服务器【IP:1】
-
-输入VNC密码就可以连接了。
-
-再次关闭，然后使用【IP:5901】进行连接。
+进入客户端后，在主机名称部分输入``xxx.xxx.xxx.xxx:5901``就可以看到远程桌面的显示，前面的xxx为ip地址。
 
 如果是使用了防火墙，需要在防火墙上开启5901远程端口（sudo ufw allow 5901）。
 
-Mac和Windows用户可以使用Real VNC做客户端。可以先用ssh将服务器端口映射到本地, 然后客户端填写127.0.0.1:5901
+关闭vnc服务可以使用命令``vncserver -kill :1``。
+
+### 使用ssh更加安全地访问vnc服务
+
+vnc在不使用``-localhost no``选项的情况下只能通过本地环路访问，但是这是一种安全的访问方式。使用ssh 通道可以在加密的情况下将本地环路的5901端口映射到本机的端口，从而访问vnc。可以通过下面的命令来完成这个目的：
 
 ```
 ssh -NfL 5901:127.0.0.1:5901 user@hostname
 ```
 
+之后通过vnc客户端访问``127.0.0.1:5901``就能够访问到远程服务器上的vnc桌面。
+
+### 修改vnc的配置
+
+配置vnc的一个重要目标是告诉vnc使用哪个桌面环境访问，这里以xfce桌面环境为例子。配置xfce需要配置``xstartup``文件：
+
+```
+sudo vim ~/.vnc/xstartup
+```
+
+添加如下内容：
+
+```
+#!/bin/sh
+xrdb $HOME/.Xresources
+startxfce4 &
+```
+
+配置文件的解释内容如下：
+
+* ``#!/bin/sh``，这一行被称为设棒，它会告诉系统这个脚本需要用什么解释器运行
+* ``xrdb $HOME/.Xresources``，这一行告诉VNC服务器阅读``.Xresources``文件，这样用户可以修改图形桌面的设置，比如字体，颜色。
+* ``startxfce4 &``，这一行告诉VNC启动什么桌面环境，``startxfce4``是一个启动Xfce会话的脚本。
+
+编写完成后，将``xstartup``权限更改为可执行：
+
+```
+chmod +x ~/.vnc/xstartup
+```
+
+之后使用下面的命令重启已经运行的vnc服务：
+
+```
+vncserver -localhost no :1
+```
+
+如果希望配置vnc使用gnome桌面，可以先安装gnome桌面环境：
+
+```
+sudo apt install gnome-session gnome-terminal
+```
+
+修改``~/.vnc/xstartup``为如下内容：
+
+```
+#!/bin/sh
+# Start Gnome 3 Desktop
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+vncconfig -iconic &
+dbus-launch --exit-with-session gnome-session &
+```
+
+### 设置vnc为系统服务
+
+将vnc设置为服务可以让我们像其它服务一样start，stop，restart它，同时可以使用systemd在开机时候启动vnc。如果要把vnc配置为系统服务首先需要编写一个service文件：
+
+```
+sudo vim /etc/systemd/system/vncserver@.service
+```
+
+在其中填写下面内容：
+
+```
+[Unit]
+Description=Start TigerVNC server at startup
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=YOUR_USERNAME
+Group=YOUR_USERNAME
+WorkingDirectory=/home/YOUR_USERNAME
+
+PIDFile=/home/YOUR_USERNAME/.vnc/%H:%i.pid
+ExecStartPre=-/usr/bin/vncserver -kill :%i > /dev/null 2>&1
+ExecStart=/usr/bin/vncserver -depth 24 -geometry 1280x800 -localhost :%i
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+```
+
+之后需要系统注意到这个文件：
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable vncserver@1.service
+```
+
+启动，停止，重启，查看vnc服务的命令分别为：
+
+```
+sudo systemctl start vncserver@1
+sudo systemctl restart vncserver@1
+sudo systemctl status vncserver@1
+sudo systemctl stop vncserver@1
+```
+
 ### 参考资料
+
+除了VNC，还有其它远程桌面解决方案，比如xRDP，X2Go（使用一个更改后的NX 3 协议），还有Chrome Remote Desktop。
+
+* [How to Install & Configure VNC Server on Ubuntu 20.04](https://bytexd.com/how-to-install-configure-vnc-server-on-ubuntu-20-04/#:~:text=%20How%20to%20Install%20%26%20Configure%20VNC%20Server,to%20this%20point%2C%20we%20have%20successfully...%20More%20)
+* [digitalocean vnc tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04)
 * [Ubuntu 16.04配置VNC进行远程桌面连接](https://www.cnblogs.com/EasonJim/p/7529156.html)
 * [Ubuntu 16.04 安装 VNC 及 gnome 桌面环境](https://www.htcp.net/2524.html)
 * [Ubuntu16.04 远程桌面连接（VNC）](https://blog.csdn.net/qq_28284093/article/details/80166614)
