@@ -754,6 +754,20 @@ PASSWD=$(python -c 'from notebook.auth import passwd; print(passwd("jupyter"))')
 echo "c.NotebookApp.password = u'${PASSWD}'"
 ```
 
+### 为Jupyter notebook安装kernel
+
+可以通过为不同的conda环境安装kernel，从而jupyter可以使用不同的conda环境来运行代码。如果希望为一个conda环境安装kernel，可以使用下面的命令：
+
+```
+source activate envname
+conda install ipykernel
+python -m ipykernel install --user --name envname --display-name "envname"
+```
+
+其中``--name``是Jupyter内部使用的名字，这个命令会覆盖掉重名的kernel。``--display-name``是你在jupyter前端页面看到的名字。
+
+你还可以将virtualenv中的kernel安装到另一个conda环境。R和Julia也可以作为内核安装到Julia中。官方文档链接在[这里](https://docs.jupyter.org/en/latest/install/kernels.html)。
+
 ### 将jupyter notebook 配置为service
 
 创建一个 ``jupyter.service`` 文件，内容如下：
