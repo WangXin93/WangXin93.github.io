@@ -768,6 +768,23 @@ python -m ipykernel install --user --name envname --display-name "envname"
 
 你还可以将virtualenv中的kernel安装到另一个conda环境。R和Julia也可以作为内核安装到Julia中。官方文档链接在[这里](https://docs.jupyter.org/en/latest/install/kernels.html)。
 
+### Jupyter的SSL加密配置
+
+自己建一个文件夹或者干脆在~/.jupyter/ 文件夹下面执行下面命令：
+
+```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mycert.pem -out mycert.pem
+```
+
+接着编辑``jupyter_notebook_config.py``：
+
+```
+# browser auto-opening
+c.NotebookApp.certfile = u’路径名/mycert.pem’
+```
+
+保存后重启jupyter服务。
+
 ### 将jupyter notebook 配置为service
 
 创建一个 ``jupyter.service`` 文件，内容如下：
