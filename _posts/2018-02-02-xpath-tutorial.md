@@ -45,6 +45,7 @@ Out[1]:
 ---
 
 ## 3. XPath语法的四个重要概念
+
 ### 根节点和非根节点
 - `/div`选择`div`节点，只有当它是文档的根节点时
 - `//div`选择所有的`div`节点（包括非根节点）
@@ -65,6 +66,7 @@ Out[1]:
 ---
 
 ## 4. 在Scrapy中使用XPath
+
 这里回到之前打开的`scrapy shell`环境，执行下面指令可以抓取网页标题：
 ```python
 In [17]: response.xpath('//title') # 抓取标题节点并提取
@@ -109,6 +111,7 @@ Out[74]:
 ---
 
 ## 5. 练习
+
 现在我们已经知道了如何使用scrapy shell来进行xpath的实践。但是如果是对本地文件进行xpath提取呢？lxml可以帮助你：
 
 ```python
@@ -150,7 +153,31 @@ for i in content:
 
 ---
 
-## 6. 更多关于XPath的资料：
+## 6. 使用Chrome开发者工具调试XPath和CSS Selector
+
+Chrome浏览器包含开发者工具，可以用来调试XPath或者CSS selector。有两种方法可以实现这个目的：
+
+1. 使用Elements面板的搜索功能
+2. 使用Console面板的指令，包括`$x("some_xpath")`，`$$("css-selectors")`
+
+使用Elements面板的的方法为输入`Ctrl+F`之后，在搜索框内输入XPath，比如`//div[@class="info"]`，`//span[contains(@class, "a b")]`，或者输入css selector，比如`#info`。可以发现在右边现实搜索到了几个结果，可以在不同搜索结果之间跳转。
+
+使用Console面板的方法为输入指令：
+
+```js
+// xpath
+$x('//div[@class="info"]')
+$x('//span[contains(@class, "a b")]')
+
+// css selector
+$$('#info')
+```
+
+在返回结果中点击可以跳转到element面板中的对应位置。
+
+<https://yizeng.me/2014/03/23/evaluate-and-validate-xpath-css-selectors-in-chrome-developer-tools/>
+
+## 7. 更多关于XPath的资料：
 
 - Use XPath with Scrapy Selectors: <https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors>
 - Learn XPath through examples: <http://zvon.org/comp/r/tut-XPath_1.html>
