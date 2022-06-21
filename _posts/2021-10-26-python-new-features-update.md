@@ -9,8 +9,20 @@ toc: true
 > 本博客持续收集 Python 新版本中值得注意的功能。包括 Python3.8 开始的海豹运算符，Python3.10 的match语句，更好的rrror message等。
 
 <div align="center">
-<img src="/assets/2021-10-27-python-new-features-update/python-update.svg" style="width:80%"/>
+<img src="/assets/2021-10-27-python-new-features-update/python-update.svg" style="width:100%"/>
 </div>
+
+## Python3.6
+
+### f-string
+
+TODO
+
+## Python3.7
+
+### dataclass
+
+TODO
 
 ## Python3.8
 
