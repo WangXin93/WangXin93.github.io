@@ -12,21 +12,50 @@ toc: true
 <img src="/assets/2021-10-18-semantic-versioning/semantic_versioning.svg" style="width:80%"/>
 </div>
 
-符合 Semantic Versioning 的版本号使用 MAJOR.MINOR.PATCH 格式，在增加数字的时候遵循下面的规则：
-
-* MAJOR 数字在出现向后不兼容的API变动时候增加；
-* MINOR 数字在增加向后兼容的功能的时候增加；
-* PATCH 数字在修改向后兼容的BUG的时候增加。
-
-额外的 label，pre-release 和 build metadata 可以作为扩展添加在 MAJOR.MINOR.PATCH 的后面。
-
 ## 简介
 
 软件开发过程中，随着软件系统越来越庞大，软件中集成的包会越来越多，可能突然有一天你发现自己掉入了“依赖项的地狱”。
 
 在一个包含很多依赖项的软件中，发布新版本到一定数量之后会带来很多问题。如果依赖项明细非常紧密具体，你就有可能遇到“版本锁”（升级新版本软件必须同时发布所有依赖项的版本）；如果依赖项明细非常模糊松散，你很可能会遇到“版本混乱”（你以为未来能够兼容的版本未必兼容）。“依赖项的地狱”就是你遇到了版本锁或者版本混乱，让你的项目不能轻松地继续发布新版本。
 
-解决这个问题的方法是使用使用一套简单的规则来要求版本号如何赋值和增加，这套系统被称为“Semantic Versioning”，首先需要定义一个公共的API，它的文档或者代码约束了它的用法和功能，这时它需要一个版本号，后续对这个API的改变会增加版本号数字。Semantic Versioning使用X.Y.Z（Major.Minor.Patch）的形式，修补bug只影响版本号的patch部分，添加或者改变向后兼容的API会增加版本号的minor部分，如果向后不兼容的API改变了就要增加major部分。
+解决这个问题的方法是使用使用一套简单的规则来要求版本号如何赋值和增加，这套系统被称为“Semantic Versioning”，首先需要定义一个公共的API，它的文档或者代码约束了它的用法和功能，这时它需要一个版本号，后续对这个API的改变会增加版本号数字。Semantic Versioning（也被称为SemVer）使用X.Y.Z（Major.Minor.Patch）的形式，修补bug只影响版本号的patch部分，添加或者改变向后兼容的API会增加版本号的minor部分，如果向后不兼容的API改变了就要增加major部分。
+
+## 为什么使用 Semantic Versioning
+
+版本号不是一个特别革命性的想法。在开发和编写中，自然就会想到给不同的版本编号。但是只是想到编号还不够好，如果没有一个统一的标准明细，版本号在依赖项管理的时候就是没有用的。通过将这个想法通过一个名称和清晰的定义来实现，这就成了软件开发者和用户之间沟通的渠道。
+
+除了 Semantic Versioning，还有其它版本号的规则，比如 [Assembly Versioning ](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/assembly-versioning)，但是语义版本号是目前更加流行普遍的解决方案。
+
+Semantic Versioning 能够解决“依赖项地狱”的一个简单例子就是，假设有一个库教“救火云梯”，它需要一个版本的包叫“梯子”，当“救火云梯”被开发出来的时候，“梯子”的版本号是3.1.0，当“救火云梯”被开发出来的时候你可以知道3.1.0版本及以上的“梯子”能够作为依赖项，但是必须低于4.0.0。当“梯子”的版本从3.1.1升级到3.2.0的时候，你可以发布它们到包管理系统，他们会和已有的依赖软件兼容。
+
+负责人的开发者会验证它的包能够像宣传的那样工作，现实世界是复杂混乱的，我们能做的就是小心谨慎。你可以使用 Semantic Versioning 来作为一个方法来保证包升级的时候依赖项正常工作，从而节省时间精力。
+
+## 简单的例子
+
+符合 Semantic Versioning 的版本号使用 MAJOR.MINOR.PATCH 格式，在增加数字的时候遵循下面的规则：
+
+* MAJOR 数字在出现向后不兼容的API变动时候增加；
+* MINOR 数字在增加向后兼容的功能的时候增加；
+* PATCH 数字在修改向后兼容的BUG的时候增加。
+
+- 0.1.0 SemVer的第一个版本从这里开始，而不是0.0.1
+- 0.2.0 以0作为Major部分的版本号都是开发版本，作为给开发者参考使用
+- 0.2.1 修复了之前一个版本的bug
+- 0.3.1 添加了一个新功能
+- 1.0.0 这是第一个稳定版本
+- 1.1.0 添加了一个新功能
+- 2.0.0 破坏了原来的API
+- 2.1.0 继续添加了新功能
+
+## 更加复杂的情况
+
+额外的 label，pre-release 和 build metadata 可以作为扩展添加在 MAJOR.MINOR.PATCH 的后面。更加复杂的语义版本号可以由五个部分组成 主版本号、次版本号、补丁号、预发布版本标签 和 构建号。例如：
+
+- 2.1.0-alpha pre-release可以用来提醒这是一个用于测试的版本，在SemVer中使用一个`-`符号加上符号或者数字，比如alpha，beta
+- 2.1.0-alpha.1B pre-release加上输入表示这是一个不同的pre-release版本
+- 2.1.0-alpha.1B+amy-72a3e 有的时候希望在版本号中显示关于这个版本构建的metadata，比如例如是谁构建了这个版本，用了什么机器，在什么时间，这个版本的checksum，在SemVer中可以使用一个`+`加上后续的构建信息
+- 2.1.0-beta+exp.sha.7214g8e 一个符号为beta的pre-release版本
+- 2.1.1+20220111 也可以只包含构建信息，不包含pre-releaes部分
 
 ## Semantic Versioning 规则明细
 
@@ -71,14 +100,6 @@ toc: true
 
        例如：1.0.0-alpha < 1.0.0-alpha.1 < 1.0.0-alpha.beta < 1.0.0-beta < 1.0.0-beta.2 < 1.0.0-beta.11 < 1.0.0-rc.1 < 1.0.0
 
-## 为什么使用 Semantic Versioning
-
-版本号不是一个特别革命性的想法。在开发和编写中，自然就会想到给不同的版本编号。但是只是想到编号还不够好，如果没有一个统一的标准明细，版本号在依赖项管理的时候就是没有用的。通过将这个想法通过一个名称和清晰的定义来实现，这就成了软件开发者和用户之间沟通的渠道。
-
-Semantic Versioning 能够解决“依赖项地狱”的一个简单例子就是，假设有一个库教“救火云梯”，它需要一个版本的包叫“梯子”，当“救火云梯”被开发出来的时候，“梯子”的版本号是3.1.0，当“救火云梯”被开发出来的时候你可以知道3.1.0版本及以上的“梯子”能够作为依赖项，但是必须低于4.0.0。当“梯子”的版本从3.1.1升级到3.2.0的时候，你可以发布它们到包管理系统，他们会和已有的依赖软件兼容。
-
-负责人的开发者会验证它的包能够像宣传的那样工作，现实世界是复杂混乱的，我们能做的就是小心谨慎。你可以使用 Semantic Versioning 来作为一个方法来保证包升级的时候依赖项正常工作，从而节省时间精力。
-
 ## FAQ
 
 **初始开发阶段如何处理版本号？**
@@ -100,3 +121,6 @@ Semantic Versioning 能够解决“依赖项地狱”的一个简单例子就是
 ## 参考
 
 * <[Semantic Versioning 2.0.0 | Semantic Versioning (semver.org)](https://semver.org/)>
+* <https://devopedia.org/semantic-versioning>
+* <https://www.cnblogs.com/walterlv/p/10236470.html>
+* <https://docs.microsoft.com/en-us/nuget/reference/package-versioning>
