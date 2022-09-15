@@ -40,7 +40,7 @@ pandoc --filter pandoc-crossref \
 
 不是所有的文档都需要满足上面的全部要求，可以通过调节pandoc的参数选择需要实现哪些功能，功能要求越多那么需要调节的参数也会越多。下面分别介绍如何调整pandoc参数来满足上面的要求。
 
-### 基本使用 - 保留文字内容
+## 基本使用 - 保留文字内容
 
 如果对转换后的 Word 文档没有任何特别的特别要求，只希望保证文字，图片等内容均完整，使用下面的命令:
 
@@ -48,7 +48,7 @@ pandoc --filter pandoc-crossref \
 pandoc -s main.tex -o main.docx
 ```
 
-### 图片，表格的交叉引用
+## 图片，表格的交叉引用
 
 如果希望 LaTeX 中对图标的交叉引用，比如`\Figure ref{fig:fig1}`在word中依然显示为`Figure 1`，你可以使用加上`pandoc-crossref`参数：
 
@@ -59,8 +59,17 @@ pandoc --filter pandoc-crossref \
 
 [`pandoc-crossref`](https://github.com/lierdakil/pandoc-crossref)是另一个项目中的程序，所有需要先进行下载。可以到release页面中找到一个版本下载，可以放到环境变量指定的路径下，或者放到当前目录。
 
+### Pandoc-crossref 自定义设置
 
-### 参考文献及其引用
+如果需要修改转化时候的Metadata，比如将图片的caption由``figure 1``变为``图 1``，你需要修改pandoc-crossref配置文件，参考<http://lierdakil.github.io/pandoc-crossref/#settings-file>：
+
+```bash
+pandoc --filter pandoc-crossref --filter pandoc-citeproc --bibliography=ref.bib 
+--csl ieee.csl --reference-docx=IEEE_template.doc 
+-M pandoc-crossref.yaml mydoc.tex -o mydoc.docx
+```
+
+## 参考文献及其引用
 
 过往版本的pandoc需要使用另外一个项目[`pandoc-citeproc`](https://github.com/jgm/pandoc-citeproc)中的程序，对于较新版本的pandoc，可以直接添加`--citeproc`参数来解析 bibliography 文件和 csl 风格文件来处理文献引用。
 
@@ -89,7 +98,7 @@ pandoc --filter pandoc-crossref \
 
 你会发现这个命令输出的公式编号虽然正确，但是在引用的位置没有按照 公式1，公式2 这样引用，而是类似于 公式{eq:eq1}。并且有些情况下编号没有靠右对齐。目前据我所知使用pandoc还不能完全解决这个问题，可以在输出文档上进行手动调节来满足提交要求。
 
-### Word排版样式
+## Word排版样式
 
 你可以将输出的 Word 文件按照模板文件进行排版，这可以在pandoc中输入额外的参数`--reference-doc=IEEE_template.docx`来实现。IEEE的模板文件可以在[IEEE template selector](https://template-selector.ieee.org/)找到一个进行试验。
 
@@ -100,16 +109,6 @@ pandoc --filter pandoc-crossref \
     --bibliography=ref.bib --csl ieee.csl \
     --reference-doc=IEEE_template.docx \
     -s mydoc.tex -o mydoc.docx
-```
-
-### Pandoc-crossref 自定义设置
-
-如果需要修改转化时候的Metadata，比如将图片的caption由``figure 1``变为``图 1``，你需要修改pandoc-crossref配置文件，参考<http://lierdakil.github.io/pandoc-crossref/#settings-file>：
-
-```bash
-pandoc --filter pandoc-crossref --filter pandoc-citeproc --bibliography=ref.bib 
---csl ieee.csl --reference-docx=IEEE_template.doc 
--M pandoc-crossref.yaml mydoc.tex -o mydoc.docx
 ```
 
 ## References
