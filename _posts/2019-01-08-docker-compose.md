@@ -107,8 +107,34 @@ Compose可以帮助我们开启多个container，这里的`docker-compose.yml`�
 
 最后，使用`docker-compose up`来运行这个application。你可以从浏览器中访问`http://0.0.0.0:5000/`来查看这个简单的application的运行效果。
 
+## 更多docker compose 命令
+
+```
+docker compose logs
+
+# 暂停运行，保持container状态
+docker compose pause
+
+# 继续运行
+docker compose unpause
+
+# 停止container运行，但不会删除container
+docker compose stop
+
+# 删除container，network，volume
+docker compose down
+```
+
+```
+# 删除image
+docker image rm nginx:alpine
+
+# 删除不运行的image
+docker image prune -a
+```
 
 ## 参考
 
 * [Docker docs](https://docs.docker.com/compose/overview/)
 * [Get Started with Docker Compose](https://docs.docker.com/compose/gettingstarted/)
+* [How To Install and Use Docker Compose on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
