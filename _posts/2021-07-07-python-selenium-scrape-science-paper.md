@@ -18,15 +18,46 @@ toc: true
 
 ## 软件安装
 
-首先在 Python 环境中使用 pip 安装 selenium：
+### selenium
+
+使用 pip 安装 selenium：
 
 ```
 pip install selenium
 ```
 
-然后，你还需要安装浏览器的驱动来提供操作的接口。你可以[这里](https://sites.google.com/a/chromium.org/chromedriver/downloads)下载到Chrome的驱动。如果使用的是linux系统，下载后将它放置到``~/.local/bin``来帮助 selenium 找到它。
+然后，你还需要安装浏览器的驱动来提供操作的接口。
 
-接着，你就可以使用 python 代码导入 selenium 来访问网站了：
+### Chrome
+
+你可以[这里](https://sites.google.com/a/chromium.org/chromedriver/downloads)下载到Chrome的驱动。如果使用的是linux系统，下载后将它放置到``~/.local/bin``来帮助 selenium 找到它。
+
+### Firefox
+
+使用firefox进行自动化操作需要的的驱动为[geckodriver](https://github.com/mozilla/geckodriver)，下载它的可执行文件之后，将它放置到系统环境变量包含的路径下。
+
+Ubuntu22.04上运行代码可能会出现profile not accessible错误，这是由于使用snap安装firefox，profile的路径由以往的`~/.mozilla/firefox/`变更到了`~/snap/firefox/common/.mozilla/firefox/`，geckodriver不知道profile路径的变更，需要手动告诉它新的profile路径。
+
+```python
+from selenium import webdriver
+
+options = webdriver.FirefoxOptions()
+options.add_argument('--profile')
+profile_path = "/home/USERNAME/snap/firefox/common/.mozilla/firefox/hzepd0mp.selenium"
+options.add_argument(profile_path)
+browser = webdriver.Firefox(options=options)
+browser.get('http://selenium.dev')
+```
+
+其中的profile路径可以通过在firefox浏览器输入`about:profiles`查看得到。
+
+### Edge
+
+Edge的驱动可以在[这里](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)下载得到。
+
+## 使用 Selenium 访问 DOM 元素
+
+你可以使用 python 代码导入 selenium 来访问网站：
 
 ```python
 from selenium import webdriver
@@ -41,8 +72,6 @@ driver.get(url)
 ![searchpage](/assets/2021-07-07-python-selenium-scrape-science-paper/searchpage.png)
 
 selenium 会一直保持对driver的操作连接直到``driver.close()``命令。如果你是使用 python 解释器运行的上面的指令，或是是使用``python -i script.py``来在脚本文件运行完成后保持解释器，那么就可以继续输入代码来操作当前活动的浏览器。
-
-## 使用 Selenium 访问 DOM 元素
 
 当 selenium 控制浏览器打开网页加载完成后，就可以访问其中的内容或者进行下一步操作。比如使用``print(driver.title)``可以打印处网页的标题。
 
@@ -204,3 +233,4 @@ driver.quit()
 
 * <https://realpython.com/modern-web-automation-with-python-and-selenium>
 * <https://www.browserstack.com/guide/python-selenium-to-run-web-automation-test>
+* [DeprecationWarning: firefox_profile has been deprecated, please pass in an Options object](https://stackoverflow.com/questions/69571950/deprecationwarning-firefox-profile-has-been-deprecated-please-pass-in-an-optio)
