@@ -433,6 +433,83 @@ im_ani.save('im.mp4', writer=writer)
 
 保存动画可以使用 Animation.save, Animation.to_html5_video, or Animation.to_jshtml。你需要将 writer 给到 save 函数，有不同的 writer 可以选择，包括 PillowWriter，HTMLWriter，FFMpegWriter，ImageMagickWriter，FFMpegFileWriter，ImageMagickFileWriter。
 
+## 中文字体设置
+
+如果结果绘图中的图片出现方块，这是因为matplotlib不能使用中文字体绘图。
+
+![img](/assets/2021-10-20-matplotlib-intro/error_chinesefont.png)
+
+为了验证机器上的matplotlib不能使用中文字体，可以使用下面的代码查看matplotlib可用字体的字体，一个常用的中文字体是SimHei，如果在打印的内容中找不到这个字体，说明matplotlib不能使用这个中文字体。
+
+```python
+import matplotlib as mpl
+mpl.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
+```
+
+```
+...
+'/usr/share/fonts/truetype/noto/NotoSerifBalinese-Regular.ttf',
+'/usr/share/fonts/opentype/malayalam/Gayathri-Regular.otf',
+'/usr/share/fonts/truetype/noto/NotoSansThaana-Bold.ttf',
+'/usr/share/fonts/truetype/tlwg/Laksaman-BoldItalic.ttf',
+'/usr/share/fonts/truetype/noto/NotoSansMendeKikakui-Regular.ttf',
+'/usr/share/fonts/truetype/Navilu/Navilu.ttf',
+'/usr/share/fonts/opentype/urw-base35/URWBookman-DemiItalic.otf',
+'/usr/share/fonts/truetype/noto/NotoSerifThai-Bold.ttf',
+'/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf',
+'/usr/share/fonts/truetype/ubuntu/Ubuntu-MI.ttf',
+'/usr/share/fonts/SimHei.ttf',
+'/usr/share/fonts/truetype/tlwg/TlwgMono-Bold.ttf',
+'/usr/share/fonts/truetype/noto/NotoSansBalinese-Bold.ttf',
+...
+```
+
+为了让matplotlib能够显示中文字体，不同的系统的解决方法略有不同，不过思路都是下载字体然后让系统能够识别。
+
+### Ubuntu
+
+一些Ubuntu系统在安装时候不包含中文字体，需要先下载[ttf字体文件](https://www.zitijia.com/i/281258939050380345.html)，将它拷贝到指定目录
+
+```
+sudo cp SimHei.ttf /usr/shape/fonts
+```
+
+接着删除matplotlib缓存
+
+```python
+import matplotlib as mpl
+import shutil
+shutil.rmtree(mpl.get_cachedir())
+```
+
+之后重新启动python或者jupyter内核
+
+### Windows
+
+Windows的字体目录在`C:\Windows\Fonts`，所以需要将ttf文件放到这个目录，然后重启python内核。不过Windows系统一般都包含中文字体，可以直接跳过这里。
+
+### OS X
+
+苹果操作系统添加字体可以通过Cmd+Space打开Spotlight，然后找到fonts应用添加字体。
+
+安装字体之后，需要在python代码中进行下面的设置
+
+```python
+plt.rcParams['font.family']='SimHei'
+plt.rcParams['axes.unicode_minus'] = False
+```
+
+接着可以使用下面的代码试验一下绘制中文字体：
+
+```python
+plt.plot([1,2,3,2,3,4])
+plt.title('一副图片')
+plt.xlabel('这是X轴')
+plt.ylabel('这是y轴')
+```
+
+![img](/assets/2021-10-20-matplotlib-intro/correct_chinesefont.png)
+
 ## 参考
 
 * <https://github.com/PacktPublishing/Matplotlib-3.0-Cookbook>
