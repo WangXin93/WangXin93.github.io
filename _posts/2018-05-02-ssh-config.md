@@ -785,42 +785,70 @@ c.NotebookApp.certfile = u’路径名/mycert.pem’
 
 保存后重启jupyter服务。
 
-### 将jupyter notebook 配置为service
+### 将jupyter notebook 设置为开机后台启动
 
-创建一个 ``jupyter.service`` 文件，内容如下：
+为了将jupyter notebook设置为开机后台启动，可以通过配置systemd unit文件来实现。
+
+> systemd是目前linux发行版中默认使用的初始化系统和后台服务管理系统，由 Lennart Poettering 和 Kay Sievers 编写。systemd有强大的并行能力和任务依赖控制逻辑，让机器启动速度更快。systemd 和之前系统中使用的 SysV 初始化脚本兼容，不过systemd不仅管理系统的初始化，还提供其它的功能，比如 cron 和 syslog。由于systemd对 linux user space做了很多操作，所以有人批判它没有遵循强调简洁性和模块化的[unix哲学](https://en.wikipedia.org/wiki/Unix_philosophy)。
+
+systemd引入了system unit的概念来管理服务。unit有不同的类型，包括service unit，mount unit，socket unit，slice unit。不同的类型对应这不同的服务，比如mount对应着硬盘挂载服务。服务的配置定义在了文件的内容中。
+
+下面来从头编写一个service unit，定义一个在后台运行的jupyter notebook服务。使用命令`touch jupyter.service`创建一个 ``jupyter.service`` 文件，内容如下：
 
 ```
 [Unit]
 Description=Jupyter Notebook
+
 [Service]
 Type=simple
 PIDFile=/run/jupyter.pid
+Environment=PATH="/usr/local/bin"
 ExecStart=/home/lab2033/miniconda3/bin/jupyter-notebook
 User=lab2033
 Group=lab2033
 WorkingDirectory=/home/lab2033/parttime
 Restart=always
 RestartSec=10
+
 [Install]
 WantedBy=multi-user.target
 ```
 
-然后安装这个service：
+这个文件的内容有三个章节：
+
+- 在`[Unit]`章节，定义了这个unit的描述内容
+- 在`[Unit type]`章节，这里是`[Service]`章节，定义了具体的指令
+- 在`[Intsall]`章节，定义了使用`systemctl enable`安装unit时候相关的信息
+
+你可以在[Working with systemd unit files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/assembly_working-with-systemd-unit-files_configuring-basic-system-settings#ref_important-unit-section-options_assembly_working-with-systemd-unit-files)这个网址看到更多选项的含义。
+
+将这个unit文件放到`/etc/systemd/system`目录service。运行`systemctl daemon-reload`让systemd知道有一个新的`jupyter.service`存在，之后启动它。
 
 ```
 sudo cp jupyter.service /etc/systemd/system/
 
-# Use the enable command to ensure that the service starts whenever the system boots
-sudo systemctl enable jupyter.service
-
 sudo systemctl daemon-reload
 
 sudo systemctl start jupyter.service
+```
 
+查看运行输出可以使用`systemctl status`命令或者[`journalctl`](https://www.linode.com/docs/guides/how-to-use-journalctl/):
+
+```
 systemctl status jupyter.service
+
+journalctl -u jupyter.service -b
+```
+
+如果希望设置为开机启动可以使用`systemctl enable`命令：
+
+```
+systemctl enable jupyter.service
 ```
 
 ### 参考链接
+
+* <https://www.linode.com/docs/guides/introduction-to-systemctl/>
 * [jupyter Notebook 安装使用](https://cloud.tencent.com/developer/article/1019832)
 * [十分钟配置云端数据科学开发环境](https://cloud.tencent.com/developer/article/1004749)
 * [Jupyter notebook as a service on Ubuntu 18.04 with Python 3](https://naysan.ca/2019/09/07/jupyter-notebook-as-a-service-on-ubuntu-18-04-with-python-3/)
@@ -828,9 +856,9 @@ systemctl status jupyter.service
 * <http://blog.csdn.net/ys676623/article/details/77848427>
 * <https://yq.aliyun.com/articles/98527>
 
-Apache Spark 是专为大规模数据处理而设计的快速通用的计算引擎。Spark是UC Berkeley AMP lab (加州大学伯克利分校的AMP实验室)所开源的类Hadoop MapReduce的通用并行框架，Spark，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是——Job中间输出结果可以保存在内存中，从而不再需要读写HDFS，因此Spark能更好地适用于数据挖掘与机器学习等需要迭代的MapReduce的算法。
-
 ## 配置pyspark
+
+Apache Spark 是专为大规模数据处理而设计的快速通用的计算引擎。Spark是UC Berkeley AMP lab (加州大学伯克利分校的AMP实验室)所开源的类Hadoop MapReduce的通用并行框架，Spark，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是——Job中间输出结果可以保存在内存中，从而不再需要读写HDFS，因此Spark能更好地适用于数据挖掘与机器学习等需要迭代的MapReduce的算法。
 
 1. Spark使用Scala写的，Scala依赖Java。先安装Java。
 ```bash
