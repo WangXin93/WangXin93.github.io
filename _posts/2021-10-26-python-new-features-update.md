@@ -391,8 +391,38 @@ def mean(numbers: list[float | int]) -> float:
     return sum(numbers) / len(numbers)
 ```
 
+## Python 3.11
+
+2022年10月25日python发布了3.11版本，下面是一些重要的新特性：
+
+Faster Python，相对于python3.10平均提高了25%，根据任务不同可以提升10%到60%
+
+更好的错误提示。现在错误不仅回提示到行号，一行语句中哪里错了还会用`^`标志出来
+
+```python
+Traceback (most recent call last):
+  File "distance.py", line 11, in <module>
+    print(manhattan_distance(p1, p2))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "distance.py", line 6, in manhattan_distance
+    return abs(point_1.x - point_2.x) + abs(point_1.y - point_2.y)
+                           ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'x'
+```
+
+在except块中可以使用add_note()函数添加提示
+
+异常组（except group）和`except*`语法。异常组让异常可以按组合并和同时抛出。新的`except*`语法可以匹配异常组的子组。
+
+新的type hint，包括 LiteralString , Self, Required, NotRequired
+
+新模块tomllib
+
+在asyncio中添加了TaskGroup
+
 ## 参考
 
 1. <https://realpython.com/python-walrus-operator>
 2. <https://realpython.com/python39-new-features>
 3. <https://realpython.com/python310-new-features>
+4. <https://docs.python.org/3.11/whatsnew/3.11.html>
