@@ -768,6 +768,24 @@ python -m ipykernel install --user --name envname --display-name "envname"
 
 你还可以将virtualenv中的kernel安装到另一个conda环境。R和Julia也可以作为内核安装到Julia中。官方文档链接在[这里](https://docs.jupyter.org/en/latest/install/kernels.html)。
 
+列举kernel
+
+```
+jupyter kernelspec list
+```
+
+Available kernels:
+  python3          /home/lab2033/.local/share/jupyter/kernels/python3
+  torch182    /home/lab2033/.local/share/jupyter/kernels/torch182
+
+结果会显示kernel的名称以及对应目录。如果查看目录中的内容，可以发现有一个kernel.json文件，以及它的logo图片。kernel.json文件中包含python程序的地址，如果被修改可能导致kernel打开时候报出错误
+
+删除kernel
+
+```
+jupyter kernelspec remove kernelname
+```
+
 ### Jupyter的SSL加密配置
 
 自己建一个文件夹或者干脆在~/.jupyter/ 文件夹下面执行下面命令：
