@@ -1,0 +1,139 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rishi Shah 
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+\usepackage{hyperref}
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Xin Wang} % Your name
+\address{Building 3, Number 2999 Nroth Renmin Road, Songjiang,  Shanghai} % Your address
+%\address{123 Pleasant Lane \\ City, State 12345} % Your secondary addess (optional)
+\address{(+86)133-9148-8435 \\ \href{mailto:wangx@mail.dhu.edu.cn}{wangx@mail.dhu.edu.cn} \\ \href{https://wangxin93.github.io}{wangxin93.github.io}} % Your phone number and email
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Education}
+
+{\bf Donghua University, Shanghai, P.R.China} \hfill {\em Sep. 2015 - Pres.} 
+\\ Ph.D in Digital Textile Engineering
+\\ Related courses: Numerical analysis, Computer graphics, Computer vision
+\\ Self-educated: CS61A, CS61B, CS231n, CS20SI, Machine Learning, Python
+
+{\bf University of Manchester, Manchester, United Kingdom} \hfill {\em Dec. 2019 - Aug. 2020} 
+\\ Visiting student in Department of Materials
+\\ Related courses: \href{https://www.research.manchester.ac.uk/portal/hugh.gong.html}{Fashion recommendation system research}
+
+{\bf Lanzhou University of Technology, Lanzhou, Gansu, P.R.China} \hfill {\em Sep. 2011 - Jul. 2015} 
+\\ Bachelor of Textile Engineering.
+\\ Related courses: Advanced mathematics, Linear algebra, Probability theory and statistics
+%Minor in Linguistics \smallskip \\
+%Member of Eta Kappa Nu \\
+%Member of Upsilon Pi Epsilon \\
+
+
+\end{rSection}
+%--------------------------------------------------------------------------------
+%    Projects And Seminars
+%-----------------------------------------------------------------------------------------------
+\begin{rSection}{Research}
+{\bf Outfit Compatibility Prediction and Diagnosis with \\ Multi-Layered Comparison Network} \hfill {\em Aug. 2018 - Jun. 2019}
+\\ - [\href{https://github.com/WangXin93/fashion_compatibility_mcn}{Code}] [\href{https://outfit-diagnosis.herokuapp.com/}{Demo}] - ACM Multimedia 2019, First Author
+\begin{itemize}
+    \item Propose to diagnose the compatibility of the outfit, which is implemented by using the gradient values to approximate the importance of input similarities.
+    \item Propose to learn outfit compatibility from all pairwise similarities.
+    \item Leverage the feature hierarchy of CNN to provide both low-level and high-level features for prediction and diagnosis.
+\end{itemize}
+
+{\bf Inpainting-based Virtual Try-On Network for Selective \\ Garment Transfer} \hfill {\em Dec. 2018 - Sep. 2019}
+\\ - [\href{https://github.com/maktu6/Inpaint-TON}{Code}] - IEEE Access
+\begin{itemize}
+    \item Propose an Inpainting-based Virtual Try-On Network (I-VTON) which allows the user to try on arbitrary clothes from the model image in a selective manner.
+    \item Introduce a skin loss to maintain the skin color of users.
+\end{itemize}
+
+{\bf Fabric Idenfication using Convolutional Neural Network} \hfill {\em Oct. 2017 - Jul. 2018}
+\\ - [\href{https://github.com/WangXin93/FabricID}{Code}] - Artificial Intelligence on Fashion and Textile Conference (AIFT) 2018, First Author
+\begin{itemize}
+    \item Explore to retrieve fabric texture with deep extracted features, which is implemented with a CNN with softmax cross entropy and centor loss.
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Intership}
+
+\begin{rSubsection}{JD AI Research, Beijing, P.R.China}{Aug. 2018 - Mar. 2019}{Computer Vision and Multimedia Lab, R\&D Intern}{}
+\item Built a multi-task network for fashion attribute classification, achieved state-of-the-art performance on DeepFashion dataset.
+\item Implemented metric learning and sequence models for fashion outfit compatibility prediction, proposed multi-layered comparison network for superior prediction performance and diagnosis ability.
+\end{rSubsection}
+
+
+\end{rSection}
+
+
+%	EXAMPLE SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Selected Awards} 
+\item Awarded The First Prize Scholarship for two years during my undergraduate period.
+\item Won the \href{https://fashion-challenge.github.io/style-rank.html}{4th} place in 2018 JD fashion style recognition challenge.
+\item Awarded JD AI Star Intern in 2019.
+\item Awarded Student Travel Grant in ACM Multimedia 2019.
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	TECHNICAL STRENGTHS SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Technical Strengths}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Computer Language \ & Advanced: Python; Basic: C/C++, Bash, Matlab, SQL \\
+Deep Learning Framework \ & TensorFlow, PyTorch \\
+Tools \ & Git, Vim, \LaTeX, Scrapy, Scikit-learn, Sed, Awk
+\end{tabular}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	Personal Interests SECTION
+%----------------------------------------------------------------------------------------
+
+% \begin{rSection}{Personal Interests}
+
+% \begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+% Amateur guitar player.
+% \end{tabular}
+
+% \end{rSection}
+
+
+\end{document}
