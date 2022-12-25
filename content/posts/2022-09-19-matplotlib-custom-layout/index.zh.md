@@ -1,5 +1,7 @@
 ---
-categories: Python Matplotlib
+CNcategories: python
+CNtags: ["python", "plot", "matplotlib"]
+CNSeries: python
 date: "2022-09-19T20:34:00Z"
 title: Matplotlib 绘图如何自定义布局
 cover:

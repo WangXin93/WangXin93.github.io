@@ -1,5 +1,7 @@
 ---
-categories: Python
+CNcategories: python
+CNtags: ["python"]
+CNseries: python
 date: "2021-10-26T17:19:00Z"
 title: Python 新版本功能介绍（持续更新）
 cover:

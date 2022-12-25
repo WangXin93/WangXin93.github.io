@@ -1,5 +1,7 @@
 ---
-categories: Python
+CNcategories: python
+CNtags: ["python"]
+CNseries: python
 date: "2018-02-01T17:25:46Z"
 title: Python 版本管理
 ---

@@ -2,7 +2,7 @@
 title: Python访问sqlite数据库
 date: "2022-06-27T19:41:00Z"
 CNcategories: python
-CNtags: ["python", "sql"]
+CNtags: ["python", "sql", "sqlite"]
 CNseries: python
 cover:
     image: "python_loves_sqlite.png"

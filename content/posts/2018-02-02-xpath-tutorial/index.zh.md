@@ -1,5 +1,7 @@
 ---
-categories: Python
+CNcategories: python
+CNtags: ["python", "xpath"]
+CNseries: python
 date: "2018-02-02T18:47:00Z"
 title: XPath 关键概念
 ---
