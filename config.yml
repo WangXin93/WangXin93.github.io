@@ -2,7 +2,7 @@ baseURL: http://blog.xiaowang.eu.org
 title: "Little Wang's Blog"
 paginate: 5
 theme: "PaperMod"
-defaultContentLanguage: zh
+# defaultContentLanguage: zh
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
@@ -57,7 +57,13 @@ languages:
                   weight: 25
                 - name: WiKi
                   url: https://github.com/adityatelange/hugo-PaperMod/wiki/
-
+        homeInfoParams:
+            Title: "PaperMod"
+            Content: >
+                Welcome to demo of hugo's theme PaperMod.
+                - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
+                - Do give a 🌟 on Github !
+                - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
     zh:
         languageName: "中文"
         languageAltTitle: Chinese
@@ -99,6 +105,13 @@ languages:
                   weight: 25
                 - name: WiKi
                   url: https://github.com/adityatelange/hugo-PaperMod/wiki/
+        homeInfoParams:
+          Title: "欢迎来到我的博客"
+          Content: >
+              你好！我会在这里分享关于以下方面的知识：
+              - 唱歌.
+              - 跳舞!
+              - 打篮球.
 
 outputs:
     home:
@@ -138,13 +151,6 @@ params:
             - name: Tags
               url: tags
 
-    homeInfoParams:
-        Title: "PaperMod"
-        Content: >
-            Welcome to demo of hugo's theme PaperMod.
-            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
-            - Do give a 🌟 on Github !
-            - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
     socialIcons:
         # - name: github
         #   url: "https://github.com/adityatelange/hugo-PaperMod"
