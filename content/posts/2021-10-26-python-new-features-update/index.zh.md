@@ -1,16 +1,17 @@
 ---
 categories: Python
 date: "2021-10-26T17:19:00Z"
-draft: true
 title: Python 新版本功能介绍（持续更新）
-toc: true
+cover:
+    image: "python-update.svg"
+    alt: "python-update"
+    caption: "python-update"
+    relative: true
 ---
 
-> 本博客持续收集 Python 新版本中值得注意的功能。包括 Python3.8 开始的海豹运算符，Python3.10 的match语句，更好的rrror message等。
+![cover-img](python-update.svg)
 
-<div align="center">
-<img src="/assets/2021-10-27-python-new-features-update/python-update.svg" style="width:100%"/>
-</div>
+> 本博客持续收集 Python 新版本中值得注意的功能。包括 Python3.8 开始的海豹运算符，Python3.10 的match语句，更好的rrror message等。
 
 ## Python3.6
 
