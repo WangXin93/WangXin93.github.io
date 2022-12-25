@@ -1,4 +1,4 @@
-baseURL: http://wangxin93.github.io
+baseURL: http://blog.xiaowang.eu.org
 title: "Little Wang's Blog"
 paginate: 5
 theme: "PaperMod"
@@ -10,7 +10,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-# googleAnalytics: UA-123-45
+googleAnalytics: UA-128271507-1
 
 minify:
     disableXML: true
@@ -47,13 +47,13 @@ languages:
                   weight: 10
                 - name: Tags
                   url: tags/
-                  weight: 10
+                  weight: 15
                 - name: Series
                   url: series/
-                  weight: 10
+                  weight: 20
                 - name: Search
                   url: search/
-                  weight: 15
+                  weight: 25
                 - name: WiKi
                   url: https://github.com/adityatelange/hugo-PaperMod/wiki/
 
@@ -86,16 +86,16 @@ languages:
                   weight: 5
                 - name: 标签
                   url: cntags/
-                  weight: 10
+                  weight: 15
                 - name: 类别
                   url: cncategories/
                   weight: 10
                 - name: 系列
                   url: cnseries/
-                  weight: 10
+                  weight: 20
                 - name: 搜索
                   url: search/
-                  weight: 15
+                  weight: 25
 
 outputs:
     home:
@@ -106,8 +106,7 @@ outputs:
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Theme PaperMod - https://github.com/adityatelange/hugo-PaperMod"
-    author: Theme PaperMod
-    # author: ["Me", "You"] # multiple authors
+    author: ["Me"] # multiple authors
 
     defaultTheme: auto
     # disableThemeToggle: true
@@ -144,17 +143,17 @@ params:
             - Do give a 🌟 on Github !
             - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
     socialIcons:
-        - name: github
-          url: "https://github.com/adityatelange/hugo-PaperMod"
-        - name: KoFi
-          url: "https://ko-fi.com/adityatelange"
+        # - name: github
+        #   url: "https://github.com/adityatelange/hugo-PaperMod"
+        # - name: KoFi
+        #   url: "https://ko-fi.com/adityatelange"
         - name: Rss
           url: "index.xml"
 
-    editPost:
-        URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
-        Text: "Suggest Changes" # edit text
-        appendFilePath: true # to append file path to Edit link
+    # editPost:
+    #     URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+    #     Text: "Suggest Changes" # edit text
+    #     appendFilePath: true # to append file path to Edit link
 
     # label:
     #     text: "Home"
