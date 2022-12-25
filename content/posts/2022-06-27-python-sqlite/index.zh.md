@@ -1,15 +1,17 @@
 ---
-categories: Python
-date: "2022-06-27T19:41:00Z"
-draft: true
 title: Python访问sqlite数据库
+date: "2022-06-27T19:41:00Z"
+CNcategories: python
+CNtags: ["python", "sql"]
+CNseries: python
+cover:
+    image: "python_loves_sqlite.png"
+    alt: "python_loves_sqlite"
+    caption: "python_loves_sqlite"
+    relative: true
 ---
 
 > sqlite使用一个文件存储数据库内容，非常适合快速开发测试软件。python内建有sqlite3模块这使得使用python操作sqlite数据库更加方便。本篇博客的下面内容会介绍如何使用python以及sqlite3模块创建sqlite数据库，建立表格，操作数据。
-
-<div align="center">
-<img src="/assets/2022-06-27-python-sqlite/python_loves_sqlite.png" style="width:100%"/>
-</div>
 
 ## 前言
 

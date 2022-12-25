@@ -9,8 +9,6 @@ cover:
     relative: true
 ---
 
-![cover-img](python-update.svg)
-
 > 本博客持续收集 Python 新版本中值得注意的功能。包括 Python3.8 开始的海豹运算符，Python3.10 的match语句，更好的rrror message等。
 
 ## Python3.6

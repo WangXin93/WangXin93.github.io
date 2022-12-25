@@ -1,9 +1,12 @@
 ---
 categories: Python Matplotlib
 date: "2022-09-19T20:34:00Z"
-draft: true
 title: Matplotlib 绘图如何自定义布局
-toc: true
+cover:
+    image: "gridspec.png"
+    alt: "gridspec"
+    caption: "gridspec"
+    relative: true
 ---
 
 > 这篇博客将会介绍如何使用matplotlib绘图的时候自由地控制布局，包括网格布局，图中图布局，跨单元的网格布局。
@@ -16,7 +19,7 @@ toc: true
 fig, axes = plt.subplots(ncols=2, nrows=2, constrained_layout=True)
 ```
 
-![img](/assets/2022-09-19-matplotlib-custom-layout/subplots.png)
+![img](subplots.png)
 
 ## 使用add_axes
 
@@ -47,7 +50,7 @@ axes2.set_ylabel('x')
 axes2.set_title('title inside');
 ```
 
-![img](/assets/2022-09-19-matplotlib-custom-layout/add_axes.png)
+![img](add_axes.png)
 
 ## 使用gridspec
 
@@ -72,7 +75,7 @@ ax5 = fig.add_subplot(gs[-1, -2])
 ax5.set_title('gs[-1, -2]')
 ```
 
-![img](/assets/2022-09-19-matplotlib-custom-layout/gridspec.png)
+![img](gridspec.png)
 
 ## 使用subfigure
 
@@ -94,7 +97,7 @@ for row, subfig in enumerate(subfigs):
         ax.set_title(f'Plot title {col}')
 ```
 
-![img](/assets/2022-09-19-matplotlib-custom-layout/subfigures.png)
+![img](subfigures.png)
 
 ## 参考
 
