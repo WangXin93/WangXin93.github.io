@@ -32,9 +32,14 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 # Enabling Excerpts on the Home Page
-show_excerpts: True
+show_excerpts: False
+
+# Pagnation in blog index page
+paginate: 10
+paginate_path: "/blog/page:num/"
 
 # Enabling Google Analytics
 google_analytics: UA-128271507-1
@@ -46,7 +51,7 @@ algolia:
 
 # Customize navigation links
 header_pages:
-  - blogs.md
+  - blogs-pagination.md
   - gallery.md
   - about.md
   - search.md

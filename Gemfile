@@ -21,6 +21,7 @@ gem "minima", "~> 2.0"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
   gem "jekyll-algolia", "~> 1.0"
+  gem "jekyll-paginate"
   gem "ffi", ">=1.9.24"
 end
 

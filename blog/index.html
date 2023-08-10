@@ -1,0 +1,67 @@
+---
+layout: default
+title: Blogs
+---
+
+<div class="home">
+    {%- if page.title -%}
+      <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endif -%}
+
+<!-- This loops through the paginated posts -->
+<ul class="post-list">
+{% for post in paginator.posts %}
+<li>
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <span class="post-meta">{{ post.date | date: date_format }}</span> &nbsp;
+    {%- if post.categories.size > 0 -%}
+    {%- for category in post.categories -%}
+    <a href="{{ site.baseurl }}/search/#{{ category | slugify }}"><code><nobr>{{ category }}</nobr></code></a> &nbsp;
+    {%- endfor -%}
+    {%- endif -%}
+    <h3>
+      <a class="post-link" href="{{ post.url | relative_url }}">
+        {{ post.title | escape }}
+      </a>
+    </h3>
+    {%- if site.show_excerpts -%}
+      {{ post.excerpt }}
+    {%- endif -%}
+  </li>
+{% endfor %}
+</ul>
+
+<!-- Pagination links -->
+
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | relative_url }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
+
+<svg class="svg-icon orange">
+    <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
+  <svg><span class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></span>
+
+</div>
