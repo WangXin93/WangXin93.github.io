@@ -1,8 +1,19 @@
 # This is personal blog project
 
-## Welcome! :-)
+## How to start
 
-<http://wangxin93.github.io/>
+Clone it to local machine or use codespace to open this project, then install depencies:
+
+```
+gem install jekyll bundler
+bundle install
+```
+
+To start the server, run:
+
+```
+bundle exec jekyll serve
+```
 
 ## Features
 
