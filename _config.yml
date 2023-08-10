@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 🌟 Wang Xin's Blog
+title: 🌟 XW's Blog
 author: Wang Xin
 email: wangxin19930411@163.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -26,12 +26,6 @@ twitter_username: WangX93
 disqus:
     enable: true
     shortname: wangxin93
-valine:
-    enable: false
-    leancloud_appid: z3odPusDI6yEgyXmIJgkmDf0-gzGzoHsz
-    leancloud_appkey: iaCUG4aB5HWCFYnXmCRhatsM
-    placeholder: Leave you comments here :-)
-    visitor: false
 
 # Build settings
 markdown: kramdown

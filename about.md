@@ -4,22 +4,54 @@ title: About
 permalink: /about/
 ---
 
-## Links
+## &#9735; Links
 
 * CV [[EN](/assets/cv/en/cv_en.pdf)] [[CN](/assets/cv/cn/cv_cn.pdf)]
-* [Wang Xin's Recipes](/recipes/)
-* [WeekWork](/WeekWork/)
+* [XW's Recipes](/recipes/)
 
-## Quotes
+<h2 class="page-heading">&#127891; Selected Publications</h2>
 
-> 北冥有鱼，其名为鲲。鲲之大，不知其几千里也；化而为鸟，其名为鹏。鹏之背，不知其几千里也。怒而飞，其翼若垂天之云。是鸟也，海运则将徙于南冥。南冥者，天池也。
-> 《齐谐》者，志怪者也。《谐》之言曰：“鹏之徙于南冥也，水击三千里，抟（tuán）扶摇而上者九万里，去以六月息者也。”野马也，尘埃也，生物之以息相吹也。天之苍苍，其正色邪？其远而无所至极邪？其视下也，亦若是则已矣。"
-> --《[庄子](https://zh.m.wikisource.org/zh-hans/%E8%8E%8A%E5%AD%90/%E9%80%8D%E9%81%99%E9%81%8A)》
+<ul class="post-list">
+    <li>
+        <a href="https://ieeexplore.ieee.org/abstract/document/8836494">
+            Inpainting-based Virtual Try-On Network for Selective Garment Transfer
+        </a> <br/>
+        Li Yu, Yueqi Zhong, Xin Wang <br/>
+        IEEE Access <br/>
+        [<a href="https://ieeexplore.ieee.org/abstract/document/8836494">Paper</a>]
+        [<a href="https://github.com/maktu6/Inpaint-TON">Code</a>]
+    </li>
+    <li>
+        <a href="https://arxiv.org/abs/1907.11496">
+            Outfit Compatibility Prediction and Diagnosis with Multi-Layered Comparison Network
+        </a> <br/>
+        Xin Wang, Bo Wu, Yueqi Zhong <br/>
+        ACM Multimedia 2019 <br/>
+        [<a href="https://github.com/WangXin93/fashion_compatibility_mcn">Code</a>]
+        [<a href="https://arxiv.org/abs/1907.11496">Arxiv</a>]
+        [<a href="https://dl.acm.org/citation.cfm?id=3350909">Paper</a>]
+        [<a href="https://dl.acm.org/doi/10.1145/3394171.3414812">Reproducibility</a>]
+        [<a href="https://outfit-diagnosis.herokuapp.com/">Demo</a>]
+    </li>
+    <li>
+        <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-99695-0_12">
+            Fabric Identification Using Convolutional Neural Network
+        </a> <br/>
+        Xin Wang, Ge Wu, Yueqi Zhong <br/>
+        Artificial Intelligence on Fashion and Textile Conference (AIFT), 2018. <br/>
+        [<a href="https://github.com/WangXin93/FabricID">Code</a>]
+    </li>
+</ul>
 
-## QRCode
+## &#9997; Quotes
+
+> 天地有大美而不言，四时有明法而不议，万物有成理而不说。
+> --《庄子·外篇·知北游》
+
+## &#9775; QRCode
 
 <img src="/assets/qrcode.png" width = "200" height = "200" alt="qrcode"/>
 
-## Visitor Maps
+## &#127758; Visitor Maps
 
 <a href='https://clustrmaps.com/site/1bjdj'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=600&t=n&d=iAh-HdRfaRsSJL9chSgu0GYamPNzhiWTqmlHAnkWwbk&co=2d78ad&ct=ffffff'/></a>
