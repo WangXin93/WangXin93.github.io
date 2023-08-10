@@ -5,7 +5,7 @@ title: Blogs
 
 <div class="home">
     {%- if page.title -%}
-      <h1 class="page-heading">{{ page.title }}</h1>
+      <h1 class="page-heading">&#128218; {{ page.title }}</h1>
     {%- endif -%}
 
 <!-- This loops through the paginated posts -->
@@ -61,7 +61,7 @@ title: Blogs
 {% endif %}
 
 <svg class="svg-icon orange">
-    <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
+  <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
   <svg><span class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></span>
 
 </div>

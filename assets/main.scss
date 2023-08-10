@@ -113,6 +113,7 @@
     align-items: center;
     margin-top: 20px; /* Adjust as needed */
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Wrap to new line when width is not enough */
   }
 
 .pagination li {
@@ -123,7 +124,7 @@
 .pagination span,
 .pagination em {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 8px 12px;
     text-decoration: none;
     background-color: #3498db;
     color: white;
