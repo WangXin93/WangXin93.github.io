@@ -4,6 +4,9 @@
     <div class="wrapper">
         <div class="footer-col-wrapper">
             <div class="footer-col footer-col-1">
+                <svg class="svg-icon orange">
+                <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
+                <svg><span class="rss-subscribe">subscribe <a href="{{ " /feed.xml" | relative_url }}">via RSS</a></span>
                 {%- if site.author %}
                 <ul class="contact-list">
                     {% if site.author -%}
