@@ -2,7 +2,9 @@
 layout: post
 title: "如何微调stable diffusion来生成三国志人物肖像"
 date: 2023-08-17 11:13
---- 
+categories: MachineLearning ComputerVision
+toc: true
+---
 
 > 通过在指定数据集上微调 stable diffusion 模型可以用diffusion模型生成和数据集相关的图像。这篇博客介绍如何微调 stable diffusion 模型来生成三国志人物肖像。
 
