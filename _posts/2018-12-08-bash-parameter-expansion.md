@@ -1,35 +1,18 @@
 ---
 layout: post
-title:  "Use Bash Parameter Expansion"
+title:  "如何使用Bash中的参数扩展（Parameter Expansion）"
 date: 2018-12-08 00:29:05 +0800
 categories: Bash
 toc: true
 ---
 
+> Bash中的变量经常需要经过一些简单的编辑或者替换在使用，比如得到的文件名称需要去掉前面的文件路径，参数扩展（paremter expanison）可以帮你快速完成这些任务，比如使用`${VAR##*/}`就可以去除文件路径仅保留文件名，而不需要一些外部工具（perl，python，sed，awk）的帮忙，这样可以使得我们更加高效地完成一些任务。
+
 ## 前言
-使用``$``符号可以进行parameter expansion，arithmetic expansion，command substitution。合理使用这个操作方法可以帮助我们expand shell中的变量，而不需要一些外部工具（perl，python，sed，awk）的帮忙。这样可以使得我们更加高效地完成一些任务。
 
-## Bash Parameter Expansion
-当在bash中定义一个变量后，比如：
+在 Bash 中可以使用 `${VAR}` 得到变量的值，但是这个值通常要经过编辑和替换才能用于后续的处理，比如去除文件路径，去除文件名后缀等，这些需求可以使用 Bash 中的参数扩展（paramter expansion）方便地完成。这篇博客会介绍参数扩展的常用语法以及常见的用途。
 
-```bash
-dest="\backups"
-```
-
-我们可以这样对它进行展开（expand）：
-
-```bash
-echo "$dest"
-echo "Value ${dest}"
-```
-
-这两行的功能相同，但是后者可以对变量进行更多的操作，比如只取变量名中的一部分。而且在有些特定情况只能使用后者来完成任务，比如：
-```bash
-your_id=${USER}-on-${HOSTNAME}
-echo "$your_id"
-```
-
-那么现在来看看parameter expansion可以有哪些更多的变化功能！
+在 Bash 中`$VAR`和`${VAR}`都可以得到变量值，但是参数扩展功能需要使用`${VAR}`语法，它会在两个花括号中间添加一些额外的语句，比如`${VAR##*/}`。那么现在来看看parameter expansion可以有哪些更多的变化功能！
 
 ## 1. Setting Up Default Shell Variables Value
 
